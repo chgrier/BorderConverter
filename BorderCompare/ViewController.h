@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Rate.h"
 
 @interface ViewController : UIViewController
 

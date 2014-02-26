@@ -21,6 +21,7 @@
 		BE39310218BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
 		BE39310A18BBDCA10072C4C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE39310818BBDCA10072C4C7 /* InfoPlist.strings */; };
 		BE39310C18BBDCA10072C4C7 /* BorderCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */; };
+		BE39311718BD73340072C4C7 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39311618BD73340072C4C7 /* Rate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		BE39310718BBDCA10072C4C7 /* BorderCompareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BorderCompareTests-Info.plist"; sourceTree = "<group>"; };
 		BE39310918BBDCA10072C4C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderCompareTests.m; sourceTree = "<group>"; };
+		BE39311518BD73340072C4C7 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rate.h; sourceTree = "<group>"; };
+		BE39311618BD73340072C4C7 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				BE3930EF18BBDCA10072C4C7 /* AppDelegate.h */,
 				BE3930F018BBDCA10072C4C7 /* AppDelegate.m */,
 				BE3930F218BBDCA10072C4C7 /* Main.storyboard */,
+				BE39311518BD73340072C4C7 /* Rate.h */,
+				BE39311618BD73340072C4C7 /* Rate.m */,
 				BE3930F518BBDCA10072C4C7 /* ViewController.h */,
 				BE3930F618BBDCA10072C4C7 /* ViewController.m */,
 				BE3930F818BBDCA10072C4C7 /* Images.xcassets */,
@@ -250,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE3930F718BBDCA10072C4C7 /* ViewController.m in Sources */,
+				BE39311718BD73340072C4C7 /* Rate.m in Sources */,
 				BE3930F118BBDCA10072C4C7 /* AppDelegate.m in Sources */,
 				BE3930ED18BBDCA10072C4C7 /* main.m in Sources */,
 			);
