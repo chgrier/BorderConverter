@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383278192A6B1600A7DC57 /* CurrencyDict.plist */; };
+		BE383303192ACFFA00A7DC57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = BE383302192ACFFA00A7DC57 /* Item.m */; };
+		BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383304192D2F6800A7DC57 /* ItemListPrices.plist */; };
+		BE383307192D414400A7DC57 /* ItemListDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383306192D414400A7DC57 /* ItemListDict.plist */; };
 		BE3930E118BBDCA10072C4C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E018BBDCA10072C4C7 /* Foundation.framework */; };
 		BE3930E318BBDCA10072C4C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */; };
 		BE3930E518BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
@@ -14,14 +18,20 @@
 		BE3930ED18BBDCA10072C4C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3930EC18BBDCA10072C4C7 /* main.m */; };
 		BE3930F118BBDCA10072C4C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3930F018BBDCA10072C4C7 /* AppDelegate.m */; };
 		BE3930F418BBDCA10072C4C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3930F218BBDCA10072C4C7 /* Main.storyboard */; };
-		BE3930F718BBDCA10072C4C7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3930F618BBDCA10072C4C7 /* ViewController.m */; };
+		BE3930F718BBDCA10072C4C7 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3930F618BBDCA10072C4C7 /* MainViewController.m */; };
 		BE3930F918BBDCA10072C4C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE3930F818BBDCA10072C4C7 /* Images.xcassets */; };
 		BE39310018BBDCA10072C4C7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930FF18BBDCA10072C4C7 /* XCTest.framework */; };
 		BE39310118BBDCA10072C4C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E018BBDCA10072C4C7 /* Foundation.framework */; };
 		BE39310218BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
 		BE39310A18BBDCA10072C4C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE39310818BBDCA10072C4C7 /* InfoPlist.strings */; };
 		BE39310C18BBDCA10072C4C7 /* BorderCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */; };
-		BE39311718BD73340072C4C7 /* Rate.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39311618BD73340072C4C7 /* Rate.m */; };
+		BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975918F756DB00DF4C25 /* ItemList.plist */; };
+		BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */; };
+		BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */; };
+		BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */; };
+		BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE94418318F5E702008873A2 /* CurrencyCodes.plist */; };
+		BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */; };
+		BEC17538191B45D800459AD9 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC17537191B45D800459AD9 /* Currency.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE383278192A6B1600A7DC57 /* CurrencyDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrencyDict.plist; sourceTree = "<group>"; };
+		BE383301192ACFFA00A7DC57 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
+		BE383302192ACFFA00A7DC57 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
+		BE383304192D2F6800A7DC57 /* ItemListPrices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemListPrices.plist; sourceTree = "<group>"; };
+		BE383306192D414400A7DC57 /* ItemListDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemListDict.plist; sourceTree = "<group>"; };
 		BE3930DD18BBDCA10072C4C7 /* BorderCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BorderCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3930E018BBDCA10072C4C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -46,16 +61,29 @@
 		BE3930EF18BBDCA10072C4C7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BE3930F018BBDCA10072C4C7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BE3930F318BBDCA10072C4C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BE3930F518BBDCA10072C4C7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		BE3930F618BBDCA10072C4C7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BE3930F518BBDCA10072C4C7 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BE3930F618BBDCA10072C4C7 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		BE3930F818BBDCA10072C4C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BE3930FE18BBDCA10072C4C7 /* BorderCompareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BorderCompareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3930FF18BBDCA10072C4C7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		BE39310718BBDCA10072C4C7 /* BorderCompareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BorderCompareTests-Info.plist"; sourceTree = "<group>"; };
 		BE39310918BBDCA10072C4C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderCompareTests.m; sourceTree = "<group>"; };
-		BE39311518BD73340072C4C7 /* Rate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rate.h; sourceTree = "<group>"; };
-		BE39311618BD73340072C4C7 /* Rate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rate.m; sourceTree = "<group>"; };
+		BE86975918F756DB00DF4C25 /* ItemList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemList.plist; sourceTree = "<group>"; };
+		BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListFuel.plist; sourceTree = "<group>"; };
+		BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListMeat.plist; sourceTree = "<group>"; };
+		BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListDairy.plist; sourceTree = "<group>"; };
+		BE94418318F5E702008873A2 /* CurrencyCodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrencyCodes.plist; sourceTree = "<group>"; };
+		BEC1752D191AF5A700459AD9 /* CurrencyPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyPickerViewController.h; sourceTree = "<group>"; };
+		BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyPickerViewController.m; sourceTree = "<group>"; };
+		BEC17530191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		BEC17531191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEC17532191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEC17533191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
+		BEC17534191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEC17535191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BEC17536191B45D800459AD9 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
+		BEC17537191B45D800459AD9 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,10 +146,14 @@
 				BE3930EF18BBDCA10072C4C7 /* AppDelegate.h */,
 				BE3930F018BBDCA10072C4C7 /* AppDelegate.m */,
 				BE3930F218BBDCA10072C4C7 /* Main.storyboard */,
-				BE39311518BD73340072C4C7 /* Rate.h */,
-				BE39311618BD73340072C4C7 /* Rate.m */,
-				BE3930F518BBDCA10072C4C7 /* ViewController.h */,
-				BE3930F618BBDCA10072C4C7 /* ViewController.m */,
+				BEC1752D191AF5A700459AD9 /* CurrencyPickerViewController.h */,
+				BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */,
+				BE3930F518BBDCA10072C4C7 /* MainViewController.h */,
+				BE3930F618BBDCA10072C4C7 /* MainViewController.m */,
+				BE383301192ACFFA00A7DC57 /* Item.h */,
+				BE383302192ACFFA00A7DC57 /* Item.m */,
+				BEC17536191B45D800459AD9 /* Currency.h */,
+				BEC17537191B45D800459AD9 /* Currency.m */,
 				BE3930F818BBDCA10072C4C7 /* Images.xcassets */,
 				BE3930E718BBDCA10072C4C7 /* Supporting Files */,
 			);
@@ -131,6 +163,14 @@
 		BE3930E718BBDCA10072C4C7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				BE94418318F5E702008873A2 /* CurrencyCodes.plist */,
+				BE383278192A6B1600A7DC57 /* CurrencyDict.plist */,
+				BE86975918F756DB00DF4C25 /* ItemList.plist */,
+				BE383304192D2F6800A7DC57 /* ItemListPrices.plist */,
+				BE383306192D414400A7DC57 /* ItemListDict.plist */,
+				BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */,
+				BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */,
+				BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */,
 				BE3930E818BBDCA10072C4C7 /* BorderCompare-Info.plist */,
 				BE3930E918BBDCA10072C4C7 /* InfoPlist.strings */,
 				BE3930EC18BBDCA10072C4C7 /* main.m */,
@@ -201,7 +241,7 @@
 		BE3930D518BBDCA10072C4C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = com.charlesgrier;
 				TargetAttributes = {
 					BE3930FD18BBDCA10072C4C7 = {
@@ -216,6 +256,8 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
+				fr,
 			);
 			mainGroup = BE3930D418BBDCA10072C4C7;
 			productRefGroup = BE3930DE18BBDCA10072C4C7 /* Products */;
@@ -233,8 +275,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */,
+				BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */,
 				BE3930F918BBDCA10072C4C7 /* Images.xcassets in Resources */,
+				BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */,
 				BE3930EB18BBDCA10072C4C7 /* InfoPlist.strings in Resources */,
+				BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */,
+				BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */,
+				BE383307192D414400A7DC57 /* ItemListDict.plist in Resources */,
+				BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */,
+				BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */,
 				BE3930F418BBDCA10072C4C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,10 +304,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE3930F718BBDCA10072C4C7 /* ViewController.m in Sources */,
-				BE39311718BD73340072C4C7 /* Rate.m in Sources */,
+				BE383303192ACFFA00A7DC57 /* Item.m in Sources */,
+				BE3930F718BBDCA10072C4C7 /* MainViewController.m in Sources */,
+				BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */,
 				BE3930F118BBDCA10072C4C7 /* AppDelegate.m in Sources */,
 				BE3930ED18BBDCA10072C4C7 /* main.m in Sources */,
+				BEC17538191B45D800459AD9 /* Currency.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +336,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE3930EA18BBDCA10072C4C7 /* en */,
+				BEC17531191AF7AA00459AD9 /* es */,
+				BEC17534191AF7B800459AD9 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -292,6 +346,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE3930F318BBDCA10072C4C7 /* Base */,
+				BEC17530191AF7AA00459AD9 /* es */,
+				BEC17533191AF7B800459AD9 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -300,6 +356,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE39310918BBDCA10072C4C7 /* en */,
+				BEC17532191AF7AA00459AD9 /* es */,
+				BEC17535191AF7B800459AD9 /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -311,7 +369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -350,7 +407,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -388,6 +444,7 @@
 				GCC_PREFIX_HEADER = "BorderCompare/BorderCompare-Prefix.pch";
 				INFOPLIST_FILE = "BorderCompare/BorderCompare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -401,6 +458,7 @@
 				GCC_PREFIX_HEADER = "BorderCompare/BorderCompare-Prefix.pch";
 				INFOPLIST_FILE = "BorderCompare/BorderCompare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -408,7 +466,6 @@
 		BE39311318BBDCA10072C4C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BorderCompare.app/BorderCompare";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -431,7 +488,6 @@
 		BE39311418BBDCA10072C4C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BorderCompare.app/BorderCompare";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -466,6 +522,7 @@
 				BE39311118BBDCA10072C4C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BE39311218BBDCA10072C4C7 /* Build configuration list for PBXNativeTarget "BorderCompareTests" */ = {
 			isa = XCConfigurationList;
@@ -474,6 +531,7 @@
 				BE39311418BBDCA10072C4C7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

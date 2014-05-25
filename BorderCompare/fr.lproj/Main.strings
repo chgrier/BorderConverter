@@ -1,0 +1,120 @@
+
+/* Class = "IBUITextField"; placeholder = "0.00"; ObjectID = "7KY-uA-z5v"; */
+"7KY-uA-z5v.placeholder" = "0.00";
+
+/* Class = "IBUIButton"; normalTitle = "Update"; ObjectID = "7tj-rq-BhB"; */
+"7tj-rq-BhB.normalTitle" = "Update";
+
+/* Class = "IBUILabel"; text = "MMM"; ObjectID = "8ex-85-HCI"; */
+"8ex-85-HCI.text" = "MMM";
+
+/* Class = "IBUILabel"; text = "per"; ObjectID = "9Ha-Nk-Ldy"; */
+"9Ha-Nk-Ldy.text" = "per";
+
+/* Class = "IBUILabel"; text = "Current country:"; ObjectID = "CRp-m8-zvL"; */
+"CRp-m8-zvL.text" = "Current country:";
+
+/* Class = "IBUILabel"; text = "...home country..."; ObjectID = "Ce8-Mw-lH1"; */
+"Ce8-Mw-lH1.text" = "...home country...";
+
+/* Class = "IBUIBarButtonItem"; title = "Item"; ObjectID = "D8G-mB-mJ3"; */
+"D8G-mB-mJ3.title" = "Item";
+
+/* Class = "IBUITextField"; placeholder = "unit"; ObjectID = "DCt-Hc-hvJ"; */
+"DCt-Hc-hvJ.placeholder" = "unit";
+
+/* Class = "IBUITextField"; placeholder = "USD"; ObjectID = "E9P-NC-haq"; */
+"E9P-NC-haq.placeholder" = "USD";
+
+/* Class = "IBUITextField"; text = "USD"; ObjectID = "E9P-NC-haq"; */
+"E9P-NC-haq.text" = "USD";
+
+/* Class = "IBUILabel"; text = "per"; ObjectID = "EQj-3X-1Yr"; */
+"EQj-3X-1Yr.text" = "per";
+
+/* Class = "IBUILabel"; text = "Enter Price per Unit:"; ObjectID = "EzC-56-tys"; */
+"EzC-56-tys.text" = "Enter Price per Unit:";
+
+/* Class = "IBUITextField"; placeholder = "unit"; ObjectID = "Gep-9b-fAE"; */
+"Gep-9b-fAE.placeholder" = "unit";
+
+/* Class = "IBUITextField"; placeholder = "$000000.00"; ObjectID = "HPD-Pw-D4x"; */
+"HPD-Pw-D4x.placeholder" = "$000000.00";
+
+/* Class = "IBUINavigationItem"; title = "Border Compare"; ObjectID = "Htd-QP-QR1"; */
+"Htd-QP-QR1.title" = "Border Compare";
+
+/* Class = "IBUIButton"; normalTitle = "Share prices"; ObjectID = "I8n-cK-JYx"; */
+"I8n-cK-JYx.normalTitle" = "Share prices";
+
+/* Class = "IBUILabel"; text = "Select Item to Convert:"; ObjectID = "Jwg-RG-1k2"; */
+"Jwg-RG-1k2.text" = "Select Item to Convert:";
+
+/* Class = "IBUILabel"; text = "...getting location...."; ObjectID = "LOi-Yn-my5"; */
+"LOi-Yn-my5.text" = "...getting location....";
+
+/* Class = "IBUILabel"; text = "Exchange Rate"; ObjectID = "Pqg-bw-Xal"; */
+"Pqg-bw-Xal.text" = "Exchange Rate";
+
+/* Class = "IBUITextField"; placeholder = "0.00"; ObjectID = "QUH-nh-1a6"; */
+"QUH-nh-1a6.placeholder" = "0.00";
+
+/* Class = "IBUILabel"; text = "Currency Name"; ObjectID = "QZW-Li-svB"; */
+"QZW-Li-svB.text" = "Currency Name";
+
+/* Class = "IBUITextField"; placeholder = "currency"; ObjectID = "Spj-tG-uuW"; */
+"Spj-tG-uuW.placeholder" = "currency";
+
+/* Class = "IBUITextField"; text = "XXX"; ObjectID = "Spj-tG-uuW"; */
+"Spj-tG-uuW.text" = "XXX";
+
+/* Class = "IBUITextField"; placeholder = "Item to Convert"; ObjectID = "UfZ-3c-EE7"; */
+"UfZ-3c-EE7.placeholder" = "Item to Convert";
+
+/* Class = "IBUILabel"; text = "="; ObjectID = "Uv0-xF-Oox"; */
+"Uv0-xF-Oox.text" = "=";
+
+/* Class = "IBUIButton"; normalTitle = "Convert"; ObjectID = "V3c-k6-wD8"; */
+"V3c-k6-wD8.normalTitle" = "Convert";
+
+/* Class = "IBUITextField"; placeholder = "$00000.00"; ObjectID = "Zcj-5G-n64"; */
+"Zcj-5G-n64.placeholder" = "$00000.00";
+
+/* Class = "IBUITextField"; placeholder = "currency"; ObjectID = "aTd-70-h6O"; */
+"aTd-70-h6O.placeholder" = "currency";
+
+/* Class = "IBUILabel"; text = "1"; ObjectID = "bi6-0i-MZI"; */
+"bi6-0i-MZI.text" = "1";
+
+/* Class = "IBUILabel"; text = "Last updated: "; ObjectID = "fgc-fb-Pj2"; */
+"fgc-fb-Pj2.text" = "Last updated: ";
+
+/* Class = "IBUIButton"; normalTitle = "Select"; ObjectID = "gcT-UM-b83"; */
+"gcT-UM-b83.normalTitle" = "Select";
+
+/* Class = "IBUILabel"; text = "Your price: "; ObjectID = "hoT-FH-YVF"; */
+"hoT-FH-YVF.text" = "Your price: ";
+
+/* Class = "IBUILabel"; text = "Average Price in USA:"; ObjectID = "ign-gg-okY"; */
+"ign-gg-okY.text" = "Average Price in USA:";
+
+/* Class = "IBUILabel"; text = "1.00"; ObjectID = "is8-tf-wBb"; */
+"is8-tf-wBb.text" = "1.00";
+
+/* Class = "IBUIButton"; normalTitle = "Choose Currency"; ObjectID = "kBo-gf-E8E"; */
+"kBo-gf-E8E.normalTitle" = "Choose Currency";
+
+/* Class = "IBUITextField"; placeholder = "USD"; ObjectID = "ptB-WE-kSx"; */
+"ptB-WE-kSx.placeholder" = "USD";
+
+/* Class = "IBUINavigationItem"; title = "Select a Currency"; ObjectID = "t3M-zk-SuZ"; */
+"t3M-zk-SuZ.title" = "Select a Currency";
+
+/* Class = "IBUILabel"; text = "Source: U.S. Bureau of Labor Statistics, January 2014"; ObjectID = "udK-wF-nKR"; */
+"udK-wF-nKR.text" = "Source: U.S. Bureau of Labor Statistics, January 2014";
+
+/* Class = "IBUITextField"; placeholder = "0000.00"; ObjectID = "zDq-GI-BQP"; */
+"zDq-GI-BQP.placeholder" = "0000.00";
+
+/* Class = "IBUILabel"; text = "Home country: "; ObjectID = "zcN-Va-pq8"; */
+"zcN-Va-pq8.text" = "Home country: ";
