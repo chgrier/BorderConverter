@@ -49,7 +49,6 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    //[self updateLabel];
     
     
 }
@@ -69,8 +68,10 @@
      [self.view addSubview:self.itemPicker];
      */
     
-    [_baseCurrencyCodeLabel setText:@"USD"];
     
+    self.code.toCodeName = @"USD";
+    //[_toCurrencyCodeField setText:self.code.toCodeName];
+    NSLog(@"toCodeName = %@", self.code.toCodeName);
     
      _fxValue = _code.rate;
      ;
@@ -83,7 +84,7 @@
     if (self.code != nil){
         self.title = @"Border Compare";
         //_codeName = self.code.codeName;
-        NSLog(@"***Codename: %@", self.code.codeName);
+        NSLog(@"***Codename: %@", self.code.fromCodeName);
         
     }
     
@@ -103,22 +104,22 @@
     item = [[Item alloc]init];
     item.name = @"Bannanas";
     item.price = [NSNumber numberWithFloat:0.60];
-    item.unitMetric = @"kg";
-    item.unitImperial = @"lb";
+    item.fromUnit = @"kg";
+    item.toUnit = @"lb";
     [_items addObject:item];
     
     item = [[Item alloc]init];
     item.name = @"Lemons";
     item.price = [NSNumber numberWithFloat:1.67];
-    item.unitMetric = @"kg";
-    item.unitImperial = @"lb";
+    item.fromUnit = @"kg";
+    item.toUnit = @"lb";
     [_items addObject:item];
     
     item = [[Item alloc]init];
     item.name = @"Oranges";
     item.price = [NSNumber numberWithFloat:1.14];
-    item.unitMetric = @"kg";
-    item.unitImperial = @"lb";
+    item.fromUnit = @"kg";
+    item.toUnit = @"lb";
     [_items addObject:item];
     
     /*
@@ -220,8 +221,11 @@
      
      */
     
+    UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePicker)];
+    //gestureRecognizer.cancelsTouchesInView = NO;
+    [self.view addGestureRecognizer:gestureRecognizer];
     
-    
+    [self updateLabel];
 }
 
 
@@ -239,10 +243,10 @@
 -(void)updateExchangeRate{
     
     
-    if (_code.codeName != nil) {
+    if (self.code.fromCodeName != nil && self.code.toCodeName !=nil ) {
         
-    NSString *fromCurr = @"USD";
-    NSString *toCurr = _code.codeName;
+    NSString *fromCurr = self.code.fromCodeName;
+    NSString *toCurr = @"USD";
     // URL request get exchange rate for currencies
     NSString *urlAsString = @"http://finance.yahoo.com/d/quotes.csv?s=";
     
@@ -295,7 +299,7 @@
              
              // NSLog(@"Exchange rate set to fxvalue object in ExchangeValue class:%@",currentExchange);
              
-             _fxRate.text = [NSString stringWithFormat:@"%@",value];
+             _exchangeRateField.text = [NSString stringWithFormat:@"%@",value];
              
              //_exchangeRateHolder.text = [NSString stringWithFormat:@"%@",value];
     
@@ -315,7 +319,7 @@
              NSLog(@"Error happened = %@", error);
          }
          else {
-              _currencyCodeLabel.text = @"select";
+              _fromCurrencyCodeField.text = @"select";
          }
          
      
@@ -435,85 +439,21 @@ numberOfRowsInComponent:(NSInteger)component
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-/*
-{
-    if (component == kCategoryComponent) {
-        NSString *selectedCategory = self.category[row];
-        self.items = self.itemList[selectedCategory];
-        [pickerView reloadComponent:kItemComponent];
-        [pickerView selectRow:0 inComponent:kItemComponent animated:YES];
-
-    }
-  */
-
-    Item *selectedItem = [[Item alloc]init];
-    selectedItem = [_items objectAtIndex:row];
     
-    //float rate = item.price;
+    //Item *selectedItem = [[Item alloc]init];
+    //selectedItem = [_items objectAtIndex:row];
+    self.item = [_items objectAtIndex:row];
     
-    float rate = [selectedItem.price floatValue];
+    float rate = [self.item.price floatValue];
     NSString *avgPriceString = [[NSString alloc] initWithFormat:
                                 @"$%.2f", rate];
     _avgPriceLabel.text = avgPriceString;
     
+    self.itemName.text = self.item.name;
     
-    // NSString *itemSelected = item.name;
-    //_itemName.text = itemSelected;
-    _itemName.text = selectedItem.name;
+    _fromUnitField.text = self.item.fromUnit;
+    _toUnitField.text = self.item.toUnit;
     
-    _item = [_items objectAtIndex:row];
- NSLog(@" ITEM OBJECT: %@", _item.name);
-    
-    if (![_currencyCodeLabel.text isEqual:@"USD"]){
-        NSString *unitSelected = selectedItem.unitMetric;
-        _fromUnitField.text = unitSelected;
-        NSString *otherUnitSelected = selectedItem.unitImperial;
-        _toUnitField.text = otherUnitSelected;
-    } else {
-        NSString *unitSelected = selectedItem.unitImperial;
-        _fromUnitField.text = unitSelected;
-        NSString *otherUnitSelected = selectedItem.unitMetric;
-        _toUnitField.text = otherUnitSelected;
-    }
-    
-   // float rate = [_itemAvgPrice[row] floatValue];
-    
-   /*
-    _newItem = [_items objectAtIndex:row];
-    
-    //float rate = item.price;
-    
-    float rate = [_newItem.price floatValue];
-    NSString *avgPriceString = [[NSString alloc] initWithFormat:
-                              @"$%.2f", rate];
-    _avgPriceLabel.text = avgPriceString;
-    
-    
-   // NSString *itemSelected = item.name;
-    //_itemName.text = itemSelected;
-    _itemName.text = _newItem.name;
-    
-    //Item *i = [_items objectAtIndex:row];
-    //[_item setItem:i];
-    
-    if (![_currencyCodeLabel.text isEqual:@"USD"]){
-    NSString *unitSelected = _newItem.unitMetric;
-    _fromUnitField.text = unitSelected;
-        NSString *otherUnitSelected = _newItem.unitImperial;
-        _toUnitField.text = otherUnitSelected;
-    } else {
-         NSString *unitSelected = _newItem.unitImperial;
-        _fromUnitField.text = unitSelected;
-        NSString *otherUnitSelected = _newItem.unitMetric;
-        _toUnitField.text = otherUnitSelected;
-    }
-    */
-    
-    /*
-    if (component == kItemComponent){
-    [self closePicker];
-    }
-     */
 }
 
 /*
@@ -535,6 +475,9 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(IBAction)selectItem:(id)sender{
     //open picker view
+    
+    [self.priceTextField resignFirstResponder];
+    
     [UIView animateWithDuration:0.3 animations:^{
         _pickerViewHolder.frame = CGRectMake(_pickerViewHolder.frame.origin.x,
                                        165, //Displays the view a little past the
@@ -542,6 +485,24 @@ numberOfRowsInComponent:(NSInteger)component
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
     }];
+    
+}
+
+- (IBAction)switchUnits:(id)sender {
+    
+    /*if ([self.item.unitMetric isEqualToString:@"kg"]) {
+        self.item.unitMetric = @"lb";
+        self.item.unitImperial = @"kg";
+    }
+    
+    else if ([self.item.unitMetric isEqualToString:@"lb"]) {
+        self.item.unitMetric = @"kg";
+        self.item.unitImperial = @"lb";
+    }
+    */
+    [self.item toggleUnits];
+    [self updateLabel];
+ 
     
 }
 
@@ -560,12 +521,13 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(void)updateLabel
 {
-     _fxRate.text =  [NSString stringWithFormat:@"%@",_holder];
+     _exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
     
-    if (_code.codeName != nil){
-        [_currencyCodeLabel setText:[_code codeName]];
-        [_currencyCodeLabelTwo setText:[_code codeName]];
-        [_baseCurrencyCodeLabel setText:@"USD"];
+    if (self.code.fromCodeName != nil){
+        [self.fromCurrencyCodeField setText:[self.code fromCodeName]];
+        [self.fromCurrencyCodeFieldTwo setText:[self.code fromCodeName]];
+        [self.toCurrencyCodeField setText:[self.code toCodeName]];
+        [self.toCurrencyCodeFieldTwo setText:[self.code toCodeName]];
         
         
         NSDate *today = [NSDate date];
@@ -577,16 +539,33 @@ numberOfRowsInComponent:(NSInteger)component
         [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
         NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
         
-        _fxRateTime.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
+        _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
         
     } else {
-        [_currencyCodeLabel setText:@"select"];
-        [_currencyCodeLabel setTextColor:[UIColor grayColor]];
-        [_currencyCodeLabelTwo setText:@"currency"];
-        [_currencyCodeLabelTwo setTextColor:[UIColor grayColor]];
+        [_fromCurrencyCodeField setText:@"select"];
+        [_fromCurrencyCodeField setTextColor:[UIColor grayColor]];
+        [_fromCurrencyCodeFieldTwo setText:@"currency"];
+        [_fromCurrencyCodeFieldTwo setTextColor:[UIColor grayColor]];
     }
     
     _itemName.text = _item.name;
+    
+    /*
+    if (![self.code.fromCodeName isEqual:@"USD"]){
+        
+        _fromUnitField.text = self.item.fromUnit;
+        _toUnitField.text = self.item.toUnit;
+        
+    } else {
+        
+        _fromUnitField.text = self.item.toUnit;
+        _toUnitField.text = self.item.fromUnit;
+        
+    }
+    
+    NSLog(@"UNIT METRIC: %@", self.item.fromUnit);
+*/
+    
 }
 
 
@@ -599,13 +578,7 @@ numberOfRowsInComponent:(NSInteger)component
     
 }
 
--(void)convert
-{
-    // (exchange rate) * price / 2.2
-    
-   
-    //
-}
+
 
 #pragma mark Slider
 // sliderMoved method called when user moves the slider
@@ -680,7 +653,7 @@ numberOfRowsInComponent:(NSInteger)component
 
 
 - (void) updateFxLabel{
-    self.fxRate.text = [NSString stringWithFormat:@"%.1f", _fxValue];
+    self.exchangeRateField.text = [NSString stringWithFormat:@"%.1f", _fxValue];
 }
 
 
@@ -716,11 +689,11 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(void)currencyPicker:(CurrencyPickerViewController *)controller didPickCurrency:(Currency *)currencyCode{
     self.code = currencyCode;
-    self.currencyCodeLabel.text = self.code.codeName;
-    self.currencyCodeLabelTwo.text = self.code.codeName;
+    self.fromCurrencyCodeField.text = self.code.fromCodeName;
+    self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
     
-    NSLog(@"**currencyCode.codeName: %@",currencyCode.codeName);
-    NSLog(@"***code.codeName %@", self.code.codeName);
+    NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
+    NSLog(@"***code.fullName %@", self.code.fromFullName);
     NSLog(@"****item.name: %@", self.item.name);
     
     /*
@@ -733,6 +706,10 @@ numberOfRowsInComponent:(NSInteger)component
     */
     //Currency *selectedCode = [[Currency alloc]init];
    // selectedCode.codeName = _codeName;
+    if ((self.code.toCodeName = nil)) {
+        self.code.toCodeName = @"USD";
+        self.toCurrencyCodeField.text = self.code.toCodeName;
+    }
     
     [self updateExchangeRate];
     
@@ -740,5 +717,47 @@ numberOfRowsInComponent:(NSInteger)component
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+-(void)hideKeyboard {
+    [self resignFirstResponder];
+    
+}
 
+
+-(void)calculate
+{
+    
+}
+
+
+-(BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
+    if ([newText length] > 0) {
+        self.priceTextField.textColor = [UIColor redColor];
+        self.priceText = newText;
+        NSLog(@"Typed text = %@", self.priceText);
+        self.priceFloat = [self.priceText floatValue];
+        NSLog(@"price float value %.2f", self.priceFloat);
+        
+        float result;
+        result =  (self.priceFloat / self.code.rate) / 2.2 ;
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
+        
+    }
+    return YES;
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+
+- (IBAction)switchCurrency:(id)sender {
+    [self.code toggleCurrency];
+    [self updateLabel];
+    
+    //[self performSelectorOnMainThread:@selector(switchCurrency:) withObject:nil waitUntilDone:YES];
+    
+}
 @end

@@ -15,19 +15,32 @@
 
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super init])){
-        self.fullName = [aDecoder decodeObjectForKey:@"Name"];
-        self.codeName = [aDecoder decodeObjectForKey:@"Code"];
+        self.fromFullName = [aDecoder decodeObjectForKey:@"Name"];
+        self.fromCodeName = [aDecoder decodeObjectForKey:@"Code"];
         self.imageName = [aDecoder decodeObjectForKey:@"ImageName"];
     }
     return self;
 }
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.fullName forKey:@"Name"];
-    [aCoder encodeObject:self.codeName forKey:@"Code"];
+    [aCoder encodeObject:self.fromFullName forKey:@"Name"];
+    [aCoder encodeObject:self.fromCodeName forKey:@"Code"];
     [aCoder encodeObject:self.imageName forKey:@"ImageName"];
 }
 
+-(void)toggleCurrency{
+    
+    if (self.fromCodeName != nil ) {
+        NSString *oldFromCode = self.fromCodeName;
+        self.fromCodeName = self.toCodeName;
+        self.toCodeName = oldFromCode;
+        
+        
+    
+    
+        }
+
+}
 
 @end
 

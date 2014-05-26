@@ -10,5 +10,19 @@
 
 @implementation Item
 
+-(void)toggleUnits
+{
+    
+    if ([self.fromUnit isEqualToString:@"kg"]) {
+        self.fromUnit = @"lb";
+        self.toUnit = @"kg";
+    }
+    
+    else if ([self.fromUnit isEqualToString:@"lb"]) {
+        self.fromUnit = @"kg";
+        self.toUnit = @"lb";
+    }
+    
+}
 
 @end

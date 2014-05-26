@@ -11,10 +11,14 @@
 @interface Item : NSObject
 
 @property(nonatomic, copy) NSString *name;
-@property(nonatomic, copy) NSString *unitMetric;
-@property(nonatomic, copy) NSString *unitImperial;
+@property(nonatomic, copy) NSString *fromUnit;
+@property(nonatomic, copy) NSString *toUnit;
+
+@property(nonatomic, copy) Item *item;
 
 //@property (nonatomic) float price;
+
+-(void)toggleUnits;
 
 @property (nonatomic) NSNumber *price;
 @end

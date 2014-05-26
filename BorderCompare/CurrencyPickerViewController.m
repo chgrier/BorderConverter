@@ -52,26 +52,26 @@
     
     
     currency = [[Currency alloc]init];
-    currency.fullName = @"United States Dollar";
-    currency.codeName = @"USD";
+    currency.fromFullName = @"United States Dollar";
+    currency.fromCodeName = @"USD";
     currency.imageName = @"USD.png";
     [_currencies addObject:currency];
     
     currency = [[Currency alloc]init];
-    currency.fullName = @"Mexican Peso";
-    currency.codeName = @"MXN";
+    currency.fromFullName = @"Mexican Peso";
+    currency.fromCodeName = @"MXN";
     currency.imageName = @"MXN";
     [_currencies addObject:currency];
   
     currency = [[Currency alloc]init];
-    currency.fullName = @"Canadian Dollar";
-    currency.codeName = @"CAD";
+    currency.fromFullName = @"Canadian Dollar";
+    currency.fromCodeName = @"CAD";
     currency.imageName = @"CAD";
     [_currencies addObject:currency];
     
     currency = [[Currency alloc]init];
-    currency.fullName = @"European Union Euro";
-    currency.codeName = @"EUR";
+    currency.fromFullName = @"European Union Euro";
+    currency.fromCodeName = @"EUR";
     currency.imageName = @"EUR";
     [_currencies addObject:currency];
    
@@ -92,6 +92,9 @@
 //    _currencies = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
 //    NSLog(@"%@",_currencies);
     
+}
+- (IBAction)cancel:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -127,10 +130,10 @@
     
     
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    label.text = currency.fullName;
+    label.text = currency.fromFullName;
     
     UILabel *labelCode = (UILabel *)[cell viewWithTag:1001];
-    labelCode.text = currency.codeName;
+    labelCode.text = currency.fromCodeName;
     
     UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
     imageName.image = [UIImage imageNamed:currency.imageName];
