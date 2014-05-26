@@ -57,21 +57,7 @@
 {
     [super viewDidLoad];
     
-    //[self closePicker];
-    //[self updateExchangeRate];
-	// Do any additional setup after loading the view, typically from a nib.
     
-    /*
-     self.itemPicker = [[UIPickerView alloc]init];
-     self.itemPicker.dataSource = self;
-     self.itemPicker.center = self.view.center;
-     [self.view addSubview:self.itemPicker];
-     */
-    
-    
-    self.code.toCodeName = @"USD";
-    //[_toCurrencyCodeField setText:self.code.toCodeName];
-    NSLog(@"toCodeName = %@", self.code.toCodeName);
     
      _fxValue = _code.rate;
      ;
@@ -225,25 +211,17 @@
     //gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
     
-    [self updateLabel];
+    
 }
 
 
 
--(void)showPicker
-{
-    _pickerVisible = YES;
-}
 
--(void)hidePicker
-{
-    _pickerVisible = NO;
-}
 
 -(void)updateExchangeRate{
     
     
-    if (self.code.fromCodeName != nil && self.code.toCodeName !=nil ) {
+    if (self.code.fromCodeName != nil) {
         
     NSString *fromCurr = self.code.fromCodeName;
     NSString *toCurr = @"USD";
@@ -325,7 +303,7 @@
      
     
     
-    //[self updateLabel];
+    [self updateLabel];
     
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     
@@ -692,6 +670,10 @@ numberOfRowsInComponent:(NSInteger)component
     self.fromCurrencyCodeField.text = self.code.fromCodeName;
     self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
     
+    NSString *toCode = @"USD";
+    self.code.toCodeName = toCode;
+    self.fromCurrencyCodeField.text = self.code.toCodeName;
+    
     NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
     NSLog(@"***code.fullName %@", self.code.fromFullName);
     NSLog(@"****item.name: %@", self.item.name);
@@ -709,8 +691,10 @@ numberOfRowsInComponent:(NSInteger)component
     if ((self.code.toCodeName = nil)) {
         self.code.toCodeName = @"USD";
         self.toCurrencyCodeField.text = self.code.toCodeName;
+        
     }
     
+    NSLog(@"toCodeName = %@", self.code.toCodeName);
     [self updateExchangeRate];
     
     
