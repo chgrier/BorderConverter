@@ -304,8 +304,9 @@
     
     
     [self updateLabel];
-    
+    [self calculate];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
     
      }];
 }
@@ -431,6 +432,8 @@ numberOfRowsInComponent:(NSInteger)component
     
     _fromUnitField.text = self.item.fromUnit;
     _toUnitField.text = self.item.toUnit;
+    
+    NSLog(@"item.fromUnit: %@; item.toUnit: %@", self.item.fromUnit, self.item.toUnit);
     
 }
 
@@ -666,36 +669,29 @@ numberOfRowsInComponent:(NSInteger)component
 #pragma mark Delegate Callback Method
 
 -(void)currencyPicker:(CurrencyPickerViewController *)controller didPickCurrency:(Currency *)currencyCode{
+    
+    // set selected code passed from picker to code object
     self.code = currencyCode;
+    // set field names for 'from currency'
     self.fromCurrencyCodeField.text = self.code.fromCodeName;
     self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
     
-    NSString *toCode = @"USD";
-    self.code.toCodeName = toCode;
-    self.fromCurrencyCodeField.text = self.code.toCodeName;
+    if (![self.code.toCodeName isEqual:@"USD"])
+    {
+    self.code.toCodeName = @"USD";
+    NSLog(@"----to Code: %@----", self.code.toCodeName);
+    self.toCurrencyCodeField.text = self.code.toCodeName;
+    }
     
     NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
     NSLog(@"***code.fullName %@", self.code.fromFullName);
     NSLog(@"****item.name: %@", self.item.name);
+    NSLog(@"----to Code: %@----", self.code.toCodeName);
     
-    /*
-    Currency *selectedCode = [[Currency alloc]init];
-    selectedCode.codeName = currencyCode;
-    NSLog(@"object selectedCode : %@", selectedCode.codeName);
-    
-    self.code.codeName = currencyCode;
-    NSLog(@"OBject Currency *code: %@", self.code.codeName);
-    */
-    //Currency *selectedCode = [[Currency alloc]init];
-   // selectedCode.codeName = _codeName;
-    if ((self.code.toCodeName = nil)) {
-        self.code.toCodeName = @"USD";
-        self.toCurrencyCodeField.text = self.code.toCodeName;
-        
-    }
-    
-    NSLog(@"toCodeName = %@", self.code.toCodeName);
     [self updateExchangeRate];
+    
+    [self calculate];
+    [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
     
     
     [self.navigationController popViewControllerAnimated:YES];
@@ -709,7 +705,14 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(void)calculate
 {
+    NSLog(@"Calculated price float value %f", self.priceFloat);
+    float result;
+    result =  (self.priceFloat * self.code.rate) / 2.2 ;
+    NSLog(@"Rate: %.2f", self.code.rate);
+    NSLog(@"Result: %.2f", result);
+    self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
     
+    [self performSelectorOnMainThread:@selector(self) withObject:nil waitUntilDone:YES];
 }
 
 
@@ -722,10 +725,8 @@ numberOfRowsInComponent:(NSInteger)component
         self.priceFloat = [self.priceText floatValue];
         NSLog(@"price float value %.2f", self.priceFloat);
         
-        float result;
-        result =  (self.priceFloat / self.code.rate) / 2.2 ;
-        NSLog(@"Result: %.2f", result);
-        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
+        [self calculate];
+        
         
     }
     return YES;
