@@ -225,6 +225,8 @@
         
     NSString *fromCurr = self.code.fromCodeName;
     NSString *toCurr = @"USD";
+        
+        
     // URL request get exchange rate for currencies
     NSString *urlAsString = @"http://finance.yahoo.com/d/quotes.csv?s=";
     
@@ -307,6 +309,7 @@
     [self calculate];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
+    [self performSelectorOnMainThread:@selector(self) withObject:nil waitUntilDone:YES];
     
      }];
 }
@@ -433,6 +436,8 @@ numberOfRowsInComponent:(NSInteger)component
     _fromUnitField.text = self.item.fromUnit;
     _toUnitField.text = self.item.toUnit;
     
+    [self calculate];
+    
     NSLog(@"item.fromUnit: %@; item.toUnit: %@", self.item.fromUnit, self.item.toUnit);
     
 }
@@ -460,9 +465,7 @@ numberOfRowsInComponent:(NSInteger)component
     [self.priceTextField resignFirstResponder];
     
     [UIView animateWithDuration:0.3 animations:^{
-        _pickerViewHolder.frame = CGRectMake(_pickerViewHolder.frame.origin.x,
-                                       165, //Displays the view a little past the
-                                       //center ling of the screen
+        _pickerViewHolder.frame = CGRectMake(65, 112,
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
     }];
@@ -510,6 +513,13 @@ numberOfRowsInComponent:(NSInteger)component
         [self.toCurrencyCodeField setText:[self.code toCodeName]];
         [self.toCurrencyCodeFieldTwo setText:[self.code toCodeName]];
         
+       // self.fromCurrencyImageButton = [UIImage imageNamed:self.code.imageName];
+        
+        [self.fromCurrencyImageButton setImage:[UIImage imageNamed:self.code.imageName]
+                          forState:UIControlStateNormal];
+        
+        
+        //UIImage *button = UIButtonTypeCustom
         
         NSDate *today = [NSDate date];
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -660,7 +670,7 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.identifier isEqualToString:@"PickCurrency"]){
+    if ([segue.identifier isEqualToString:@"PickCurrency"] || [segue.identifier isEqualToString:@"SelectCurrency"] ){
         CurrencyPickerViewController *controller = segue.destinationViewController;
         controller.delegate = self;
     }
@@ -675,12 +685,14 @@ numberOfRowsInComponent:(NSInteger)component
     // set field names for 'from currency'
     self.fromCurrencyCodeField.text = self.code.fromCodeName;
     self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
+    self.fromCurrencyFullNameField.text = self.code.fromFullName;
     
     if (![self.code.toCodeName isEqual:@"USD"])
     {
     self.code.toCodeName = @"USD";
     NSLog(@"----to Code: %@----", self.code.toCodeName);
     self.toCurrencyCodeField.text = self.code.toCodeName;
+    [self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
     }
     
     NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
@@ -692,7 +704,8 @@ numberOfRowsInComponent:(NSInteger)component
     
     [self calculate];
     [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
-    
+    [self updateLabel];
+    [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -711,8 +724,19 @@ numberOfRowsInComponent:(NSInteger)component
     NSLog(@"Rate: %.2f", self.code.rate);
     NSLog(@"Result: %.2f", result);
     self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
-    
+    if ([self.item.toUnit isEqual:@"lb"] && [self.code.toCodeName isEqual:@"USD"])
+    {
+        self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
+        
+        if (result < [self.item.price floatValue]) {
+            self.resultTextFieldCompare.textColor = [UIColor greenColor];
+            self.resultTextFieldCompare.font = [UIFont boldSystemFontOfSize:20];
+        } else if (result > [self.item.price floatValue]) {
+            self.resultTextFieldCompare.textColor = [UIColor redColor];
+        }
+    }
     [self performSelectorOnMainThread:@selector(self) withObject:nil waitUntilDone:YES];
+    
 }
 
 

@@ -61,6 +61,8 @@
     currency.fromFullName = @"Mexican Peso";
     currency.fromCodeName = @"MXN";
     currency.imageName = @"MXN";
+    currency.oldRateToUSD = 13.11;
+    currency.oldRateFromUSD = 0.7628;
     [_currencies addObject:currency];
   
     currency = [[Currency alloc]init];

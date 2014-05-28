@@ -19,6 +19,9 @@
 @property (nonatomic, copy) NSString *imageName;
 
 @property float rate;
+@property float oldRateToUSD;
+@property float oldRateFromUSD;
+
 @property (nonatomic, assign) BOOL *checked;
 
 -(void)toggleCurrency;

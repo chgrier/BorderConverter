@@ -32,12 +32,16 @@
 @property (strong, nonatomic) NSArray *items;
 - (IBAction)selectItem:(id)sender;
 
-// currency code text fields
+// currency code text and image fields
 @property (weak, nonatomic) IBOutlet UITextField *fromCurrencyCodeField;
 @property (weak, nonatomic) IBOutlet UITextField *fromCurrencyCodeFieldTwo;
 @property (weak, nonatomic) IBOutlet UITextField *toCurrencyCodeField;
 @property (weak, nonatomic) IBOutlet UITextField *toCurrencyCodeFieldTwo;
 - (IBAction)switchCurrency:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *fromCurrencyFullNameField;
+@property (weak, nonatomic) IBOutlet UIButton *fromCurrencyImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *toCurrencyImageButton;
 
 
 // unit text fields
