@@ -10,8 +10,9 @@
 #import "CurrencyPickerViewController.h"
 #import "Currency.h"
 #import "Item.h"
+#import "Reachability.h"
 
-@interface MainViewController : UIViewController <CurrencyPickerViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate>
+@interface MainViewController : UIViewController <CurrencyPickerViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
 
 
 
@@ -78,6 +79,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *avgPriceLabel;
 @property (weak, nonatomic) IBOutlet UITextField *itemName;
 
-
+- (NSString *)stringFromStatus:(NetworkStatus )status;
 
 @end

@@ -9,6 +9,7 @@
 #import "MainViewController.h"
 #import "Currency.h"
 #import "Item.h"
+#import "Reachability.h"
 
 #define kCategoryComponent 0
 #define kItemComponent 1
@@ -25,6 +26,8 @@
     float _maxValue;
     float _fxUpdatedRate;
     float _roundedValue;
+    
+    float _initialValue;
    
     
     NSMutableArray *_userData;
@@ -41,6 +44,8 @@
     
     
     NSString *_currencyName;
+    
+    
 
     
 }
@@ -59,10 +64,7 @@
     
     
     
-     _fxValue = _code.rate;
-     ;
-     _fxUpdatedRate = .4;
-     self.slider.value = _fxValue;
+    self.slider.value = _fxValue;
      
     
     
@@ -215,16 +217,80 @@
 }
 
 
+- (NSString *)stringFromStatus:(NetworkStatus) status {
+    
+    NSString *string;
+    switch(status) {
+        case NotReachable:
+            string = @"There seems to be no internet connection. Current rates were not downloaded. Please enter exchange rate.";
+            break;
+        case ReachableViaWiFi:
+            string = @"Reachable via WiFi";
+            break;
+        case ReachableViaWWAN:
+            string = @"Reachable via WWAN";
+            break;
+        default:
+            string = @"Unknown";
+            break;
+    }
+    return string;
+}
 
+
+-(void)useOldExchangeRate{
+    
+    float valueFromUSD;
+    self.code.oldRateFromUSD = 20.00;
+    _holder = [NSString stringWithFormat:@"%.2f", self.code.oldRateToUSD];
+    float valueToUSD;
+    //self.code.oldRateToUSD = valueToUSD;
+    _exchangeRateField.text = [NSString stringWithFormat:@"40"];
+    //[NSString stringWithFormat:@"%.2f", valueToUSD];
+    
+    [self updateLabel];
+}
+
+- (void) reachabilityChanged: (NSNotification *)notification {
+    Reachability *reach = [notification object];
+    if( [reach isKindOfClass: [Reachability class]]) {
+        NetworkStatus status = [reach currentReachabilityStatus];
+        if (status == NotReachable){
+           NSLog(@"**********************NOT REACHABLE");
+        }}
+}
 
 
 -(void)updateExchangeRate{
     
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
     
-    if (self.code.fromCodeName != nil) {
+    
+    if (status == NotReachable) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reachability"
+                                                        message:[self stringFromStatus:status] delegate:nil
+                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [self useOldExchangeRate];
+        
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(reachabilityChanged:)
+                                                 name: kReachabilityChangedNotification
+                                               object: nil];
+    
+    Reachability *updateReach =
+    [Reachability reachabilityWithHostName: @"www.apple.com"];
+    [updateReach startNotifier];
+    
+    
+    if (self.code.fromCodeName != nil && self.code.toCodeName != nil) {
         
     NSString *fromCurr = self.code.fromCodeName;
-    NSString *toCurr = @"USD";
+    NSString *toCurr = self.code.toCodeName;
         
         
     // URL request get exchange rate for currencies
@@ -238,7 +304,7 @@
     NSURL *url = [NSURL URLWithString:urlAsString];
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
-    //[urlRequest setTimeoutInterval:30.0f];
+    [urlRequest setTimeoutInterval:1.0f];
     [urlRequest setHTTPMethod:@"GET"];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
@@ -248,7 +314,10 @@
      queue:queue
      completionHandler:^(NSURLResponse *response,
                          NSData *data,
-                         NSError *error) {
+                         NSError *error
+                         
+                         )
+                         {
          
          if ([data length] >0  &&
              error == nil){
@@ -262,10 +331,15 @@
              
              _holder = [NSString stringWithFormat:@"%@",value];
              
+             _initialValue = [value floatValue];
+             
              NSLog(@"****value %@", _holder);
          
              self.code.rate = [_holder floatValue];
              NSLog(@"*****Float value of exchange rate %f", self.code.rate);
+             
+             
+
              
          /* dispatch back to the main queue for UI */
          
@@ -297,12 +371,17 @@
          }
          else if (error != nil){
              NSLog(@"Error happened = %@", error);
+             
+             
+    
          }
          else {
               _fromCurrencyCodeField.text = @"select";
          }
          
-     
+         
+        
+         
     
     
     [self updateLabel];
@@ -314,6 +393,13 @@
      }];
 }
     }
+
+
+-(void)showAlert
+{
+    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HI" message:@"Test" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
+    [alertView show];
+}
      
 /*
 -(void)loadUserData{
@@ -532,6 +618,9 @@ numberOfRowsInComponent:(NSInteger)component
         
         _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
         
+       
+        
+        
     } else {
         [_fromCurrencyCodeField setText:@"select"];
         [_fromCurrencyCodeField setTextColor:[UIColor grayColor]];
@@ -557,6 +646,7 @@ numberOfRowsInComponent:(NSInteger)component
     NSLog(@"UNIT METRIC: %@", self.item.fromUnit);
 */
     
+    
 }
 
 
@@ -570,32 +660,43 @@ numberOfRowsInComponent:(NSInteger)component
 }
 
 
-
 #pragma mark Slider
 // sliderMoved method called when user moves the slider
 -(IBAction)sliderMoved:(UISlider *)slider{
    
-    _fxValue = (slider.value);
     
-    _code.rate = _fxUpdatedRate;
-    _minValue = _fxUpdatedRate * .8;
-    _maxValue = _fxUpdatedRate * 1.2;
     
-    slider.minimumValue = _minValue;    // sets min value
-    slider.maximumValue = _maxValue;    // sets max value
     
-    NSLog(@"min is %f and max is %f",_minValue,_maxValue);
-    NSLog(@"Slider value = %.2f", _fxValue);
+    self.exchangeRateField.text = [NSString stringWithFormat:@"%.4f", [slider value]];
     
+    self.code.rate = (slider.value);
+    
+    
+    
+    NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
+    float value = [textValue floatValue];
+    
+    if (value > 0) {
+        float minimumValue = value * .8;  // slider min value to 20% less than initial exchange rate
+        float maximumValue = value * 1.2;  // slider max value to 20% greater than initial exchange rate
+        float initialValue = minimumValue - maximumValue / 2;
+        
+        
+    
+        slider.minimumValue = minimumValue;   // sets min value
+        slider.maximumValue = maximumValue;    // sets max value
+        
+        NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
+        
+        NSLog(@"%.2f", self.code.rate);
+    }
     [self updateRate];
-    
-    
     
     /*
      _exchangeRate.text = [NSString stringWithFormat:@"%.2f", [sender value]];
      
-      Here is what I'm trying to do using a static text field to hold the exchange rate value .  I set the exchangeRateHolder text field in the exchange rate calculation method (around line 428)
-    
+       Here is what I'm trying to do using a static text field to hold the exchange rate value .  I set the exchangeRateHolder text field in the exchange rate calculation method (around line 428)
+     
     
     
     NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
@@ -625,6 +726,7 @@ numberOfRowsInComponent:(NSInteger)component
      
      
      */
+
 }
 
 - (IBAction)updateRate {
@@ -635,17 +737,13 @@ numberOfRowsInComponent:(NSInteger)component
     transition.duration = .5;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
-    [self updateFxLabel];
+    
     [self.view.layer addAnimation:transition forKey:nil];
+    
+    
 }
 
 
-
-
-
-- (void) updateFxLabel{
-    self.exchangeRateField.text = [NSString stringWithFormat:@"%.1f", _fxValue];
-}
 
 
 - (void)didReceiveMemoryWarning

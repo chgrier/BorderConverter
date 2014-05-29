@@ -32,6 +32,8 @@
 		BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE94418318F5E702008873A2 /* CurrencyCodes.plist */; };
 		BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */; };
 		BEC17538191B45D800459AD9 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC17537191B45D800459AD9 /* Currency.m */; };
+		BEEF66E91936800C0086C145 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEF66E81936800C0086C145 /* Reachability.m */; };
+		BEEF66EB1936F11A0086C145 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEF66EA1936F11A0086C145 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +86,9 @@
 		BEC17535191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC17536191B45D800459AD9 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
 		BEC17537191B45D800459AD9 /* Currency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Currency.m; sourceTree = "<group>"; };
+		BEEF66E71936800C0086C145 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		BEEF66E81936800C0086C145 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		BEEF66EA1936F11A0086C145 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEEF66EB1936F11A0086C145 /* SystemConfiguration.framework in Frameworks */,
 				BE3930E318BBDCA10072C4C7 /* CoreGraphics.framework in Frameworks */,
 				BE3930E518BBDCA10072C4C7 /* UIKit.framework in Frameworks */,
 				BE3930E118BBDCA10072C4C7 /* Foundation.framework in Frameworks */,
@@ -132,6 +138,7 @@
 		BE3930DF18BBDCA10072C4C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF66EA1936F11A0086C145 /* SystemConfiguration.framework */,
 				BE3930E018BBDCA10072C4C7 /* Foundation.framework */,
 				BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */,
 				BE3930E418BBDCA10072C4C7 /* UIKit.framework */,
@@ -143,6 +150,8 @@
 		BE3930E618BBDCA10072C4C7 /* BorderCompare */ = {
 			isa = PBXGroup;
 			children = (
+				BEEF66E71936800C0086C145 /* Reachability.h */,
+				BEEF66E81936800C0086C145 /* Reachability.m */,
 				BE3930EF18BBDCA10072C4C7 /* AppDelegate.h */,
 				BE3930F018BBDCA10072C4C7 /* AppDelegate.m */,
 				BE3930F218BBDCA10072C4C7 /* Main.storyboard */,
@@ -307,6 +316,7 @@
 				BE383303192ACFFA00A7DC57 /* Item.m in Sources */,
 				BE3930F718BBDCA10072C4C7 /* MainViewController.m in Sources */,
 				BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */,
+				BEEF66E91936800C0086C145 /* Reachability.m in Sources */,
 				BE3930F118BBDCA10072C4C7 /* AppDelegate.m in Sources */,
 				BE3930ED18BBDCA10072C4C7 /* main.m in Sources */,
 				BEC17538191B45D800459AD9 /* Currency.m in Sources */,
