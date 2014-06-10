@@ -41,7 +41,7 @@
     Item *_newItem;
     
     NSString * _codeName;
-    
+
     
     NSString *_currencyName;
     
@@ -62,6 +62,22 @@
 {
     [super viewDidLoad];
     
+    
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
+    
+    
+    if (status == NotReachable) {
+        
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                        message:[self stringFromStatus:status] delegate:nil
+                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        
+       
+        
+    }
+
     
     
     //self.sliderBar.value = (self.sliderBar.maximumValue - self.sliderBar.minimumValue);
@@ -229,7 +245,9 @@
     NSString *string;
     switch(status) {
         case NotReachable:
-            string = @"There seems to be no internet connection. Current rates were not downloaded. Please enter exchange rate.";
+            string = @"Current exchange rates were not downloaded. Please connect to internet for most current rates";
+            
+            
             break;
         case ReachableViaWiFi:
             string = @"Reachable via WiFi";
@@ -245,18 +263,7 @@
 }
 
 
--(void)useOldExchangeRate{
-    
-    float valueFromUSD;
-    self.code.oldRateFromUSD = 20.00;
-    _holder = [NSString stringWithFormat:@"%.2f", self.code.oldRateToUSD];
-    float valueToUSD;
-    //self.code.oldRateToUSD = valueToUSD;
-    _exchangeRateField.text = [NSString stringWithFormat:@"40"];
-    //[NSString stringWithFormat:@"%.2f", valueToUSD];
-    
-    [self updateLabel];
-}
+
 
 - (void) reachabilityChanged: (NSNotification *)notification {
     Reachability *reach = [notification object];
@@ -274,28 +281,9 @@
 
 -(void)updateExchangeRate{
     
-    Reachability *reach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus status = [reach currentReachabilityStatus];
     
     
-    if (status == NotReachable) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Reachability"
-                                                        message:[self stringFromStatus:status] delegate:nil
-                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        [self useOldExchangeRate];
-        
-    }
     
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(reachabilityChanged:)
-                                                 name: kReachabilityChangedNotification
-                                               object: nil];
-    
-    Reachability *updateReach =
-    [Reachability reachabilityWithHostName: @"www.apple.com"];
-    [updateReach startNotifier];
     
     
     if (self.code.fromCodeName != nil && self.code.toCodeName != nil) {
@@ -314,9 +302,6 @@
     
     urlAsString = [urlAsString stringByAppendingString:@"=X&f=sl1d1t1c1ohgv&e=.csv"];
         
-    
-    
-    
     NSURL *url = [NSURL URLWithString:urlAsString];
     
     NSMutableURLRequest *urlRequest = [NSMutableURLRequest requestWithURL:url];
@@ -395,12 +380,18 @@
          }
          else if ([data length] == 0 &&
                   error == nil){
+             
              NSLog(@"Nothing was downloaded.");
+             
+             _holder = self.code.oldRateToUSD;
+
          }
          else if (error != nil){
              NSLog(@"Error happened = %@", error);
              
+              _holder = self.code.oldRateToUSD;
              
+             NSLog(@"Old Code is equal to : %@", self.code.oldRateToUSD);
     
          }
          else {
@@ -627,6 +618,8 @@ numberOfRowsInComponent:(NSInteger)component
 
 -(void)updateLabel
 {
+    
+    
      _exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
     
     float inverseHolder = [_holder floatValue];
@@ -653,16 +646,8 @@ numberOfRowsInComponent:(NSInteger)component
         
         //UIImage *button = UIButtonTypeCustom
         
-        NSDate *today = [NSDate date];
-        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        //[formatter setDateFormat:@"hh:mm a"];
-        //[formatter setDateFormat:@"MMM dd, YYYY"];
-        [formatter setDateStyle:NSDateFormatterLongStyle];
-        [formatter setTimeStyle:NSDateFormatterMediumStyle];
-        [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-        NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
         
-        _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
+
         
         NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
         float value = [textValue floatValue];
@@ -680,7 +665,7 @@ numberOfRowsInComponent:(NSInteger)component
             //slider.value = self.code.rate;
             float val = self.sliderBar.value;
             self.code.rate = val;
-        
+ 
         if (value != 0) {
             
         
@@ -689,6 +674,19 @@ numberOfRowsInComponent:(NSInteger)component
         self.sliderBar.value = currentValue;
         } else {
             self.sliderBar.value = .5;
+         
+            
+            
+            
+            float inverse = 1/ [_holder floatValue];
+            NSLog(@"INVERSE: %.2f", inverse);
+            
+            
+            //self.slider.value = (self.slider.minimumValue /2);
+            
+            NSLog(@"****value %@", _holder);
+            
+            NSLog(@"*****Float value of exchange rate %f", self.code.rate);
         }
 
         
@@ -717,6 +715,32 @@ numberOfRowsInComponent:(NSInteger)component
     
     NSLog(@"UNIT METRIC: %@", self.item.fromUnit);
 */
+    
+    
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
+    
+    
+    if (status == NotReachable) {
+        
+        _exchangeRateTimeLabel.text = (@"June 11, 2014");
+        
+        
+        
+    } else {
+    
+    NSDate *today = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    //[formatter setDateFormat:@"hh:mm a"];
+    //[formatter setDateFormat:@"MMM dd, YYYY"];
+    [formatter setDateStyle:NSDateFormatterLongStyle];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
+    
+    _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
+    
+    }
     
     
 }
@@ -789,7 +813,7 @@ numberOfRowsInComponent:(NSInteger)component
         self.code.inverseRate = 1 / adjustedRate;
         float inverseRate = self.code.inverseRate;
         
-        self.self.exchangeRateField.text = [NSString stringWithFormat:@"%.2f", self.code.rate];
+        self.exchangeRateField.text = [NSString stringWithFormat:@"%.4f", self.code.rate];
         self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
         
         
@@ -938,6 +962,8 @@ numberOfRowsInComponent:(NSInteger)component
     NSLog(@"Calculated price float value %f", self.priceFloat);
     float result;
     NSLog(@"%@", self.fromUnitField.text);
+    
+   
     
     if ([self.item.fromUnit isEqual:@"kg"]){
         result =  (self.priceFloat * self.code.rate) / 2.20462;

@@ -20,7 +20,7 @@
 
 @property float rate;
 @property float inverseRate;
-@property float oldRateToUSD;
+@property (nonatomic, copy) NSString *oldRateToUSD;
 @property float oldRateFromUSD;
 
 @property (nonatomic, assign) BOOL *checked;

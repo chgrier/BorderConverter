@@ -40,7 +40,7 @@
 {
     [super viewDidLoad];
     
-   _currencies = [[NSMutableArray alloc]initWithCapacity:20];
+   //_currencies = [[NSMutableArray alloc]initWithCapacity:20];
     
     Currency *currency;
     
@@ -51,6 +51,15 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
     
+    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"CurrencyDict" ofType:@"plist"];
+    _currencies = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
+    NSLog(@"%@",_currencies);
+    
+  
+
+    
+    
+/*
     currency = [[Currency alloc]init];
     currency.fromFullName = @"United States Dollar";
     currency.fromCodeName = @"USD";
@@ -76,7 +85,7 @@
     currency.fromCodeName = @"EUR";
     currency.imageName = @"EUR";
     [_currencies addObject:currency];
-   
+   */
     
      //Plist example
      
@@ -89,10 +98,7 @@
     
 
     
-     
-//    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"CurrencyDict" ofType:@"plist"];
-//    _currencies = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
-//    NSLog(@"%@",_currencies);
+    
     
 }
 - (IBAction)cancel:(id)sender {
@@ -127,10 +133,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyName" forIndexPath:indexPath];
     
     // Configure the cell...
-    Currency *currency = _currencies[indexPath.row];
+   // Currency *currency = _currencies[indexPath.row];
    
     
-    
+    /*
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     label.text = currency.fromFullName;
     
@@ -139,10 +145,10 @@
     
     UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
     imageName.image = [UIImage imageNamed:currency.imageName];
-   
+   */
     
     
-    /*
+    
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
     label.text = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
     //label.text = currency.name;
@@ -155,7 +161,7 @@
     UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
     imageName.image =  [UIImage imageNamed:[[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"]];
     //imageName.image = [UIImage imageNamed:currency.imageName];
-    */
+    
     
     
     
@@ -167,8 +173,18 @@
    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //NSString *codeName = [_currencies[indexPath.row]objectForKey:@"codeName"];
-    
     Currency *currency = _currencies[indexPath.row];
+    currency = [[Currency alloc]init];
+    currency.fromFullName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
+    currency.fromCodeName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
+
+    currency.imageName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"];
+    currency.oldRateToUSD = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"oldRateToUSD"];
+    //[_currencies addObject:currency];
+    //Currency *currency = _currencies[indexPath.row];
+    
+    
+    
     //NSString *codeName = currency.codeName;
     
     [self.delegate currencyPicker:self didPickCurrency:currency];

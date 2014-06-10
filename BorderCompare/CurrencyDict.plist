@@ -9,6 +9,10 @@
 		<string>USD</string>
 		<key>imageName</key>
 		<string>USD</string>
+		<key>oldRateToUSD</key>
+		<string>1</string>
+		<key>oldRateFromUSD</key>
+		<string>1</string>
 	</dict>
 	<dict>
 		<key>currencyName</key>
@@ -17,6 +21,34 @@
 		<string>MXN</string>
 		<key>imageName</key>
 		<string>MXN</string>
+		<key>oldRateToUSD</key>
+		<string>0.0768</string>
+		<key>oldRateFromUSD</key>
+		<string>13.04</string>
+	</dict>
+	<dict>
+		<key>currencyName</key>
+		<string>Canadian Dollar</string>
+		<key>currencyCode</key>
+		<string>CAD</string>
+		<key>imageName</key>
+		<string>CAD</string>
+		<key>oldRateToUSD</key>
+		<string>0.92</string>
+		<key>oldRateFromUSD</key>
+		<string>1.09</string>
+	</dict>
+	<dict>
+		<key>currencyName</key>
+		<string>European Union Euro</string>
+		<key>currencyCode</key>
+		<string>EUR</string>
+		<key>imageName</key>
+		<string>EUR</string>
+		<key>oldRateToUSD</key>
+		<string>1.35</string>
+		<key>oldRateFromUSD</key>
+		<string>0.74</string>
 	</dict>
 </array>
 </plist>
