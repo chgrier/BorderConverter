@@ -19,6 +19,7 @@
 @property (nonatomic, copy) NSString *imageName;
 
 @property float rate;
+@property float inverseRate;
 @property float oldRateToUSD;
 @property float oldRateFromUSD;
 

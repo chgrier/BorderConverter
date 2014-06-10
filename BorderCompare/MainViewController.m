@@ -64,8 +64,8 @@
     
     
     
-    self.slider.value = _fxValue;
-     
+    //self.sliderBar.value = (self.sliderBar.maximumValue - self.sliderBar.minimumValue);
+     self.sliderBar.value = .5;
     
     
     
@@ -108,6 +108,13 @@
     item.price = [NSNumber numberWithFloat:1.14];
     item.fromUnit = @"kg";
     item.toUnit = @"lb";
+    [_items addObject:item];
+    
+    item = [[Item alloc]init];
+    item.name = @"Gasoline, unleaded regular";
+    item.price = [NSNumber numberWithFloat:3.36];
+    item.fromUnit = @"ℓ";
+    item.toUnit = @"gal";
     [_items addObject:item];
     
     /*
@@ -260,6 +267,10 @@
         }}
 }
 
+- (IBAction)updateExchangeRateButton:(id)sender {
+    [self updateExchangeRate];
+    [self updateLabel];
+}
 
 -(void)updateExchangeRate{
     
@@ -298,8 +309,13 @@
     
     urlAsString = [urlAsString stringByAppendingString:fromCurr];
     urlAsString = [urlAsString stringByAppendingString:toCurr];
+        
+    
     
     urlAsString = [urlAsString stringByAppendingString:@"=X&f=sl1d1t1c1ohgv&e=.csv"];
+        
+    
+    
     
     NSURL *url = [NSURL URLWithString:urlAsString];
     
@@ -331,14 +347,26 @@
              
              _holder = [NSString stringWithFormat:@"%@",value];
              
-             _initialValue = [value floatValue];
+             float inverse = 1/ [value floatValue];
+             NSLog(@"INVERSE: %.2f", inverse);
+             
+             
+             //self.slider.value = (self.slider.minimumValue /2);
              
              NSLog(@"****value %@", _holder);
          
              self.code.rate = [_holder floatValue];
              NSLog(@"*****Float value of exchange rate %f", self.code.rate);
              
+            
+                 float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
+                 float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
+                 float initialValue = maximumValue - minimumValue;
+             _sliderBar.minimumValue = minimumValue;   // sets min value
+             _sliderBar.maximumValue = maximumValue;    // sets max value
+             _sliderBar.value = initialValue;
              
+             //[_slider setValue:self.code.rate animated:YES];
 
              
          /* dispatch back to the main queue for UI */
@@ -383,7 +411,7 @@
         
          
     
-    
+    self.stepperValue.value = 0;
     [self updateLabel];
     [self calculate];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
@@ -453,6 +481,7 @@
 }
 
 
+
 #pragma mark PickerView DataSource
 
 - (NSInteger)numberOfComponentsInPickerView:
@@ -519,8 +548,14 @@ numberOfRowsInComponent:(NSInteger)component
     
     self.itemName.text = self.item.name;
     
-    _fromUnitField.text = self.item.fromUnit;
-    _toUnitField.text = self.item.toUnit;
+    _fromUnitField.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+    _toUnitField.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+    
+    if ([self.toCurrencyCodeField isEqual:@"USD"])
+    {
+        self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+        
+    }
     
     [self calculate];
     
@@ -551,7 +586,7 @@ numberOfRowsInComponent:(NSInteger)component
     [self.priceTextField resignFirstResponder];
     
     [UIView animateWithDuration:0.3 animations:^{
-        _pickerViewHolder.frame = CGRectMake(65, 112,
+        _pickerViewHolder.frame = CGRectMake(20, 130,
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
     }];
@@ -579,10 +614,11 @@ numberOfRowsInComponent:(NSInteger)component
 -(void)closePicker
 {
     [UIView animateWithDuration:0.3 animations:^{
-        _pickerViewHolder.frame = CGRectMake(_pickerViewHolder.frame.origin.x,
-                                       800, //Displays the view off the screen
+        _pickerViewHolder.frame = CGRectMake(-300,
+                                       0, //Displays the view off the screen
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
+        
     }];
     
     
@@ -593,11 +629,21 @@ numberOfRowsInComponent:(NSInteger)component
 {
      _exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
     
+    float inverseHolder = [_holder floatValue];
+    float inverseRate = 1 / inverseHolder;
+    
+    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
+    
+       
     if (self.code.fromCodeName != nil){
         [self.fromCurrencyCodeField setText:[self.code fromCodeName]];
         [self.fromCurrencyCodeFieldTwo setText:[self.code fromCodeName]];
         [self.toCurrencyCodeField setText:[self.code toCodeName]];
         [self.toCurrencyCodeFieldTwo setText:[self.code toCodeName]];
+        
+        [self.currencyCodeFromInverse setText:[self.code fromCodeName]];
+        [self.currencyCodeToFromInverse setText:[self.code toCodeName]];
+       
         
        // self.fromCurrencyImageButton = [UIImage imageNamed:self.code.imageName];
         
@@ -618,7 +664,33 @@ numberOfRowsInComponent:(NSInteger)component
         
         _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
         
-       
+        NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
+        float value = [textValue floatValue];
+        
+       // reset slider
+        
+      
+        
+        
+            float minimumValue = value * .9;  // slider min value to 20% less than initial exchange rate
+            float maximumValue = value * 1.1;  // slider max value to 20% greater than initial exchange rate
+            float initialValue = maximumValue - minimumValue;
+            
+            //_sliderBar.value = initialValue;
+            //slider.value = self.code.rate;
+            float val = self.sliderBar.value;
+            self.code.rate = val;
+        
+        if (value != 0) {
+            
+        
+        float currentValue;
+        currentValue = value;
+        self.sliderBar.value = currentValue;
+        } else {
+            self.sliderBar.value = .5;
+        }
+
         
         
     } else {
@@ -659,17 +731,43 @@ numberOfRowsInComponent:(NSInteger)component
     
 }
 
+- (IBAction)stepperRate:(UIStepper *)stepper {
+    
+    NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
+    float value = [textValue floatValue];
+    //[stepper setDecrementImage:[UIImage imageNamed:@"CY.png"] forState:UIControlStateNormal];
+    
+    float val = stepper.value + value;
+    self.exchangeRateField.text = [NSString stringWithFormat:@"%.2f", val];
+    //float minimumValue = stepper.value * .8;  // slider min value to 20% less than initial exchange rate
+    //float maximumValue = stepper.value * 1.2;
+    
+    //stepper.minimumValue = minimumValue;
+    //stepper.maximumValue = maximumValue;
+    
+    
+    
+    NSLog(@"%.4f", val);
+    
+    float adjustedRate = val;
+    
+    self.code.rate = adjustedRate;
+    self.code.inverseRate = 1 / adjustedRate;
+    float inverseRate = self.code.inverseRate;
+    
+    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
+    
+    [self calculate];
+}
 
 #pragma mark Slider
 // sliderMoved method called when user moves the slider
 -(IBAction)sliderMoved:(UISlider *)slider{
    
     
+  
     
     
-    self.exchangeRateField.text = [NSString stringWithFormat:@"%.4f", [slider value]];
-    
-    self.code.rate = (slider.value);
     
     
     
@@ -677,20 +775,36 @@ numberOfRowsInComponent:(NSInteger)component
     float value = [textValue floatValue];
     
     if (value > 0) {
-        float minimumValue = value * .8;  // slider min value to 20% less than initial exchange rate
-        float maximumValue = value * 1.2;  // slider max value to 20% greater than initial exchange rate
-        float initialValue = minimumValue - maximumValue / 2;
+        float minimumValue = value * .9;  // slider min value to 20% less than initial exchange rate
+        float maximumValue = value * 1.1;  // slider max value to 20% greater than initial exchange rate
+        float initialValue = maximumValue - minimumValue;
+        
+        //_sliderBar.value = initialValue;
+        //slider.value = self.code.rate;
+        float val = slider.value;
+        self.code.rate = val;
+        
+        float adjustedRate = val;
+        self.code.rate = adjustedRate;
+        self.code.inverseRate = 1 / adjustedRate;
+        float inverseRate = self.code.inverseRate;
+        
+        self.self.exchangeRateField.text = [NSString stringWithFormat:@"%.2f", self.code.rate];
+        self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
         
         
-    
+        
         slider.minimumValue = minimumValue;   // sets min value
         slider.maximumValue = maximumValue;    // sets max value
+        //slider.value = initialValue;
+        //_sliderBar.value = slider.value;
         
         NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
         
-        NSLog(@"%.2f", self.code.rate);
+        NSLog(@"NEW rate is: %.2f", self.code.rate);
     }
     [self updateRate];
+    [self calculate];
     
     /*
      _exchangeRate.text = [NSString stringWithFormat:@"%.2f", [sender value]];
@@ -734,7 +848,8 @@ numberOfRowsInComponent:(NSInteger)component
     // currently on the screen to the changes that you're making below.
     CATransition *transition = [CATransition animation];
     transition.type = kCATransitionFade;
-    transition.duration = .5;
+    
+    transition.duration = .1;
     transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];
     
     
@@ -742,6 +857,8 @@ numberOfRowsInComponent:(NSInteger)component
     
     
 }
+
+
 
 
 
@@ -806,6 +923,8 @@ numberOfRowsInComponent:(NSInteger)component
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     
     [self.navigationController popViewControllerAnimated:YES];
+    
+    
 }
 
 -(void)hideKeyboard {
@@ -818,21 +937,73 @@ numberOfRowsInComponent:(NSInteger)component
 {
     NSLog(@"Calculated price float value %f", self.priceFloat);
     float result;
-    result =  (self.priceFloat * self.code.rate) / 2.2 ;
-    NSLog(@"Rate: %.2f", self.code.rate);
-    NSLog(@"Result: %.2f", result);
-    self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
-    if ([self.item.toUnit isEqual:@"lb"] && [self.code.toCodeName isEqual:@"USD"])
-    {
-        self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
+    NSLog(@"%@", self.fromUnitField.text);
+    
+    if ([self.item.fromUnit isEqual:@"kg"]){
+        result =  (self.priceFloat * self.code.rate) / 2.20462;
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
         
-        if (result < [self.item.price floatValue]) {
-            self.resultTextFieldCompare.textColor = [UIColor greenColor];
-            self.resultTextFieldCompare.font = [UIFont boldSystemFontOfSize:20];
-        } else if (result > [self.item.price floatValue]) {
-            self.resultTextFieldCompare.textColor = [UIColor redColor];
+        if ([self.item.toUnit isEqual:@"lb"] && [self.code.toCodeName isEqual:@"USD"])
+        {
+            self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
+            self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+            self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+            
+            if (result < [self.item.price floatValue]) {
+                self.resultTextFieldCompare.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
+                self.resultTextFieldCompare.font = [UIFont boldSystemFontOfSize:20];
+                self.yourPriceLabel.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
+                self.yourPriceLabel.font = [UIFont boldSystemFontOfSize:20];
+                
+            } else if (result > [self.item.price floatValue]) {
+                self.resultTextFieldCompare.textColor = [UIColor redColor];
+                self.yourPriceLabel.textColor = [UIColor redColor];
+            }
+        } else {
+            self.resultTextFieldCompare.textColor = [UIColor grayColor];
+            self.yourPriceLabel.textColor = [UIColor grayColor];
         }
     }
+    
+    if ([self.item.fromUnit isEqual:@"ℓ"]){
+        result =  (self.priceFloat * self.code.rate) / 0.264172052;
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
+        
+        if ([self.item.toUnit isEqual:@"gal"] && [self.code.toCodeName isEqual:@"USD"])
+        {
+            self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
+           self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+            self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+            
+            if (result < [self.item.price floatValue]) {
+                self.resultTextFieldCompare.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
+                self.resultTextFieldCompare.font = [UIFont boldSystemFontOfSize:20];
+                self.yourPriceLabel.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
+                self.yourPriceLabel.font = [UIFont boldSystemFontOfSize:20];
+                
+            } else if (result > [self.item.price floatValue]) {
+                self.resultTextFieldCompare.textColor = [UIColor redColor];
+                self.yourPriceLabel.textColor = [UIColor redColor];
+            }
+        } else {
+            self.resultTextFieldCompare.textColor = [UIColor grayColor];
+            self.yourPriceLabel.textColor = [UIColor grayColor];
+        }
+        
+        
+    
+        
+    }
+    
+    if ([self.fromUnitField.text isEqual:@""]){
+        result =  (self.priceFloat * self.code.rate);
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
+    }
+    
+
     [self performSelectorOnMainThread:@selector(self) withObject:nil waitUntilDone:YES];
     
 }
