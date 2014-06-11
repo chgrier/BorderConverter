@@ -37,6 +37,9 @@
     BOOL _pickerVisible;
     
     NSMutableArray *_items;
+    NSMutableArray *_itemCategories;
+    
+    NSMutableArray *_produceArray;
     
     Item *_newItem;
     
@@ -102,9 +105,15 @@
      [_currencies addObject:currency];
      */
     
-    _items = [[NSMutableArray alloc]initWithCapacity:20];
+//    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"ItemDict" ofType:@"plist"];
+//    _items = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
+//    NSLog(@"%@",_items);
+    
+   // _items = [[NSMutableArray alloc]initWithCapacity:20];
     Item *item;
     
+    
+    /*
     item = [[Item alloc]init];
     item.name = @"Bannanas";
     item.price = [NSNumber numberWithFloat:0.60];
@@ -133,6 +142,7 @@
     item.toUnit = @"gal";
     [_items addObject:item];
     
+    */
     /*
      _itemNames = @[@"Bannanas",@"Lemons",@"Oranges"];
      _itemAvgPrice = @[@0.60f, @1.67f, @1.14f];
@@ -141,6 +151,27 @@
      
      _itemCategory = @[@"Produce",@"Meat",@"Fuel"];
      */
+    
+    // get path for plist
+    NSBundle *bundle = [NSBundle mainBundle];
+    NSURL *plistURL = [bundle URLForResource:@"ItemListPrices" withExtension:@"plist"];
+    
+    // define NSDictionary *itemList
+    _itemList = [NSDictionary dictionaryWithContentsOfURL:plistURL];
+    
+    NSLog(@"itemList dictionary : %@", _itemList);
+    
+    
+    _itemCategory = [_itemList allKeys];
+    
+    // create array to hold dictionary's keys
+    
+    NSString *selectedItem = self.itemCategory[0];
+    self.items = self.itemList[selectedItem];
+    
+    
+    
+    
     
     /*
      // get path for plist
@@ -235,6 +266,8 @@
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePicker)];
     //gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
+    
+   
     
     
 }
@@ -475,11 +508,14 @@
 
 #pragma mark PickerView DataSource
 
+
+
+
 - (NSInteger)numberOfComponentsInPickerView:
 (UIPickerView *)pickerView
 {
-    //return kComponentCount;
-    return 1;
+    return kComponentCount;
+    //return 2;
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView
@@ -488,15 +524,15 @@ numberOfRowsInComponent:(NSInteger)component
 
     
         //return _itemNames.count;
-    return _items.count;
+    //return _items.count;
     
-    /*
+    
     if (component == kCategoryComponent) {
-        return [self.category count];
+        return [_itemCategory count];
     } else {
-        return [self.items count];
+        return [_items count];
     }
-     */
+    
     
 }
 
@@ -508,29 +544,71 @@ numberOfRowsInComponent:(NSInteger)component
     //return _itemNames[row];
     //Currency *currency = _currencies[indexPath.row];
     
+    
     Item *item = [[Item alloc]init];
-    item = [_items objectAtIndex:row];
+    //item = [_items objectAtIndex:row];
+   // item.name = [[_items objectAtIndex:row]objectForKey:@"itemName"];
+   // return item.name;
     
-    return item.name;
-    
-   /* if(component == kCategoryComponent) {
-        return self.category[row];
+   if(component == kCategoryComponent) {
+        return self.itemCategory[row];
     } else {
-        return self.items[row];
+        
+        item.name = [[_items objectAtIndex:row]objectForKey:@"Item"];
+        return item.name;
     }
-*/
+
 }
-
-
+/*
+if (component == kStateComponent) {
+    return self.states[row];
+} else {
+    return self.zips[row];
+}
+*/
 
 #pragma mark PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
+    /*
+    if (component == kStateComponent) {
+        NSString *selectedState = self.states[row];
+        self.zips = self.stateZips[selectedState];
+        [self.dependentPicker reloadComponent:kZipComponent];
+        [self.dependentPicker selectRow:0
+                            inComponent:kZipComponent
+                               animated:YES];
+     
+     
+     NSString *selectedItem = self.itemCategory[0];
+     self.items = self.itemList[selectedItem];
+    }
+*/
+    if (component == kCategoryComponent) {
+        //NSString *selectedItem = self.itemCategory[row];
+       
+        //self.items = self.itemList[row];
+        
+        [self.itemPicker reloadComponent:kItemComponent];
+        [self.itemPicker selectRow:0
+                       inComponent:kItemComponent
+                         animated:YES];
+        
+        self.item = [[Item alloc]init];
+        
+        //self.item.name = [[self.items objectAtIndex:row]objectForKey:@"Item"];
+        //self.item.price = [[self.items objectAtIndex:row]objectForKey:@"Price"];
+        //self.item.fromUnit = [[self.items objectAtIndex:row]objectForKey:@"itemFromUnit"];
+        //self.item.toUnit = [[self.items objectAtIndex:row]objectForKey:@"itemToUnit"];
+        
+
+    }
+
     
     //Item *selectedItem = [[Item alloc]init];
     //selectedItem = [_items objectAtIndex:row];
-    self.item = [_items objectAtIndex:row];
+    //self.item = [_items objectAtIndex:row];
     
     float rate = [self.item.price floatValue];
     NSString *avgPriceString = [[NSString alloc] initWithFormat:
@@ -611,6 +689,8 @@ numberOfRowsInComponent:(NSInteger)component
                                        _pickerViewHolder.frame.size.height);
         
     }];
+    
+   
     
     
 }

@@ -10,7 +10,6 @@
 		BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383278192A6B1600A7DC57 /* CurrencyDict.plist */; };
 		BE383303192ACFFA00A7DC57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = BE383302192ACFFA00A7DC57 /* Item.m */; };
 		BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383304192D2F6800A7DC57 /* ItemListPrices.plist */; };
-		BE383307192D414400A7DC57 /* ItemListDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383306192D414400A7DC57 /* ItemListDict.plist */; };
 		BE3930E118BBDCA10072C4C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E018BBDCA10072C4C7 /* Foundation.framework */; };
 		BE3930E318BBDCA10072C4C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */; };
 		BE3930E518BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
@@ -25,6 +24,7 @@
 		BE39310218BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
 		BE39310A18BBDCA10072C4C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE39310818BBDCA10072C4C7 /* InfoPlist.strings */; };
 		BE39310C18BBDCA10072C4C7 /* BorderCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */; };
+		BE7D13351947CADA009ECAA3 /* ItemDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE7D13341947CADA009ECAA3 /* ItemDict.plist */; };
 		BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975918F756DB00DF4C25 /* ItemList.plist */; };
 		BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */; };
 		BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */; };
@@ -51,7 +51,6 @@
 		BE383301192ACFFA00A7DC57 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		BE383302192ACFFA00A7DC57 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
 		BE383304192D2F6800A7DC57 /* ItemListPrices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemListPrices.plist; sourceTree = "<group>"; };
-		BE383306192D414400A7DC57 /* ItemListDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemListDict.plist; sourceTree = "<group>"; };
 		BE3930DD18BBDCA10072C4C7 /* BorderCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BorderCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3930E018BBDCA10072C4C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,6 +70,7 @@
 		BE39310718BBDCA10072C4C7 /* BorderCompareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BorderCompareTests-Info.plist"; sourceTree = "<group>"; };
 		BE39310918BBDCA10072C4C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderCompareTests.m; sourceTree = "<group>"; };
+		BE7D13341947CADA009ECAA3 /* ItemDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemDict.plist; sourceTree = "<group>"; };
 		BE86975918F756DB00DF4C25 /* ItemList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemList.plist; sourceTree = "<group>"; };
 		BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListFuel.plist; sourceTree = "<group>"; };
 		BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListMeat.plist; sourceTree = "<group>"; };
@@ -174,9 +174,9 @@
 			children = (
 				BE94418318F5E702008873A2 /* CurrencyCodes.plist */,
 				BE383278192A6B1600A7DC57 /* CurrencyDict.plist */,
+				BE7D13341947CADA009ECAA3 /* ItemDict.plist */,
 				BE86975918F756DB00DF4C25 /* ItemList.plist */,
 				BE383304192D2F6800A7DC57 /* ItemListPrices.plist */,
-				BE383306192D414400A7DC57 /* ItemListDict.plist */,
 				BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */,
 				BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */,
 				BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */,
@@ -287,11 +287,11 @@
 				BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */,
 				BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */,
 				BE3930F918BBDCA10072C4C7 /* Images.xcassets in Resources */,
+				BE7D13351947CADA009ECAA3 /* ItemDict.plist in Resources */,
 				BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */,
 				BE3930EB18BBDCA10072C4C7 /* InfoPlist.strings in Resources */,
 				BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */,
 				BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */,
-				BE383307192D414400A7DC57 /* ItemListDict.plist in Resources */,
 				BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */,
 				BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */,
 				BE3930F418BBDCA10072C4C7 /* Main.storyboard in Resources */,
