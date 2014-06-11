@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Produce</key>
+	<array>
+		<dict>
+			<key>itemUpdated</key>
+			<date>2014-05-15T23:27:22Z</date>
+			<key>itemToUnit</key>
+			<string>lb</string>
+			<key>itemFromUnit</key>
+			<string>kg</string>
+			<key>itemName</key>
+			<string>Apples, Red Delicious</string>
+			<key>itemPrice</key>
+			<real>1.33</real>
+		</dict>
+		<dict/>
+	</array>
+	<key>New item - 2</key>
+	<dict>
+		<key>itemName</key>
+		<string>Bananas</string>
+		<key>itemPrice</key>
+		<real>0.6</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 3</key>
+	<dict>
+		<key>itemName</key>
+		<string>Oranges, Navel</string>
+		<key>itemPrice</key>
+		<real>0.98</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 4</key>
+	<dict>
+		<key>itemName</key>
+		<string>Grapefruit</string>
+		<key>itemPrice</key>
+		<real>0.95</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 5</key>
+	<dict>
+		<key>itemName</key>
+		<string>Grapes, Thompson Seedless</string>
+		<key>itemPrice</key>
+		<real>2.45</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 6</key>
+	<dict>
+		<key>itemName</key>
+		<string>Lemons</string>
+		<key>itemPrice</key>
+		<real>1.41</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 7</key>
+	<dict>
+		<key>itemName</key>
+		<string>Strawberries</string>
+		<key>itemPrice</key>
+		<real>2.37</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 8</key>
+	<dict>
+		<key>itemName</key>
+		<string>Potatoes, white</string>
+		<key>itemPrice</key>
+		<real>0.62</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 9</key>
+	<dict>
+		<key>itemName</key>
+		<string>Lettuce, iceberg</string>
+		<key>itemPrice</key>
+		<real>0.97</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 10</key>
+	<dict>
+		<key>itemName</key>
+		<string>Lettuce, romaine</string>
+		<key>itemPrice</key>
+		<real>1.73</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 11</key>
+	<dict>
+		<key>itemName</key>
+		<string>Tomatoes, field grown</string>
+		<key>itemPrice</key>
+		<real>1.46</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 12</key>
+	<dict>
+		<key>itemName</key>
+		<string>Broccoli</string>
+		<key>itemPrice</key>
+		<real>1.74</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 13</key>
+	<dict>
+		<key>itemName</key>
+		<string>Peppers, sweet</string>
+		<key>itemPrice</key>
+		<real>2.19</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 14</key>
+	<dict>
+		<key>itemName</key>
+		<string>Cheese, American</string>
+		<key>itemPrice</key>
+		<real>4.13</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 15</key>
+	<dict>
+		<key>itemName</key>
+		<string>Cheese, cheddar</string>
+		<key>itemPrice</key>
+		<real>5.64</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 16</key>
+	<dict>
+		<key>itemName</key>
+		<string>Ground chuck</string>
+		<key>itemPrice</key>
+		<real>3.48</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 17</key>
+	<dict>
+		<key>itemName</key>
+		<string>Ground beef</string>
+		<key>itemPrice</key>
+		<real>3.27</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 18</key>
+	<dict>
+		<key>itemName</key>
+		<string>Ground beef, lean</string>
+		<key>itemPrice</key>
+		<real>4.81</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 19</key>
+	<dict>
+		<key>itemName</key>
+		<string>Chuck roast</string>
+		<key>itemPrice</key>
+		<real>4.13</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<key>New item - 20</key>
+	<dict>
+		<key>itemName</key>
+		<string>Grapes, Thompson Seedless</string>
+		<key>itemPrice</key>
+		<real>2.45</real>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+</dict>
+</plist>
