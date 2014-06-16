@@ -8,17 +8,20 @@
 
 #import <UIKit/UIKit.h>
 #import "CurrencyPickerViewController.h"
+#import "BaseCurrencyTableViewController.h"
 #import "Currency.h"
+#import "BaseCurrency.h"
 #import "Item.h"
 #import "Reachability.h"
 
-@interface MainViewController : UIViewController <CurrencyPickerViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
+@interface MainViewController : UIViewController <CurrencyPickerViewControllerDelegate, BaseCurrencyTableViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
 
 
 
 //@property (strong, nonatomic) IBOutlet UIPickerView *itemPicker;
 
 @property (strong, nonatomic) Currency *code;
+@property (strong, nonatomic) BaseCurrency *baseCode;
 
 @property (strong, nonatomic) Item *item;
 
@@ -77,6 +80,8 @@
 
 // exchange rate fields, labels and slider
 @property (weak, nonatomic) IBOutlet UITextField *exchangeRateField;
+@property (weak, nonatomic) IBOutlet UITextField *exchangeRateInverseField;
+
 @property (weak, nonatomic) IBOutlet UILabel *exchangeRateTimeLabel;
 @property (nonatomic, weak) IBOutlet UISlider *sliderBar;
 - (IBAction)sliderMoved:(UISlider *)slider;
@@ -87,6 +92,7 @@
 
 
 @property (weak, nonatomic) IBOutlet UIView *pickerViewHolder;
+- (IBAction)cancel:(id)sender;
 
 -(void)saveUserData;
 

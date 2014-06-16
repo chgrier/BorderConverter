@@ -15,7 +15,8 @@
 {
 
     
-    NSMutableArray *_currencies;
+    NSArray *_currencies;
+    NSArray *_searchResults;
 
 }
 
@@ -56,7 +57,7 @@
     NSLog(@"%@",_currencies);
     
   
-
+    
     
     
 /*
@@ -101,6 +102,28 @@
     
     
 }
+
+// search predicate
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"currencyName matches[c] %@ OR currencyName contains[c] %@ OR currencyCode contains[c] %@", searchText, searchText, searchText];
+    
+    //NSPredicate *resultPredicate = [NSPredicate predicateWithFormat:@"currencyName contains[c] %@ ", searchText];
+    
+    _searchResults = [_currencies filteredArrayUsingPredicate:resultPredicate];
+}
+
+// automatically called every time when the search string changes
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:searchString
+                               scope:[[self.searchDisplayController.searchBar scopeButtonTitles]
+                                      objectAtIndex:[self.searchDisplayController.searchBar
+                                                     selectedScopeButtonIndex]]];
+    
+    return YES;
+}
+
 - (IBAction)cancel:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -118,19 +141,26 @@
 
     // Return the number of sections.
     return 1;
+    
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
 
     // Return the number of rows in the section.
-    return [_currencies count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [_searchResults count];
+        
+    } else {
+        return [_currencies count];
+    }
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CurrencyName" forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"CurrencyName" forIndexPath:indexPath];
     
     // Configure the cell...
    // Currency *currency = _currencies[indexPath.row];
@@ -147,48 +177,114 @@
     imageName.image = [UIImage imageNamed:currency.imageName];
    */
     
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        UILabel *label = (UILabel *)[cell viewWithTag:1000];
+        label.text = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
+        //label.text = currency.name;
+        
+        
+        UILabel *labelCode = (UILabel *)[cell viewWithTag:1001];
+        labelCode.text = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
+        //labelCode.text = currency.code;
+        
+        UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
+        imageName.image =  [UIImage imageNamed:[[_searchResults objectAtIndex:indexPath.row]objectForKey:@"imageName"]];
+        //imageName.image = [UIImage imageNamed:currency.imageName];
+        
+        
+        
+        
+        return cell;
+        
+    } else {
+        
+        UILabel *label = (UILabel *)[cell viewWithTag:1000];
+        label.text = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
+        //label.text = currency.name;
+        
+        
+        UILabel *labelCode = (UILabel *)[cell viewWithTag:1001];
+        labelCode.text = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
+        //labelCode.text = currency.code;
+        
+        UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
+        imageName.image =  [UIImage imageNamed:[[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"]];
+        //imageName.image = [UIImage imageNamed:currency.imageName];
+        
+        return cell;
+    }
     
     
-    UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    label.text = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
-    //label.text = currency.name;
-    
-    
-    UILabel *labelCode = (UILabel *)[cell viewWithTag:1001];
-    labelCode.text = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
-    //labelCode.text = currency.code;
-    
-    UIImageView *imageName = (UIImageView *) [cell viewWithTag:1002];
-    imageName.image =  [UIImage imageNamed:[[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"]];
-    //imageName.image = [UIImage imageNamed:currency.imageName];
-    
-    
-    
-    
-    return cell;
 }
+
+
+/*
+ 
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ if ([segue.identifier isEqualToString:@"showRecipeDetail"]) {
+ NSIndexPath *indexPath = nil;
+ Recipe *recipe = nil;
+ 
+ if (self.searchDisplayController.active) {
+ indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+ recipe = [searchResults objectAtIndex:indexPath.row];
+ } else {
+ indexPath = [self.tableView indexPathForSelectedRow];
+ recipe = [recipes objectAtIndex:indexPath.row];
+ }
+ 
+ RecipeDetailViewController *destViewController = segue.destinationViewController;
+ destViewController.recipe = recipe;
+ }
+ }
+ 
+ 
+ 
+ 
+ 
+ */
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
    //[tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     //NSString *codeName = [_currencies[indexPath.row]objectForKey:@"codeName"];
-    Currency *currency = _currencies[indexPath.row];
+    if (self.searchDisplayController.active){
+        
+    indexPath = [self.searchDisplayController.searchResultsTableView indexPathForSelectedRow];
+    Currency *currency = _searchResults[indexPath.row];
     currency = [[Currency alloc]init];
-    currency.fromFullName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
-    currency.fromCodeName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
+    currency.fromFullName = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
+    currency.fromCodeName = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
 
-    currency.imageName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"];
-    currency.oldRateToUSD = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"oldRateToUSD"];
+    currency.imageName = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"imageName"];
+    currency.oldRateToUSD = [[_searchResults objectAtIndex:indexPath.row]objectForKey:@"oldRateToUSD"];
+    
+    currency.toCodeName = @"USD";
+    
     //[_currencies addObject:currency];
     //Currency *currency = _currencies[indexPath.row];
-    
-    
     
     //NSString *codeName = currency.codeName;
     
     [self.delegate currencyPicker:self didPickCurrency:currency];
+        
     
+    } else {
+        Currency *currency = _currencies[indexPath.row];
+        currency = [[Currency alloc]init];
+        currency.fromFullName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyName"];
+        currency.fromCodeName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
+        
+        currency.imageName = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"imageName"];
+        currency.oldRateToUSD = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"oldRateToUSD"];
+        //[_currencies addObject:currency];
+        //Currency *currency = _currencies[indexPath.row];
+        
+        //NSString *codeName = currency.codeName;
+        
+        [self.delegate currencyPicker:self didPickCurrency:currency];
+    }
     //Currency *code = [[_currencies objectAtIndex:indexPath.row]objectForKey:@"currencyCode"];
     
     

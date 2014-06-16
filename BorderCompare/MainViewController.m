@@ -59,12 +59,48 @@
     [super viewWillAppear:animated];
     
     
+    
+}
+/*
+-(void)cancelNumberPad{
+    [_priceTextField resignFirstResponder];
+    _priceTextField.text = @"";
 }
 
+-(void)doneWithNumberPad{
+    NSString *numberFromTheKeyboard = _priceTextField.text;
+    [_priceTextField resignFirstResponder];
+}
+*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     
+    
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height == 480)
+    {
+        // iPhone Classic
+        self.exchangeRateField.frame = CGRectMake(140, 376, 159, 17);
+        
+    } else {
+        
+    }
+    
+    /*
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
+                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
+                           nil];
+    [numberToolbar sizeToFit];
+    _priceTextField.inputAccessoryView = numberToolbar;
+*/
+
+
     
     Reachability *reach = [Reachability reachabilityForInternetConnection];
     NetworkStatus status = [reach currentReachabilityStatus];
@@ -287,7 +323,7 @@
     //gestureRecognizer.cancelsTouchesInView = NO;
     [self.view addGestureRecognizer:gestureRecognizer];
     
-   
+
     
     
 }
@@ -298,7 +334,7 @@
     NSString *string;
     switch(status) {
         case NotReachable:
-            string = @"Current exchange rates were not downloaded. Please connect to internet for most current rates";
+            string = @"Please connect to the internet to download current exchange rates. \n \n Historical exchange rates are available for currencies when USD is set as the base currency.";
             
             
             break;
@@ -335,14 +371,11 @@
 -(void)updateExchangeRate{
     
     
-    
-    
-    
-    
-    if (self.code.fromCodeName != nil && self.code.toCodeName != nil) {
+    if (self.code.fromCodeName != nil && self.baseCode.toCodeName != nil) {
         
+        NSLog(@"BASE CODE: %@", self.baseCode.toCodeName);
     NSString *fromCurr = self.code.fromCodeName;
-    NSString *toCurr = self.code.toCodeName;
+    NSString *toCurr = self.baseCode.toCodeName;
         
         
     // URL request get exchange rate for currencies
@@ -435,27 +468,54 @@
                   error == nil){
              
              NSLog(@"Nothing was downloaded.");
+             _holder = [NSString stringWithFormat:@"%@",self.code.oldRateToUSD];
+             //_holder = self.code.oldRateToUSD;
+             self.code.rate = [_holder floatValue];
              
-             _holder = self.code.oldRateToUSD;
+             
+             
+             
+              //self.code.rate = [self.code.oldRateToUSD floatValue];
+             
+             
+             float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
+             float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
+             float initialValue = maximumValue - minimumValue;
+             _sliderBar.minimumValue = minimumValue;   // sets min value
+             _sliderBar.maximumValue = maximumValue;    // sets max value
+             _sliderBar.value = initialValue;
 
          }
          else if (error != nil){
              NSLog(@"Error happened = %@", error);
              
-              _holder = self.code.oldRateToUSD;
+             _holder = [NSString stringWithFormat:@"%@",self.code.oldRateToUSD];
+             //_holder = self.code.oldRateToUSD;
+             self.code.rate = [_holder floatValue];
+             
+             //self.code.rate = [self.code.oldRateToUSD floatValue];
+             
+             float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
+             float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
+             float initialValue = maximumValue - minimumValue;
+             _sliderBar.minimumValue = minimumValue;   // sets min value
+             _sliderBar.maximumValue = maximumValue;    // sets max value
+             _sliderBar.value = initialValue;
              
              NSLog(@"Old Code is equal to : %@", self.code.oldRateToUSD);
     
          }
          else {
               _fromCurrencyCodeField.text = @"select";
+             
+             
          }
          
          
         
          
     
-    self.stepperValue.value = 0;
+    //self.stepperValue.value = 0;
     [self updateLabel];
     [self calculate];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
@@ -650,6 +710,8 @@ if (component == kStateComponent) {
     
     [self calculate];
     
+    //[self.priceTextField becomeFirstResponder];
+    
     NSLog(@"item.fromUnit: %@; item.toUnit: %@", self.item.fromUnit, self.item.toUnit);
     
 }
@@ -676,12 +738,39 @@ if (component == kStateComponent) {
     
     [self.priceTextField resignFirstResponder];
     
+    
+    //[_pickerViewHolder setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"chalkboardSmall.png"]]];
+    
+    
+    
+    //UIPickerView has 8 subviews like, background, rows, container etc.
+    // hide unnecessary subview
+    
+    
+    
+    CGSize result = [[UIScreen mainScreen] bounds].size;
+    if(result.height == 480)
+    {
+        // iPhone Classic
+        [UIView animateWithDuration:0.3 animations:^{
+            _pickerViewHolder.frame = CGRectMake(10, 270,
+                                                 _pickerViewHolder.frame.size.width,
+                                                 _pickerViewHolder.frame.size.height);
+            
+            
+        }];
+
+        
+    } else {
+    
     [UIView animateWithDuration:0.3 animations:^{
-        _pickerViewHolder.frame = CGRectMake(10, 130,
+        _pickerViewHolder.frame = CGRectMake(10, 350,
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
+        
+        
     }];
-    
+    }
 }
 
 - (IBAction)switchUnits:(id)sender {
@@ -704,46 +793,89 @@ if (component == kStateComponent) {
 
 -(void)closePicker
 {
-    [UIView animateWithDuration:0.3 animations:^{
+    [UIView animateWithDuration:0.2 animations:^{
         _pickerViewHolder.frame = CGRectMake(-300,
-                                       0, //Displays the view off the screen
+                                       150, //Displays the view off the screen
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
         
     }];
     
-   
+}
+
+- (IBAction)cancel:(id)sender {
+    [UIView animateWithDuration:0.2 animations:^{
+        _pickerViewHolder.frame = CGRectMake(-300,
+                                             150, //Displays the view off the screen
+                                             _pickerViewHolder.frame.size.width,
+                                             _pickerViewHolder.frame.size.height);
+        _resultTextFieldCompare.text = @"";
+        _avgPriceLabel.text = @"";
+        self.itemName.text = @"";
+        _fromUnitField.text = @"";
+        _toUnitField.text = @"";
+        _resultCompareUnit.text = @"";
+        _avgPriceUnit.text = @"";
+        
+        
+        self.item.name = nil;
+        self.item.price = nil;
+        self.item.fromUnit = nil;
+        self.item.toUnit = nil;
+        
+        
+        [self calculate];
+        
+    }];
     
     
 }
 
-
 -(void)updateLabel
 {
     
+    //[self.priceTextField becomeFirstResponder];
+     //_exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
     
-     _exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
-    
-    float inverseHolder = [_holder floatValue];
+    float inverseHolder = self.code.rate;
     float inverseRate = 1 / inverseHolder;
     
-    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
+    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.4f", inverseRate];
     
-       
+    if (self.toCurrencyCodeField == nil)
+    {
+        self.toCurrencyCodeField.text = self.code.toCodeName;
+    }
+    
     if (self.code.fromCodeName != nil){
         [self.fromCurrencyCodeField setText:[self.code fromCodeName]];
         [self.fromCurrencyCodeFieldTwo setText:[self.code fromCodeName]];
-        [self.toCurrencyCodeField setText:[self.code toCodeName]];
-        [self.toCurrencyCodeFieldTwo setText:[self.code toCodeName]];
+        [self.toCurrencyCodeField setText:[self.baseCode toCodeName]];
+        
+        [self.toCurrencyCodeFieldTwo setText:[self.baseCode toCodeName]];
         
         [self.currencyCodeFromInverse setText:[self.code fromCodeName]];
-        [self.currencyCodeToFromInverse setText:[self.code toCodeName]];
+        [self.currencyCodeToFromInverse setText:[self.baseCode toCodeName]];
        
+        // inverse exchange rate field
+        self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
+        
+        if (self.code.rate < .02) {
+            self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], [_holder floatValue], [self.baseCode toCodeName]];
+        } else {
+            self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], [_holder floatValue], [self.baseCode toCodeName]];
+        }
+        //self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], [_holder floatValue], [self.code toCodeName]];
         
        // self.fromCurrencyImageButton = [UIImage imageNamed:self.code.imageName];
         
         [self.fromCurrencyImageButton setImage:[UIImage imageNamed:self.code.imageName]
                           forState:UIControlStateNormal];
+        
+        [self.toCurrencyImageButton setImage:[UIImage imageNamed:self.baseCode.imageName]
+                                      forState:UIControlStateNormal];
+        
+        
         
         
         //UIImage *button = UIButtonTypeCustom
@@ -764,10 +896,11 @@ if (component == kStateComponent) {
             float initialValue = maximumValue - minimumValue;
             
             //_sliderBar.value = initialValue;
-            //slider.value = self.code.rate;
+            //self.sliderBar.value = self.code.rate;
             float val = self.sliderBar.value;
             self.code.rate = val;
  
+        
         if (value != 0) {
             
         
@@ -825,7 +958,7 @@ if (component == kStateComponent) {
     
     if (status == NotReachable) {
         
-        _exchangeRateTimeLabel.text = (@"June 11, 2014");
+        _exchangeRateTimeLabel.text = (@"Last updated: June 11, 2014");
         
         
         
@@ -840,12 +973,11 @@ if (component == kStateComponent) {
     [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
     NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
     
-    _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"%@", [formatter stringFromDate:today]];
+    _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"Last updated: %@", [formatter stringFromDate:today]];
     
     }
     
-    
-}
+    }
 
 
 
@@ -856,6 +988,15 @@ if (component == kStateComponent) {
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
+
+- (void)baseCurrencyTableViewController:(BaseCurrencyTableViewController *)controller didSelectBaseCurrency:(NSString *)currency{
+    
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+
 
 - (IBAction)stepperRate:(UIStepper *)stepper {
     
@@ -915,9 +1056,19 @@ if (component == kStateComponent) {
         self.code.inverseRate = 1 / adjustedRate;
         float inverseRate = self.code.inverseRate;
         
-        self.exchangeRateField.text = [NSString stringWithFormat:@"%.4f", self.code.rate];
-        self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
+        // exchange rate field
+        if (self.code.rate < .02) {
+             self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+        } else {
+             self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+        }
+       
+            
+        //self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
         
+        // inverse rate field
+        
+        self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
         
         
         slider.minimumValue = minimumValue;   // sets min value
@@ -1015,7 +1166,15 @@ if (component == kStateComponent) {
         CurrencyPickerViewController *controller = segue.destinationViewController;
         controller.delegate = self;
     }
+    
+    if ([segue.identifier isEqualToString:@"PickBaseCurrency"] || [segue.identifier isEqualToString:@"SelectBaseCurrency"] ){
+        BaseCurrencyTableViewController *controller = segue.destinationViewController;
+        controller.delegate = self;
+    }
+
 }
+
+
 
 #pragma mark Delegate Callback Method
 
@@ -1023,23 +1182,64 @@ if (component == kStateComponent) {
     
     // set selected code passed from picker to code object
     self.code = currencyCode;
+    
+    
     // set field names for 'from currency'
     self.fromCurrencyCodeField.text = self.code.fromCodeName;
     self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
     self.fromCurrencyFullNameField.text = self.code.fromFullName;
     
-    if (![self.code.toCodeName isEqual:@"USD"])
-    {
-    self.code.toCodeName = @"USD";
+    
+   // if ([self.baseCode.toCodeName isEqual:nil])
+    //{
+    //self.baseCode.toCodeName = @"USD";
+    
     NSLog(@"----to Code: %@----", self.code.toCodeName);
-    self.toCurrencyCodeField.text = self.code.toCodeName;
-    [self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
-    }
+    //self.toCurrencyCodeField.text = self.baseCode.toCodeName;
+    //self.toCurrencyCodeField.text = @"USD";
+    //[self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
+   // }
     
     NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
     NSLog(@"***code.fullName %@", self.code.fromFullName);
     NSLog(@"****item.name: %@", self.item.name);
-    NSLog(@"----to Code: %@----", self.code.toCodeName);
+    NSLog(@"----to Code: %@----", self.baseCode.toCodeName);
+    
+    [self updateExchangeRate];
+    
+    [self calculate];
+    [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
+    [self updateLabel];
+    [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+}
+
+-(void)baseCurrencyPicker:(BaseCurrencyTableViewController *)controller didPickBaseCurrency:(BaseCurrency *)baseCurrency{
+    
+    // set selected code passed from picker to code object
+    //self.code = currencyCode;
+    // set field names for 'from currency'
+    //self.fromCurrencyCodeField.text = self.code.fromCodeName;
+    //self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
+    //self.fromCurrencyFullNameField.text = self.code.fromFullName;
+    
+    self.baseCode = baseCurrency;
+    
+  
+        //self.baseCode.toCodeName = @"USD";
+    
+        self.toCurrencyCodeField.text = self.baseCode.toCodeName;
+        //self.baseCode.toCodeName = self.code.toCodeName;
+        //[self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
+    
+    
+    //NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
+    //NSLog(@"***code.fullName %@", self.code.fromFullName);
+    //NSLog(@"****item.name: %@", self.item.name);
+    //NSLog(@"----to Code: %@----", self.code.toCodeName);
     
     [self updateExchangeRate];
     
@@ -1061,6 +1261,7 @@ if (component == kStateComponent) {
 
 -(void)calculate
 {
+    
     NSLog(@"Calculated price float value %f", self.priceFloat);
     float result;
     NSLog(@"%@", self.fromUnitField.text);
@@ -1072,10 +1273,10 @@ if (component == kStateComponent) {
         NSLog(@"Result: %.2f", result);
         self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
         
-        if ([self.item.toUnit isEqual:@"lb"] && [self.code.toCodeName isEqual:@"USD"])
+        if ([self.item.toUnit isEqual:@"lb"] && [self.baseCode.toCodeName isEqual:@"USD"])
         {
             self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
-            self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+            self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             
             if (result < [self.item.price floatValue]) {
@@ -1099,10 +1300,10 @@ if (component == kStateComponent) {
         NSLog(@"Result: %.2f", result);
         self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
         
-        if ([self.item.toUnit isEqual:@"gal"] && [self.code.toCodeName isEqual:@"USD"])
+        if ([self.item.toUnit isEqual:@"gal"] && [self.baseCode.toCodeName isEqual:@"USD"])
         {
             self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
-           self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+           self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             
             if (result < [self.item.price floatValue]) {
@@ -1146,10 +1347,22 @@ if (component == kStateComponent) {
         self.priceFloat = [self.priceText floatValue];
         NSLog(@"price float value %.2f", self.priceFloat);
         
+        
         [self calculate];
         
-        
+    // set result to zero if there is no value in priceTextField
     }
+    
+    if ([newText length] == 0) {
+        //self.priceTextField.textColor = [UIColor redColor];
+        self.priceText = 0;
+        NSLog(@"Typed text = %@", self.priceText);
+        self.priceFloat = [self.priceText floatValue];
+        NSLog(@"price float value %.2f", self.priceFloat);
+    }
+    
+    [self calculate];
+
     return YES;
 }
 
@@ -1166,4 +1379,6 @@ if (component == kStateComponent) {
     //[self performSelectorOnMainThread:@selector(switchCurrency:) withObject:nil waitUntilDone:YES];
     
 }
+
+
 @end

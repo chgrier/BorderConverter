@@ -4,6 +4,30 @@
 <array>
 	<dict>
 		<key>itemName</key>
+		<string>Kilogram to Pound</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>kg</string>
+		<key>itemToUnit</key>
+		<string>lb</string>
+		<key>New item - 5</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
+		<string>Pound to Kilogram</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>lb</string>
+		<key>itemToUnit</key>
+		<string>kg</string>
+		<key>New item - 5</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
 		<string>Apples, red delicious</string>
 		<key>itemPrice</key>
 		<real>1.36</real>
@@ -52,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>itemName</key>
-		<string>Grapes, Thompson Seedless</string>
+		<string>Grapes, Seedless</string>
 		<key>itemPrice</key>
 		<real>3.06</real>
 		<key>itemFromUnit</key>
@@ -261,6 +285,8 @@
 		<real>4.13</real>
 		<key>itemToUnit</key>
 		<string>lb</string>
+		<key>itemFromUnit</key>
+		<string>kg</string>
 		<key>itemUpdated</key>
 		<date>2014-05-15T23:27:22Z</date>
 	</dict>
@@ -297,6 +323,30 @@
 		<string>kg</string>
 		<key>itemToUnit</key>
 		<string>lb</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
+		<string>Liter to Gallon (US)</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>ℓ</string>
+		<key>itemToUnit</key>
+		<string>gal</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
+		<string>Gallon (US) to liter</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>gal</string>
+		<key>itemToUnit</key>
+		<string>ℓ</string>
 		<key>itemUpdated</key>
 		<date>2014-05-15T23:27:22Z</date>
 	</dict>

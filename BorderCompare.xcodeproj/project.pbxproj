@@ -24,12 +24,14 @@
 		BE39310218BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
 		BE39310A18BBDCA10072C4C7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BE39310818BBDCA10072C4C7 /* InfoPlist.strings */; };
 		BE39310C18BBDCA10072C4C7 /* BorderCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */; };
+		BE3F48DC194E4E3900F7F672 /* BaseCurrencyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3F48DB194E4E3900F7F672 /* BaseCurrencyTableViewController.m */; };
 		BE7D13351947CADA009ECAA3 /* ItemDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE7D13341947CADA009ECAA3 /* ItemDict.plist */; };
 		BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975918F756DB00DF4C25 /* ItemList.plist */; };
 		BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */; };
 		BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */; };
 		BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */; };
 		BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE94418318F5E702008873A2 /* CurrencyCodes.plist */; };
+		BEB9BDFB194EB0D50068A441 /* BaseCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB9BDFA194EB0D50068A441 /* BaseCurrency.m */; };
 		BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */; };
 		BEC17538191B45D800459AD9 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC17537191B45D800459AD9 /* Currency.m */; };
 		BEEF66E91936800C0086C145 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEF66E81936800C0086C145 /* Reachability.m */; };
@@ -70,12 +72,16 @@
 		BE39310718BBDCA10072C4C7 /* BorderCompareTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BorderCompareTests-Info.plist"; sourceTree = "<group>"; };
 		BE39310918BBDCA10072C4C7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BorderCompareTests.m; sourceTree = "<group>"; };
+		BE3F48DA194E4E3900F7F672 /* BaseCurrencyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCurrencyTableViewController.h; sourceTree = "<group>"; };
+		BE3F48DB194E4E3900F7F672 /* BaseCurrencyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCurrencyTableViewController.m; sourceTree = "<group>"; };
 		BE7D13341947CADA009ECAA3 /* ItemDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemDict.plist; sourceTree = "<group>"; };
 		BE86975918F756DB00DF4C25 /* ItemList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemList.plist; sourceTree = "<group>"; };
 		BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListFuel.plist; sourceTree = "<group>"; };
 		BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListMeat.plist; sourceTree = "<group>"; };
 		BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListDairy.plist; sourceTree = "<group>"; };
 		BE94418318F5E702008873A2 /* CurrencyCodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrencyCodes.plist; sourceTree = "<group>"; };
+		BEB9BDF9194EB0D50068A441 /* BaseCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCurrency.h; sourceTree = "<group>"; };
+		BEB9BDFA194EB0D50068A441 /* BaseCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCurrency.m; sourceTree = "<group>"; };
 		BEC1752D191AF5A700459AD9 /* CurrencyPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyPickerViewController.h; sourceTree = "<group>"; };
 		BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyPickerViewController.m; sourceTree = "<group>"; };
 		BEC17530191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
@@ -155,12 +161,16 @@
 				BE3930EF18BBDCA10072C4C7 /* AppDelegate.h */,
 				BE3930F018BBDCA10072C4C7 /* AppDelegate.m */,
 				BE3930F218BBDCA10072C4C7 /* Main.storyboard */,
+				BE3F48DA194E4E3900F7F672 /* BaseCurrencyTableViewController.h */,
+				BE3F48DB194E4E3900F7F672 /* BaseCurrencyTableViewController.m */,
 				BEC1752D191AF5A700459AD9 /* CurrencyPickerViewController.h */,
 				BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */,
 				BE3930F518BBDCA10072C4C7 /* MainViewController.h */,
 				BE3930F618BBDCA10072C4C7 /* MainViewController.m */,
 				BE383301192ACFFA00A7DC57 /* Item.h */,
 				BE383302192ACFFA00A7DC57 /* Item.m */,
+				BEB9BDF9194EB0D50068A441 /* BaseCurrency.h */,
+				BEB9BDFA194EB0D50068A441 /* BaseCurrency.m */,
 				BEC17536191B45D800459AD9 /* Currency.h */,
 				BEC17537191B45D800459AD9 /* Currency.m */,
 				BE3930F818BBDCA10072C4C7 /* Images.xcassets */,
@@ -316,8 +326,10 @@
 				BE383303192ACFFA00A7DC57 /* Item.m in Sources */,
 				BE3930F718BBDCA10072C4C7 /* MainViewController.m in Sources */,
 				BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */,
+				BE3F48DC194E4E3900F7F672 /* BaseCurrencyTableViewController.m in Sources */,
 				BEEF66E91936800C0086C145 /* Reachability.m in Sources */,
 				BE3930F118BBDCA10072C4C7 /* AppDelegate.m in Sources */,
+				BEB9BDFB194EB0D50068A441 /* BaseCurrency.m in Sources */,
 				BE3930ED18BBDCA10072C4C7 /* main.m in Sources */,
 				BEC17538191B45D800459AD9 /* Currency.m in Sources */,
 			);
