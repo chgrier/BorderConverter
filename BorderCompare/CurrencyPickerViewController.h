@@ -23,5 +23,4 @@
 
 @property (nonatomic, weak) id <CurrencyPickerViewControllerDelegate> delegate;
 
-
 @end

@@ -16,10 +16,6 @@
 
 @interface MainViewController : UIViewController <CurrencyPickerViewControllerDelegate, BaseCurrencyTableViewControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate, UIAlertViewDelegate>
 
-
-
-//@property (strong, nonatomic) IBOutlet UIPickerView *itemPicker;
-
 @property (strong, nonatomic) Currency *code;
 @property (strong, nonatomic) BaseCurrency *baseCode;
 
@@ -41,7 +37,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fromCurrencyCodeFieldTwo;
 @property (weak, nonatomic) IBOutlet UITextField *toCurrencyCodeField;
 @property (weak, nonatomic) IBOutlet UITextField *toCurrencyCodeFieldTwo;
-- (IBAction)switchCurrency:(id)sender;
+@property (weak, nonatomic) IBOutlet UILabel *toCurrencyFullNameField;
 
 @property (weak, nonatomic) IBOutlet UILabel *fromCurrencyFullNameField;
 @property (weak, nonatomic) IBOutlet UIButton *fromCurrencyImageButton;
@@ -55,7 +51,7 @@
 // unit text fields
 @property (weak, nonatomic) IBOutlet UITextField *fromUnitField;
 @property (weak, nonatomic) IBOutlet UITextField *toUnitField;
-- (IBAction)switchUnits:(id)sender;
+
 
 
 // entered price text fields
@@ -71,11 +67,9 @@
 @property (weak, nonatomic) IBOutlet UITextField *avgPriceLabel;
 @property (weak, nonatomic) IBOutlet UILabel *yourPriceLabel;
 @property (weak, nonatomic) IBOutlet UITextField *avgPriceUnit;
+@property (weak, nonatomic) IBOutlet UILabel *avgPriceUSA;
 
 @property (weak, nonatomic) IBOutlet UITextField *resultCompareUnit;
-
-
-
 
 
 // exchange rate fields, labels and slider
@@ -84,11 +78,8 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *exchangeRateTimeLabel;
 @property (nonatomic, weak) IBOutlet UISlider *sliderBar;
-- (IBAction)sliderMoved:(UISlider *)slider;
-- (IBAction)updateRate;
-- (IBAction)stepperRate:(id)sender;
-@property (weak, nonatomic) IBOutlet UIStepper *stepperValue;
 
+- (IBAction)sliderMoved:(UISlider *)slider;
 
 
 @property (weak, nonatomic) IBOutlet UIView *pickerViewHolder;

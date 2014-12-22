@@ -16,7 +16,7 @@
 #define kComponentCount 2
 
 @interface MainViewController ()
-//<UIPickerViewDataSource, UIPickerViewDelegate>
+
 @end
 
 @implementation MainViewController
@@ -26,30 +26,23 @@
     float _maxValue;
     float _fxUpdatedRate;
     float _roundedValue;
-    
     float _initialValue;
    
-    
     NSMutableArray *_userData;
     
     NSString * _holder;
+    NSString * _sliderHolder;
     
     BOOL _pickerVisible;
     
     NSMutableArray *_items;
     NSMutableArray *_itemCategories;
-    
     NSMutableArray *_produceArray;
     
     Item *_newItem;
     
     NSString * _codeName;
-
-    
     NSString *_currencyName;
-    
-    
-
     
 }
 
@@ -58,277 +51,46 @@
 {
     [super viewWillAppear:animated];
     
-    
-    
-}
-/*
--(void)cancelNumberPad{
-    [_priceTextField resignFirstResponder];
-    _priceTextField.text = @"";
 }
 
--(void)doneWithNumberPad{
-    NSString *numberFromTheKeyboard = _priceTextField.text;
-    [_priceTextField resignFirstResponder];
-}
-*/
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
+    self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+    self.avgPriceUSA.textColor = [UIColor lightGrayColor];
     
     
-    CGSize result = [[UIScreen mainScreen] bounds].size;
-    if(result.height == 480)
+    if ([UIScreen mainScreen].bounds.size.height<568)
     {
-        // iPhone Classic
-        self.exchangeRateField.frame = CGRectMake(140, 376, 159, 17);
-        
-    } else {
-        
+        NSLog(@"3.5 inch screen");
+            }
+    else
+    {
+        NSLog(@"4.0 inch screen");
     }
     
-    /*
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
-    numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancelNumberPad)],
-                           [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
-                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)],
-                           nil];
-    [numberToolbar sizeToFit];
-    _priceTextField.inputAccessoryView = numberToolbar;
-*/
 
+        CGRect frame = CGRectMake(0.0, 0.0, 200.0, 10.0);
+        UISlider *sliderSmall = [[UISlider alloc] initWithFrame:frame];
+                [sliderSmall setBackgroundColor:[UIColor clearColor]];
+                [self.view addSubview:sliderSmall];
+        
 
-    
-    Reachability *reach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus status = [reach currentReachabilityStatus];
-    
-    
-    if (status == NotReachable) {
-        
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
-                                                        message:[self stringFromStatus:status] delegate:nil
-                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
-        
-       
-        
-    }
-
+    NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"ItemDict" ofType:@"plist"];
+    _items = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
     
     
-    //self.sliderBar.value = (self.sliderBar.maximumValue - self.sliderBar.minimumValue);
-     self.sliderBar.value = .5;
-    
-    
-    
-    if (self.code != nil){
-        self.title = @"Border Compare";
-        //_codeName = self.code.codeName;
-        NSLog(@"***Codename: %@", self.code.fromCodeName);
-        
-    }
-    
-    
-    
-    /*
-     currency = [[Currency alloc]init];
-     currency.name = @"United States Dollar";
-     currency.code = @"USD";
-     currency.imageName = @"USD.png";
-     [_currencies addObject:currency];
-     */
-    
-   NSString *myListPath = [[NSBundle mainBundle] pathForResource:@"ItemDict" ofType:@"plist"];
-   _items = [[NSMutableArray alloc]initWithContentsOfFile:myListPath];
-    NSLog(@"%@",_items);
-    
-   // _items = [[NSMutableArray alloc]initWithCapacity:20];
-    //Item *item;
-    
-    
-    /*
-    item = [[Item alloc]init];
-    item.name = @"Bannanas";
-    item.price = [NSNumber numberWithFloat:0.60];
-    item.fromUnit = @"kg";
-    item.toUnit = @"lb";
-    [_items addObject:item];
-    
-    item = [[Item alloc]init];
-    item.name = @"Lemons";
-    item.price = [NSNumber numberWithFloat:1.67];
-    item.fromUnit = @"kg";
-    item.toUnit = @"lb";
-    [_items addObject:item];
-    
-    item = [[Item alloc]init];
-    item.name = @"Oranges";
-    item.price = [NSNumber numberWithFloat:1.14];
-    item.fromUnit = @"kg";
-    item.toUnit = @"lb";
-    [_items addObject:item];
-    
-    item = [[Item alloc]init];
-    item.name = @"Gasoline, unleaded regular";
-    item.price = [NSNumber numberWithFloat:3.36];
-    item.fromUnit = @"ℓ";
-    item.toUnit = @"gal";
-    [_items addObject:item];
-    
-    */
-    /*
-     _itemNames = @[@"Bannanas",@"Lemons",@"Oranges"];
-     _itemAvgPrice = @[@0.60f, @1.67f, @1.14f];
-     _itemMetricUnits = @[@"kg", @"kg", @"kg"];
-     _itemImperialUnits = @[@"lb", @"lb", @"lb"];
-     
-     _itemCategory = @[@"Produce",@"Meat",@"Fuel"];
-     */
-    
-    /*
-    // get path for plist
-    NSBundle *bundle = [NSBundle mainBundle];
-    NSURL *plistURL = [bundle URLForResource:@"ItemListPrices" withExtension:@"plist"];
-    
-    // define NSDictionary *itemList
-    _itemList = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-    
-    NSLog(@"itemList dictionary : %@", _itemList);
-    
-    
-    _itemCategory = [_itemList allKeys];
-    
-    // create array to hold dictionary's keys
-    
-    NSString *selectedItem = self.itemCategory[0];
-    self.items = self.itemList[selectedItem];
-    */
-    
-    
-    
-    
-    /*
-     // get path for plist
-     NSBundle *bundle = [NSBundle mainBundle];
-     NSURL *plistURL = [bundle URLForResource:@"ItemList" withExtension:@"plist"];
-     
-     // define NSDictionary *itemList
-     self.itemList = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-     NSLog(@"Item list array : %@", self.itemList);
-     
-     // create array to hold dictionary's keys
-     //NSArray *allCategories = [self.itemList allKeys];
-     //if need to sort categories
-     //NSArray *sortedCategories = [allCategories sortedArrayUsingSelector:@selector(compare:)];
-     //self.category = allCategories;
-     
-     self.category = [self.itemList allKeys];
-     NSLog(@"Category array: %@", self.category);
-     
-     // what does the [0] do?
-     NSString *selectedCategory = self.category[0];
-     self.items = self.itemList[selectedCategory];
-     NSLog(@"Items array: %@", self.items);
-     // get prices into an array
-     */
-    
-    /*
-     //plist path
-     NSBundle *bundle = [NSBundle mainBundle];
-     NSURL *plistURL = [bundle URLForResource:@"ItemListPrices" withExtension:@"plist"];
-     // get categories (same as above -- from arrays)
-     self.itemList = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-     NSLog(@"Item list array : %@", self.itemList);
-     
-     // get categories from dictionary keys?
-     self.category = [self.itemList allKeys];
-     NSLog(@"Category array: %@", self.category);
-     
-     NSString *str = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ItemListPrices.plist"];
-     NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:str];
-     
-     
-     NSArray *meatArray = [tempDict objectForKey:@"Meat"];
-     NSLog(@"Meat Array : %@", meatArray);
-     */
-    
-    /*
-     
-     NSString *path = [[NSBundle mainBundle] pathForResource:@"ItemListPrices" ofType:@"plist"];
-     self.itemList = [[NSDictionary alloc] initWithContentsOfFile:path];
-     
-     NSArray *produceArray = [myDict objectForKey:@"Produce"];
-     NSArray *meatArray = [myDict objectForKey:@"Meat"];
-     
-     //This goes in tableView: cellForRowAtIndexPath:
-     
-     cell.text = [[tableArray objectAtIndex:row]objectForKey:@"Obj Name"];
-     
-     
-     
-     
-     */
-    
-    
-    
-    
-    /*
-     //Get the bundle path for the plist file
-     NSString *str = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ItemListPrices.plist"];
-     
-     //Read the contents from plist dictionary
-     NSDictionary *tempDict = [[NSDictionary alloc] initWithContentsOfFile:str];
-     
-     //Dictionary to nsarray
-     NSArray *produceArray = [tempDict objectForKey:@"Produce"];
-     
-     //Display array data
-     NSLog(@"Produce Array : %@", produceArray);
-     
-     NSArray *meatArray = [tempDict objectForKey:@"Meat"];
-     NSLog(@"Meat Array : %@", meatArray);
-     
-     self.items = @[produceArray, meatArray];
-     NSLog(@"all items: %@", self.items);
-     
-     NSString *selectedCategory = self.category[0];
-     self.items = self.itemList[selectedCategory];
-     NSLog(@"Items: %@", self.items);
-    */
-    
-    /*
-     // get path for plist
-     NSBundle *bundle = [NSBundle mainBundle];
-     NSURL *plistURL = [bundle URLForResource:@"ItemListPrices" withExtension:@"plist"];
-     
-     // define NSDictionary *itemList
-     _itemList = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-     
-     NSLog(@"itemList dictionary : %@", _itemList);
-     
-     
-     _itemCategory = [_itemList allKeys];
-     
-     // create array to hold dictionary's keys
-     
-     NSString *selectedItem = self.itemCategory[0];
-     self.items = self.itemList[selectedItem];
-     */
-     
-    
+    // close picker if user taps anywhere on screen (excluding buttons)
     UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closePicker)];
-    //gestureRecognizer.cancelsTouchesInView = NO;
+    
     [self.view addGestureRecognizer:gestureRecognizer];
-    
-
-    
     
 }
 
+#pragma mark - Reachability 
 
+// get network status messages
 - (NSString *)stringFromStatus:(NetworkStatus) status {
     
     NSString *string;
@@ -351,18 +113,16 @@
     return string;
 }
 
-
-
-
 - (void) reachabilityChanged: (NSNotification *)notification {
     Reachability *reach = [notification object];
     if( [reach isKindOfClass: [Reachability class]]) {
         NetworkStatus status = [reach currentReachabilityStatus];
         if (status == NotReachable){
-           NSLog(@"**********************NOT REACHABLE");
+           NSLog(@"****NOT REACHABLE");
         }}
 }
 
+// button to update rates
 - (IBAction)updateExchangeRateButton:(id)sender {
     [self updateExchangeRate];
     [self updateLabel];
@@ -370,22 +130,23 @@
 
 -(void)updateExchangeRate{
     
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
     
-    if (self.code.fromCodeName != nil && self.baseCode.toCodeName != nil) {
+    if (self.code.fromCodeName != nil && self.baseCode.toCodeName != nil && status != NotReachable) {
         
-        NSLog(@"BASE CODE: %@", self.baseCode.toCodeName);
+    NSLog(@"Update Exchange Rate: FROM CODE: %@", self.code.fromCodeName);
+    NSLog(@"Update Exchange Rate: BASE CODE: %@", self.baseCode.toCodeName);
+
     NSString *fromCurr = self.code.fromCodeName;
     NSString *toCurr = self.baseCode.toCodeName;
-        
-        
+
     // URL request get exchange rate for currencies
     NSString *urlAsString = @"http://finance.yahoo.com/d/quotes.csv?s=";
     
     urlAsString = [urlAsString stringByAppendingString:fromCurr];
     urlAsString = [urlAsString stringByAppendingString:toCurr];
         
-    
-    
     urlAsString = [urlAsString stringByAppendingString:@"=X&f=sl1d1t1c1ohgv&e=.csv"];
         
     NSURL *url = [NSURL URLWithString:urlAsString];
@@ -412,88 +173,75 @@
              NSArray *substrings = [html componentsSeparatedByString:@","];
              NSString *value = substrings[1];
              
+             NSLog(@"VALUE of downloaded exchange rate data %@", value);
             
              // create string to hold value of exchange rate
-             //NSString *holder = [NSString stringWithFormat:@"%@",value];
-             
              _holder = [NSString stringWithFormat:@"%@",value];
              
-             float inverse = 1/ [value floatValue];
-             NSLog(@"INVERSE: %.2f", inverse);
+             float inverse = 1 / [_holder floatValue];
+             NSLog(@"INVERSE of downloaded exchange rate data: %.2f", inverse);
              
-             
-             //self.slider.value = (self.slider.minimumValue /2);
-             
-             NSLog(@"****value %@", _holder);
-         
+             // set self.code.rate to downloaded rate
              self.code.rate = [_holder floatValue];
-             NSLog(@"*****Float value of exchange rate %f", self.code.rate);
+             NSLog(@"FLOAT VALUE of exchange rate %f", self.code.rate);
              
-            
-                 float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
-                 float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
-                 float initialValue = maximumValue - minimumValue;
+             // set slider value
+             float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
+             float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
+             float initialValue = maximumValue - minimumValue;
              _sliderBar.minimumValue = minimumValue;   // sets min value
              _sliderBar.maximumValue = maximumValue;    // sets max value
              _sliderBar.value = initialValue;
              
-             //[_slider setValue:self.code.rate animated:YES];
-
+             // set exchange rate field to downloaded value
+             self.exchangeRateField.text = [NSString stringWithFormat:@"%.2f",self.code.rate];
              
-         /* dispatch back to the main queue for UI */
-         
-             // initialize variable to hold new value
-             //ExchangeValue *newExchange = [[ExchangeValue alloc] init];
+             // set inverse exchange rate field to inverse of downloaded value
+             self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverse];
              
-             // pass holder value to
-             //[newExchange setFxvalue:holder];
-             
-             //NSLog(@"Secor says new value is: %@",  newExchange.fxvalue);
-             
-             // NSLog(@"Exchange rate set to fxvalue object in ExchangeValue class:%@",currentExchange);
-             
-             _exchangeRateField.text = [NSString stringWithFormat:@"%@",value];
-             
-             //_exchangeRateHolder.text = [NSString stringWithFormat:@"%@",value];
-    
-             
-             //_exchangeField.text = [NSString stringWithFormat:@"1 %@ =", fromCurr];
-             // toCurrField.text = toCurr
-             //NSLog(@"1 %@ = %@ %@",fromCurr,value,toCurr);
-             
-             
-             
+             _sliderHolder = @"1";
          }
+                             
          else if ([data length] == 0 &&
                   error == nil){
              
              NSLog(@"Nothing was downloaded.");
+             
+             if ([self.baseCode.toCodeName  isEqual: @"USD"]){
+        
+             _sliderHolder = @"1";
              _holder = [NSString stringWithFormat:@"%@",self.code.oldRateToUSD];
-             //_holder = self.code.oldRateToUSD;
              self.code.rate = [_holder floatValue];
-             
-             
-             
-             
-              //self.code.rate = [self.code.oldRateToUSD floatValue];
-             
-             
+
              float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
              float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
              float initialValue = maximumValue - minimumValue;
              _sliderBar.minimumValue = minimumValue;   // sets min value
              _sliderBar.maximumValue = maximumValue;    // sets max value
              _sliderBar.value = initialValue;
+                 
+            // check network status using Apple Reachability classes
+                 Reachability *reach = [Reachability reachabilityForInternetConnection];
+                 NetworkStatus status = [reach currentReachabilityStatus];
+                 
+                 // alert user of exchange rates if not reachable when starting
+                 if (status == NotReachable) {
+                     
+                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                                     message:[self stringFromStatus:status] delegate:nil
+                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     [alert show];
+                 }
 
-         }
-         else if (error != nil){
+             }
+             
+         } else if (error != nil){
+             if ([self.baseCode.toCodeName  isEqual: @"USD"]){
              NSLog(@"Error happened = %@", error);
              
+            _sliderHolder = @"1";
              _holder = [NSString stringWithFormat:@"%@",self.code.oldRateToUSD];
-             //_holder = self.code.oldRateToUSD;
              self.code.rate = [_holder floatValue];
-             
-             //self.code.rate = [self.code.oldRateToUSD floatValue];
              
              float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
              float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
@@ -501,39 +249,110 @@
              _sliderBar.minimumValue = minimumValue;   // sets min value
              _sliderBar.maximumValue = maximumValue;    // sets max value
              _sliderBar.value = initialValue;
+                 
+                 
+                 Reachability *reach = [Reachability reachabilityForInternetConnection];
+                 NetworkStatus status = [reach currentReachabilityStatus];
+            if (status == NotReachable){
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                                     message:[self stringFromStatus:status] delegate:nil
+                                                           cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                     [alert show];
+                 }
              
              NSLog(@"Old Code is equal to : %@", self.code.oldRateToUSD);
-    
-         }
-         else {
+             } else {
+                 
+                 _sliderHolder = @"0";
+                 _holder = @"1";
+                 self.code.rate = 0;
+                 self.code.inverseRate = 0;
+                 _sliderBar.minimumValue = 0;
+                 _sliderBar.maximumValue = 100;
+                 _sliderBar.value = 0;
+                 
+                 self.exchangeRateInverseField.text =@"";
+             }
+         } else {
               _fromCurrencyCodeField.text = @"select";
              
-             
          }
-         
-         
-        
-         
-    
-    //self.stepperValue.value = 0;
+                            
     [self updateLabel];
     [self calculate];
+    [self updateExchangeTime];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
     [self performSelectorOnMainThread:@selector(self) withObject:nil waitUntilDone:YES];
-    
-     }];
-}
+    [self performSelectorOnMainThread:@selector(updateExchangeTime) withObject:nil waitUntilDone:YES];
+    }];
+        
+    } else if (status == NotReachable) {
+
+        if ([self.baseCode.toCodeName  isEqual: @"USD"]){
+           
+            _sliderHolder = @"1";
+            _holder = [NSString stringWithFormat:@"%@",self.code.oldRateToUSD];
+            self.code.rate = [_holder floatValue];
+            
+            float minimumValue = self.code.rate * .9;  // slider min value to 20% less than initial exchange rate
+            float maximumValue = self.code.rate * 1.1;  // slider max value to 20% greater than initial exchange rate
+            float initialValue = maximumValue - minimumValue;
+            _sliderBar.minimumValue = minimumValue;   // sets min value
+            _sliderBar.maximumValue = maximumValue;    // sets max value
+            _sliderBar.value = initialValue;
+
+            
+        } else {
+            
+            Reachability *reach = [Reachability reachabilityForInternetConnection];
+            NetworkStatus status = [reach currentReachabilityStatus];
+            
+            if (status == NotReachable){
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Internet Connection"
+                                                            message:@"Historical exchange rates are provided when the 'to' currency is set to USD. Please connect to the internet to access current rates. "delegate:nil
+                                                  cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+                
+            }
+            
+            _sliderHolder = @"0";
+            _holder = @"1";
+            self.code.rate = 1;
+            self.code.inverseRate = 1;
+            _sliderBar.minimumValue = 0;   // sets min value
+            _sliderBar.maximumValue = 100;    // sets max value
+            _sliderBar.value = 0;
+            
+            self.exchangeRateInverseField.text =@"";
+        }
     }
-
-
--(void)showAlert
-{
-    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"HI" message:@"Test" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"ok", nil];
-    [alertView show];
 }
-     
-/*
+
+
+-(void)updateExchangeTime{
+    
+    Reachability *reach = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reach currentReachabilityStatus];
+    
+    if (status == NotReachable) {
+        
+        self.exchangeRateTimeLabel.text = (@"Last updated: June 11, 2014");
+        
+    } else {
+
+    NSDate *today = [NSDate date];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterLongStyle];
+    [formatter setTimeStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
+    NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
+    
+    self.exchangeRateTimeLabel.text = [NSString stringWithFormat:@"Last updated: %@", [formatter stringFromDate:today]];
+    }
+}
+
+// saving user data methods
 -(void)loadUserData{
     NSString *path = [self dataFilePath];
     if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
@@ -544,7 +363,6 @@
         [unarchiver finishDecoding];
     }
 }
-
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
@@ -576,20 +394,12 @@
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
 }
- */
+ 
 
-- (IBAction)convert:(id)sender {
-    [self updateExchangeRate];
-    
-   
-}
 
 
 
 #pragma mark PickerView DataSource
-
-
-
 
 - (NSInteger)numberOfComponentsInPickerView:
 (UIPickerView *)pickerView
@@ -603,9 +413,12 @@ numberOfRowsInComponent:(NSInteger)component
 {
 
     
-        //return _itemNames.count;
-    return self.items.count;
-    
+    //number of items in list;
+    if ([self.baseCode.toCodeName isEqual:@"USD"] || self.baseCode.toCodeName == nil){
+        return self.items.count;
+    } else {
+        return 4;
+    }
    /*
     if (component == kCategoryComponent) {
         return [_itemCategory count];
@@ -621,15 +434,15 @@ numberOfRowsInComponent:(NSInteger)component
              titleForRow:(NSInteger)row
             forComponent:(NSInteger)component
 {
-    //return _itemNames[row];
-    //Currency *currency = _currencies[indexPath.row];
     
     
+    // get item names for pickerView
     Item *item = [[Item alloc]init];
     //item = [_items objectAtIndex:row];
     item.name = [[_items objectAtIndex:row]objectForKey:@"itemName"];
     return item.name;
     
+        
     /*
    if(component == kCategoryComponent) {
         return self.itemCategory[row];
@@ -641,92 +454,58 @@ numberOfRowsInComponent:(NSInteger)component
      */
 
 }
-/*
-if (component == kStateComponent) {
-    return self.states[row];
-} else {
-    return self.zips[row];
-}
-*/
+
 
 #pragma mark PickerView Delegate
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row
       inComponent:(NSInteger)component
 {
-    /*
-    if (component == kStateComponent) {
-        NSString *selectedState = self.states[row];
-        self.zips = self.stateZips[selectedState];
-        [self.dependentPicker reloadComponent:kZipComponent];
-        [self.dependentPicker selectRow:0
-                            inComponent:kZipComponent
-                               animated:YES];
-     
-     
-     NSString *selectedItem = self.itemCategory[0];
-     self.items = self.itemList[selectedItem];
-    }
 
-    if (component == kCategoryComponent) {
-        //NSString *selectedItem = self.itemCategory[row];
-       
-        //self.items = self.itemList[row];
+    // set items from plist to item object
+    self.item = [[Item alloc]init];
         
-        [self.itemPicker reloadComponent:kItemComponent];
-        [self.itemPicker selectRow:0
-                       inComponent:kItemComponent
-                         animated:YES];
-        */
-        self.item = [[Item alloc]init];
-        
-        self.item.name = [[self.items objectAtIndex:row]objectForKey:@"itemName"];
-        self.item.price = [[self.items objectAtIndex:row]objectForKey:@"itemPrice"];
-        self.item.fromUnit = [[self.items objectAtIndex:row]objectForKey:@"itemFromUnit"];
-        self.item.toUnit = [[self.items objectAtIndex:row]objectForKey:@"itemToUnit"];
-        
-
+    self.item.name = [[self.items objectAtIndex:row]objectForKey:@"itemName"];
+    self.item.price = [[self.items objectAtIndex:row]objectForKey:@"itemPrice"];
+    self.item.fromUnit = [[self.items objectAtIndex:row]objectForKey:@"itemFromUnit"];
+    self.item.toUnit = [[self.items objectAtIndex:row]objectForKey:@"itemToUnit"];
     
-
-    
-    //Item *selectedItem = [[Item alloc]init];
-    //selectedItem = [_items objectAtIndex:row];
-    //self.item = [_items objectAtIndex:row];
-    
-    float rate = [self.item.price floatValue];
+    // set average price label as a float for calculations
+    float avgPrice = [self.item.price floatValue];
     NSString *avgPriceString = [[NSString alloc] initWithFormat:
-                                @"$%.2f", rate];
-    _avgPriceLabel.text = avgPriceString;
+                                @"$%.2f", avgPrice];
     
+    self.avgPriceLabel.text = avgPriceString;
+    if (self.baseCode.toCodeName  == nil) {
+        self.avgPriceLabel.textColor = [UIColor lightGrayColor];
+    }
+    if (![self.baseCode.toCodeName isEqual:@"USD"]){
+        self.avgPriceLabel.text = @"";
+    }
+    
+    // set itemName field for the selected item
     self.itemName.text = self.item.name;
     
-    _fromUnitField.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
-    _toUnitField.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+   
+    // set unit fields based on selected item
+    self.fromUnitField.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+    self.toUnitField.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
     
+    // if base currency is USD, then populate the average price field
     if ([self.toCurrencyCodeField isEqual:@"USD"])
     {
         self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
-        
+    } else {
+        self.resultCompareUnit.text = @"";
+        self.resultTextFieldCompare.text = @"";
     }
     
+    NSLog(@"FROM UNIT: %@; TO UNIT: %@", self.item.fromUnit, self.item.toUnit);
+    
+    // recalculate prices based on new units
     [self calculate];
-    
-    //[self.priceTextField becomeFirstResponder];
-    
-    NSLog(@"item.fromUnit: %@; item.toUnit: %@", self.item.fromUnit, self.item.toUnit);
     
 }
 
-/*
-- (CGFloat)pickerView:(UIPickerView *)pickerView
-    widthForComponent:(NSInteger)component
-{
-    if (component == kCategoryComponent) {
-        return 120;
-    } else {
-        return 200;
-    }
-}
-*/
 -(IBAction)dismissUIPickerView:(id)sender{
     
     [self closePicker];
@@ -734,20 +513,11 @@ if (component == kStateComponent) {
 }
 
 -(IBAction)selectItem:(id)sender{
-    //open picker view
     
+    //open picker view and resign keyboard if open
     [self.priceTextField resignFirstResponder];
     
-    
-    //[_pickerViewHolder setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"chalkboardSmall.png"]]];
-    
-    
-    
-    //UIPickerView has 8 subviews like, background, rows, container etc.
-    // hide unnecessary subview
-    
-    
-    
+    // adjust position of picker if on a 3.5 inch iPhone
     CGSize result = [[UIScreen mainScreen] bounds].size;
     if(result.height == 480)
     {
@@ -756,57 +526,39 @@ if (component == kStateComponent) {
             _pickerViewHolder.frame = CGRectMake(10, 270,
                                                  _pickerViewHolder.frame.size.width,
                                                  _pickerViewHolder.frame.size.height);
-            
-            
         }];
 
         
     } else {
     
-    [UIView animateWithDuration:0.3 animations:^{
+        // position for 4 inch iPhone
+        [UIView animateWithDuration:0.3 animations:^{
         _pickerViewHolder.frame = CGRectMake(10, 350,
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
-        
-        
     }];
     }
 }
 
-- (IBAction)switchUnits:(id)sender {
-    
-    /*if ([self.item.unitMetric isEqualToString:@"kg"]) {
-        self.item.unitMetric = @"lb";
-        self.item.unitImperial = @"kg";
-    }
-    
-    else if ([self.item.unitMetric isEqualToString:@"lb"]) {
-        self.item.unitMetric = @"kg";
-        self.item.unitImperial = @"lb";
-    }
-    */
-    [self.item toggleUnits];
-    [self updateLabel];
- 
-    
-}
 
 -(void)closePicker
 {
+    //Displays the picker view off the screen
     [UIView animateWithDuration:0.2 animations:^{
         _pickerViewHolder.frame = CGRectMake(-300,
-                                       150, //Displays the view off the screen
+                                       150,
                                        _pickerViewHolder.frame.size.width,
                                        _pickerViewHolder.frame.size.height);
-        
+    
     }];
     
 }
 
+    // Displays the picker view off the screen and clears the units and item from text fields and from objects
 - (IBAction)cancel:(id)sender {
     [UIView animateWithDuration:0.2 animations:^{
         _pickerViewHolder.frame = CGRectMake(-300,
-                                             150, //Displays the view off the screen
+                                             150,
                                              _pickerViewHolder.frame.size.width,
                                              _pickerViewHolder.frame.size.height);
         _resultTextFieldCompare.text = @"";
@@ -823,7 +575,7 @@ if (component == kStateComponent) {
         self.item.fromUnit = nil;
         self.item.toUnit = nil;
         
-        
+        // recalculate without unit conversion
         [self calculate];
         
     }];
@@ -831,223 +583,76 @@ if (component == kStateComponent) {
     
 }
 
--(void)updateLabel
-{
+-(void)updateLabel{
     
-    //[self.priceTextField becomeFirstResponder];
-     //_exchangeRateField.text =  [NSString stringWithFormat:@"%@",_holder];
+    [self updateExchangeTime];
     
-    float inverseHolder = self.code.rate;
-    float inverseRate = 1 / inverseHolder;
-    
-    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.4f", inverseRate];
-    
-    if (self.toCurrencyCodeField == nil)
-    {
-        self.toCurrencyCodeField.text = self.code.toCodeName;
-    }
-    
-    if (self.code.fromCodeName != nil){
-        [self.fromCurrencyCodeField setText:[self.code fromCodeName]];
-        [self.fromCurrencyCodeFieldTwo setText:[self.code fromCodeName]];
-        [self.toCurrencyCodeField setText:[self.baseCode toCodeName]];
-        
-        [self.toCurrencyCodeFieldTwo setText:[self.baseCode toCodeName]];
-        
-        [self.currencyCodeFromInverse setText:[self.code fromCodeName]];
-        [self.currencyCodeToFromInverse setText:[self.baseCode toCodeName]];
-       
-        // inverse exchange rate field
-        self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
-        
-        if (self.code.rate < .02) {
-            self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], [_holder floatValue], [self.baseCode toCodeName]];
-        } else {
-            self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], [_holder floatValue], [self.baseCode toCodeName]];
-        }
-        //self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], [_holder floatValue], [self.code toCodeName]];
-        
-       // self.fromCurrencyImageButton = [UIImage imageNamed:self.code.imageName];
-        
-        [self.fromCurrencyImageButton setImage:[UIImage imageNamed:self.code.imageName]
-                          forState:UIControlStateNormal];
-        
-        [self.toCurrencyImageButton setImage:[UIImage imageNamed:self.baseCode.imageName]
+    if (self.code.imageName == nil){
+        [self.fromCurrencyImageButton setImage:[UIImage imageNamed:@"MXN.png"]
                                       forState:UIControlStateNormal];
-        
-        
-        
-        
-        //UIImage *button = UIButtonTypeCustom
-        
-        
+    } else {
+    self.fromCurrencyCodeField.text = self.code.fromCodeName;
+    [self.fromCurrencyImageButton setImage:[UIImage imageNamed:self.code.imageName]
+                                  forState:UIControlStateNormal];
+    self.fromCurrencyFullNameField.text = self.code.fromFullName;
+    
+    
+    // to or base currency field and image
+    self.toCurrencyCodeField.text = self.baseCode.toCodeName;
+    [self.toCurrencyImageButton setImage:[UIImage imageNamed:self.baseCode.imageName]
+                                  forState:UIControlStateNormal];
+    self.toCurrencyFullNameField.text = self.baseCode.toFullName;
+    
+    // updated currency codes
+    [self.fromCurrencyCodeFieldTwo setText:[self.code fromCodeName]];
+    [self.toCurrencyCodeFieldTwo setText:[self.baseCode toCodeName]];
+
+    // update unit
+    
+        if (self.item.fromUnit != nil){
+            self.fromUnitField.text = [NSString stringWithFormat:@"per %@", self.item.fromUnit];
+            self.toUnitField.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+        }
+    
+    // update exchange rate fields
+    self.code.inverseRate = 1 / self.code.rate;
+    float inverseRate = self.code.inverseRate;
+    
+    self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
+    
+    if (self.code.rate < .10) {
+        self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+    } else {
+        self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+    }
+
+    // set slider value in middle after new exchange rate
 
         
         NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
         float value = [textValue floatValue];
         
-       // reset slider
+        if (value > 0) {
+            
+            self.sliderBar.value = value;
         
-      
-        
-        
-            float minimumValue = value * .9;  // slider min value to 20% less than initial exchange rate
-            float maximumValue = value * 1.1;  // slider max value to 20% greater than initial exchange rate
-            float initialValue = maximumValue - minimumValue;
-            
-            //_sliderBar.value = initialValue;
-            //self.sliderBar.value = self.code.rate;
-            float val = self.sliderBar.value;
-            self.code.rate = val;
- 
-        
-        if (value != 0) {
-            
-        
-        float currentValue;
-        currentValue = value;
-        self.sliderBar.value = currentValue;
-        } else {
-            self.sliderBar.value = .5;
-         
-            
-            
-            
-            float inverse = 1/ [_holder floatValue];
-            NSLog(@"INVERSE: %.2f", inverse);
-            
-            
-            //self.slider.value = (self.slider.minimumValue /2);
-            
-            NSLog(@"****value %@", _holder);
-            
-            NSLog(@"*****Float value of exchange rate %f", self.code.rate);
         }
-
-        
-        
-    } else {
-        [_fromCurrencyCodeField setText:@"select"];
-        [_fromCurrencyCodeField setTextColor:[UIColor grayColor]];
-        [_fromCurrencyCodeFieldTwo setText:@"currency"];
-        [_fromCurrencyCodeFieldTwo setTextColor:[UIColor grayColor]];
     }
     
-    _itemName.text = _item.name;
-    
-    /*
-    if (![self.code.fromCodeName isEqual:@"USD"]){
-        
-        _fromUnitField.text = self.item.fromUnit;
-        _toUnitField.text = self.item.toUnit;
-        
-    } else {
-        
-        _fromUnitField.text = self.item.toUnit;
-        _toUnitField.text = self.item.fromUnit;
-        
-    }
-    
-    NSLog(@"UNIT METRIC: %@", self.item.fromUnit);
-*/
-    
-    
-    Reachability *reach = [Reachability reachabilityForInternetConnection];
-    NetworkStatus status = [reach currentReachabilityStatus];
-    
-    
-    if (status == NotReachable) {
-        
-        _exchangeRateTimeLabel.text = (@"Last updated: June 11, 2014");
-        
-        
-        
-    } else {
-    
-    NSDate *today = [NSDate date];
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    //[formatter setDateFormat:@"hh:mm a"];
-    //[formatter setDateFormat:@"MMM dd, YYYY"];
-    [formatter setDateStyle:NSDateFormatterLongStyle];
-    [formatter setTimeStyle:NSDateFormatterMediumStyle];
-    [formatter setTimeZone:[NSTimeZone defaultTimeZone]];
-    NSLog(@"Formatted date: %@ in time zone %@", [formatter stringFromDate:today], [formatter timeZone]);
-    
-    _exchangeRateTimeLabel.text = [NSString stringWithFormat:@"Last updated: %@", [formatter stringFromDate:today]];
-    
-    }
-    
-    }
-
-
-
-
-- (void)currencyPickerViewController:(CurrencyPickerViewController *)controller didSelectCurrency:(NSString *)currency{
-
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
-- (void)baseCurrencyTableViewController:(BaseCurrencyTableViewController *)controller didSelectBaseCurrency:(NSString *)currency{
-    
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
-
-
-
-- (IBAction)stepperRate:(UIStepper *)stepper {
-    
-    NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
-    float value = [textValue floatValue];
-    //[stepper setDecrementImage:[UIImage imageNamed:@"CY.png"] forState:UIControlStateNormal];
-    
-    float val = stepper.value + value;
-    self.exchangeRateField.text = [NSString stringWithFormat:@"%.2f", val];
-    //float minimumValue = stepper.value * .8;  // slider min value to 20% less than initial exchange rate
-    //float maximumValue = stepper.value * 1.2;
-    
-    //stepper.minimumValue = minimumValue;
-    //stepper.maximumValue = maximumValue;
-    
-    
-    
-    NSLog(@"%.4f", val);
-    
-    float adjustedRate = val;
-    
-    self.code.rate = adjustedRate;
-    self.code.inverseRate = 1 / adjustedRate;
-    float inverseRate = self.code.inverseRate;
-    
-    self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
-    
-    [self calculate];
 }
 
 #pragma mark Slider
 // sliderMoved method called when user moves the slider
 -(IBAction)sliderMoved:(UISlider *)slider{
+    
    
     
-  
-    
-    
-    
-    
-    
-    NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
-    float value = [textValue floatValue];
-    
-    if (value > 0) {
-        float minimumValue = value * .9;  // slider min value to 20% less than initial exchange rate
-        float maximumValue = value * 1.1;  // slider max value to 20% greater than initial exchange rate
-        float initialValue = maximumValue - minimumValue;
+    if ([_sliderHolder isEqual:@"0"]){
         
-        //_sliderBar.value = initialValue;
-        //slider.value = self.code.rate;
+        
+        float minimumValue = 0;  // slider min value to 20% less than initial exchange rate
+        float maximumValue = 100;  // slider max value to 20% greater than initial exchange rate
+        
         float val = slider.value;
         self.code.rate = val;
         
@@ -1056,69 +661,66 @@ if (component == kStateComponent) {
         self.code.inverseRate = 1 / adjustedRate;
         float inverseRate = self.code.inverseRate;
         
+        self.exchangeRateFieldInverse.text = @"";
+        
         // exchange rate field
         if (self.code.rate < .02) {
-             self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.4f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+             self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
         } else {
              self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
         }
-       
-            
-        //self.exchangeRateFieldInverse.text = [NSString stringWithFormat:@"%.2f", inverseRate];
-        
+
         // inverse rate field
         
         self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
         
-        
         slider.minimumValue = minimumValue;   // sets min value
         slider.maximumValue = maximumValue;    // sets max value
-        //slider.value = initialValue;
-        //_sliderBar.value = slider.value;
         
         NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
         
         NSLog(@"NEW rate is: %.2f", self.code.rate);
+    
+    } else {
+        NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
+        float value = [textValue floatValue];
+        
+        if (value > 0) {
+            float minimumValue = value * .9;  // slider min value to 20% less than initial exchange rate
+            float maximumValue = value * 1.1;  // slider max value to 20% greater than initial exchange rate
+ 
+            float val = slider.value;
+            self.code.rate = val;
+            
+            float adjustedRate = val;
+            self.code.rate = adjustedRate;
+            self.code.inverseRate = 1 / adjustedRate;
+            float inverseRate = self.code.inverseRate;
+            
+            // exchange rate field
+            if (self.code.rate < .02) {
+                self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+            } else {
+                self.exchangeRateField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.code fromCodeName], self.code.rate, [self.baseCode toCodeName]];
+            }
+            
+            self.exchangeRateInverseField.text = [NSString stringWithFormat:@"1 %@ = %.2f %@", [self.baseCode toCodeName], inverseRate, [self.code fromCodeName]];
+            
+            
+            slider.minimumValue = minimumValue;   // sets min value
+            slider.maximumValue = maximumValue;    // sets max value
+            
+            NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
+            
+            NSLog(@"NEW rate is: %.2f", self.code.rate);
+        }
     }
+    
     [self updateRate];
     [self calculate];
     
-    /*
-     _exchangeRate.text = [NSString stringWithFormat:@"%.2f", [sender value]];
-     
-       Here is what I'm trying to do using a static text field to hold the exchange rate value .  I set the exchangeRateHolder text field in the exchange rate calculation method (around line 428)
-     
-    
-    
-    NSString *textValue =  [NSString stringWithFormat:@"%@",_holder];
-    float value = [textValue floatValue];
-    
-    if (value > 0) {
-        float minimumValue = value * .8;  // slider min value to 20% less than initial exchange rate
-        float maximumValue = value * 1.2;  // slider max value to 20% greater than initial exchange rate
-        //mySlider.value = value;
-        mySlider.minimumValue = minimumValue;   // sets min value
-        mySlider.maximumValue = maximumValue;    // sets max value
-        NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
-    }
-    else
-    {
-        
-        float minimumValue = value + 0;  // slider min value to 20% less than initial exchange rate
-        float maximumValue = value + 100;  // slider max value to 20% greater than initial exchange rate
-        mySlider.value = value + 50;
-        mySlider.minimumValue = minimumValue;   // sets min value
-        mySlider.maximumValue = maximumValue;    // sets max value
-        NSLog(@"min is %f and max is %f",minimumValue,maximumValue);
-    }
-     
-     
-     
-     
-     
-     */
-
 }
+    
 
 - (IBAction)updateRate {
     // Create a Core Animation transition. This will crossfade from what is
@@ -1136,29 +738,12 @@ if (component == kStateComponent) {
 }
 
 
-
-
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-
-/*
- 
- // start calculating when textentered
- -(BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
- NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
- self.doneBarButton.enabled = ([newText length] > 0);
- return YES;
- }
-
- 
- 
- */
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -1174,8 +759,6 @@ if (component == kStateComponent) {
 
 }
 
-
-
 #pragma mark Delegate Callback Method
 
 -(void)currencyPicker:(CurrencyPickerViewController *)controller didPickCurrency:(Currency *)currencyCode{
@@ -1189,57 +772,85 @@ if (component == kStateComponent) {
     self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
     self.fromCurrencyFullNameField.text = self.code.fromFullName;
     
-    
-   // if ([self.baseCode.toCodeName isEqual:nil])
-    //{
-    //self.baseCode.toCodeName = @"USD";
-    
-    NSLog(@"----to Code: %@----", self.code.toCodeName);
-    //self.toCurrencyCodeField.text = self.baseCode.toCodeName;
-    //self.toCurrencyCodeField.text = @"USD";
-    //[self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
-   // }
-    
-    NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
-    NSLog(@"***code.fullName %@", self.code.fromFullName);
-    NSLog(@"****item.name: %@", self.item.name);
-    NSLog(@"----to Code: %@----", self.baseCode.toCodeName);
-    
     [self updateExchangeRate];
     
     [self calculate];
     [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
     [self updateLabel];
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
-    
     [self.navigationController popViewControllerAnimated:YES];
     
     
-}
+    // ***if base currency has not yet been set, set it to USD**
+    if (self.baseCode.toCodeName == nil)
+    {
+        self.baseCode = [[BaseCurrency alloc]init];
+        [self.baseCode setToCodeName:@"USD"];
+        [self.baseCode setImageName:@"USD"];
+        [self.baseCode setToFullName:@"United States Dollar"];
+        self.avgPriceUSA.textColor = [UIColor blackColor];
+        self.yourPriceLabel.textColor = [UIColor blackColor];
+        
+        NSLog(@"BASE CODE: %@", self.baseCode.toCodeName);
+        NSLog(@"FULL NAME BASE CODE: %@", self.baseCode.toFullName);
+        NSLog(@"FROM CODE: %@",currencyCode.fromCodeName);
+        NSLog(@"FULL NAME FROM CODE %@", self.code.fromFullName);
+    
+    
+        [self updateExchangeRate];
+    
+        [self calculate];
+        [self performSelectorOnMainThread:@selector(calculate) withObject:nil waitUntilDone:YES];
+        [self updateLabel];
+        [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
+    
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+    
+    }
 
 -(void)baseCurrencyPicker:(BaseCurrencyTableViewController *)controller didPickBaseCurrency:(BaseCurrency *)baseCurrency{
     
-    // set selected code passed from picker to code object
-    //self.code = currencyCode;
-    // set field names for 'from currency'
-    //self.fromCurrencyCodeField.text = self.code.fromCodeName;
-    //self.fromCurrencyCodeFieldTwo.text = self.code.fromCodeName;
-    //self.fromCurrencyFullNameField.text = self.code.fromFullName;
-    
+    // set selected baseCode passed from picker to code object
     self.baseCode = baseCurrency;
     
+    // set field names and image for 'to currency / base currency
+    self.toCurrencyCodeField.text = self.baseCode.toCodeName;
+    self.toCurrencyCodeFieldTwo.text = self.baseCode.toCodeName;
+    self.toCurrencyFullNameField.text = self.baseCode.toFullName;
+    [self.toCurrencyImageButton setImage:[UIImage imageNamed:self.baseCode.imageName]
+                                forState:UIControlStateNormal];
   
-        //self.baseCode.toCodeName = @"USD";
-    
-        self.toCurrencyCodeField.text = self.baseCode.toCodeName;
-        //self.baseCode.toCodeName = self.code.toCodeName;
-        //[self.toCurrencyImageButton setImage:[UIImage imageNamed:@"USD"] forState:UIControlStateNormal];
-    
-    
-    //NSLog(@"**currencyCode.codeName: %@",currencyCode.fromCodeName);
-    //NSLog(@"***code.fullName %@", self.code.fromFullName);
-    //NSLog(@"****item.name: %@", self.item.name);
-    //NSLog(@"----to Code: %@----", self.code.toCodeName);
+    if ([self.baseCode.toCodeName  isEqual: @"USD"] || [self.toCurrencyCodeField.text isEqual: @"USD"]) {
+        self.avgPriceUSA.textColor = [UIColor blackColor];
+        self.avgPriceUSA.text = @"Avg. Price in USA:";
+        self.avgPriceLabel.text = [NSString stringWithFormat:@"$%.2f", [self.item.price floatValue]];
+        self.avgPriceLabel.textColor = [UIColor blackColor];
+        self.yourPriceLabel.textColor = [UIColor blackColor];
+        self.yourPriceLabel.text = @"Your price:";
+        self.resultTextFieldCompare.placeholder = @"$0.00";
+        self.resultCompareUnit.placeholder = @"per unit";
+        self.itemName.text = @"Select item to compare or units";
+        
+    } else {
+        self.avgPriceUSA.textColor = [UIColor lightGrayColor];
+        self.avgPriceLabel.textColor = [UIColor lightGrayColor];
+        self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+        self.yourPriceLabel.font = [UIFont systemFontOfSize:20];
+        self.yourPriceLabel.text = @"Set 'to' currency to USD ";
+        self.avgPriceUSA.text = @"to see price comparisons";
+        
+        self.avgPriceLabel.placeholder = @"";
+        self.avgPriceLabel.text = @"";
+        self.avgPriceUnit.placeholder = @"";
+        self.avgPriceUnit.text = @"";
+        self.resultCompareUnit.placeholder = @"";
+        self.resultTextFieldCompare.placeholder = @"";
+        self.resultCompareUnit.text = @"";
+        self.resultTextFieldCompare.text = @"";
+        self.itemName.text = @"Select units";
+
+    }
     
     [self updateExchangeRate];
     
@@ -1249,6 +860,8 @@ if (component == kStateComponent) {
     [self performSelectorOnMainThread:@selector(updateLabel) withObject:nil waitUntilDone:YES];
     
     [self.navigationController popViewControllerAnimated:YES];
+    
+    [self.itemPicker reloadAllComponents];
     
     
 }
@@ -1266,8 +879,6 @@ if (component == kStateComponent) {
     float result;
     NSLog(@"%@", self.fromUnitField.text);
     
-   
-    
     if ([self.item.fromUnit isEqual:@"kg"]){
         result =  (self.priceFloat * self.code.rate) / 2.20462;
         NSLog(@"Result: %.2f", result);
@@ -1278,6 +889,10 @@ if (component == kStateComponent) {
             self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
             self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+            self.avgPriceUSA.textColor = [UIColor blackColor];
+            
+            self.avgPriceUnit.textColor = [UIColor blackColor];
+            self.avgPriceLabel.textColor = [UIColor blackColor];
             
             if (result < [self.item.price floatValue]) {
                 self.resultTextFieldCompare.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
@@ -1290,9 +905,24 @@ if (component == kStateComponent) {
                 self.yourPriceLabel.textColor = [UIColor redColor];
             }
         } else {
-            self.resultTextFieldCompare.textColor = [UIColor grayColor];
-            self.yourPriceLabel.textColor = [UIColor grayColor];
+            self.resultTextFieldCompare.textColor = [UIColor lightGrayColor];
+            self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+            self.avgPriceUSA.textColor = [UIColor lightGrayColor];
         }
+    }
+    
+    
+    if ([self.item.fromUnit isEqual:@"lb"]){
+        result =  (self.priceFloat * self.code.rate) / 0.45359237;
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
+        
+        self.resultTextFieldCompare.textColor = [UIColor lightGrayColor];
+        self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+        self.avgPriceUSA.textColor = [UIColor lightGrayColor];
+        self.avgPriceUnit.textColor = [UIColor lightGrayColor];
+        self.avgPriceLabel.textColor = [UIColor lightGrayColor];
+        
     }
     
     if ([self.item.fromUnit isEqual:@"ℓ"]){
@@ -1305,6 +935,9 @@ if (component == kStateComponent) {
             self.resultTextFieldCompare.text = [NSString stringWithFormat:@"$%.2f", result];
            self.resultCompareUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
             self.avgPriceUnit.text = [NSString stringWithFormat:@"per %@", self.item.toUnit];
+            self.avgPriceUnit.textColor = [UIColor blackColor];
+            self.avgPriceLabel.textColor = [UIColor blackColor];
+            self.avgPriceUSA.textColor = [UIColor blackColor];
             
             if (result < [self.item.price floatValue]) {
                 self.resultTextFieldCompare.textColor = [UIColor colorWithRed:0.31 green:0.53 blue:0.21 alpha:1.0];
@@ -1317,13 +950,26 @@ if (component == kStateComponent) {
                 self.yourPriceLabel.textColor = [UIColor redColor];
             }
         } else {
-            self.resultTextFieldCompare.textColor = [UIColor grayColor];
-            self.yourPriceLabel.textColor = [UIColor grayColor];
+            self.resultTextFieldCompare.textColor = [UIColor lightGrayColor];
+            self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+            //self.avgPriceUSA.textColor = [UIColor lightGrayColor];
         }
         
-        
+    }
     
+    if ([self.item.fromUnit isEqual:@"gal"]){
+        result =  (self.priceFloat * self.code.rate) / 3.78541178;
+        NSLog(@"Result: %.2f", result);
+        self.resultTextField.text = [NSString stringWithFormat:@"%.2f", result];
         
+
+            self.resultTextFieldCompare.textColor = [UIColor lightGrayColor];
+            self.yourPriceLabel.textColor = [UIColor lightGrayColor];
+            self.avgPriceUSA.textColor = [UIColor lightGrayColor];
+            self.avgPriceUnit.textColor = [UIColor lightGrayColor];
+            self.avgPriceLabel.textColor = [UIColor lightGrayColor];
+        
+
     }
     
     if ([self.fromUnitField.text isEqual:@""]){
@@ -1341,12 +987,11 @@ if (component == kStateComponent) {
 -(BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
     if ([newText length] > 0) {
-        self.priceTextField.textColor = [UIColor redColor];
+        self.priceTextField.textColor = [UIColor blackColor];
         self.priceText = newText;
         NSLog(@"Typed text = %@", self.priceText);
         self.priceFloat = [self.priceText floatValue];
         NSLog(@"price float value %.2f", self.priceFloat);
-        
         
         [self calculate];
         
@@ -1375,8 +1020,6 @@ if (component == kStateComponent) {
 - (IBAction)switchCurrency:(id)sender {
     [self.code toggleCurrency];
     [self updateLabel];
-    
-    //[self performSelectorOnMainThread:@selector(switchCurrency:) withObject:nil waitUntilDone:YES];
     
 }
 

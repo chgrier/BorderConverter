@@ -16,8 +16,6 @@
 
 @property(nonatomic, copy) Item *item;
 
-//@property (nonatomic) float price;
-
 -(void)toggleUnits;
 
 @property (nonatomic) NSNumber *price;

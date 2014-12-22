@@ -25,6 +25,6 @@
 
 @property (nonatomic, assign) BOOL *checked;
 
--(void)toggleCurrency;
+
 
 @end

@@ -28,9 +28,33 @@
 	</dict>
 	<dict>
 		<key>itemName</key>
+		<string>Liter to Gallon (US)</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>ℓ</string>
+		<key>itemToUnit</key>
+		<string>gal</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
+		<string>Gallon (US) to Liter</string>
+		<key>itemPrice</key>
+		<integer>0</integer>
+		<key>itemFromUnit</key>
+		<string>gal</string>
+		<key>itemToUnit</key>
+		<string>ℓ</string>
+		<key>itemUpdated</key>
+		<date>2014-05-15T23:27:22Z</date>
+	</dict>
+	<dict>
+		<key>itemName</key>
 		<string>Apples, red delicious</string>
 		<key>itemPrice</key>
-		<real>1.36</real>
+		<real>1.39</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -54,7 +78,7 @@
 		<key>itemName</key>
 		<string>Oranges, Navel</string>
 		<key>itemPrice</key>
-		<real>1.26</real>
+		<real>1.39</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -66,7 +90,7 @@
 		<key>itemName</key>
 		<string>Grapefruit</string>
 		<key>itemPrice</key>
-		<real>1.02</real>
+		<real>1.13</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -78,7 +102,7 @@
 		<key>itemName</key>
 		<string>Grapes, Seedless</string>
 		<key>itemPrice</key>
-		<real>3.06</real>
+		<real>2.36</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -90,19 +114,19 @@
 		<key>itemName</key>
 		<string>Lemons</string>
 		<key>itemPrice</key>
-		<real>1.74</real>
+		<real>2.08</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
 		<string>lb</string>
 		<key>itemUpdated</key>
-		<date>2014-05-15T23:27:22Z</date>
+		<date>2014-09-15T23:27:22Z</date>
 	</dict>
 	<dict>
 		<key>itemName</key>
 		<string>Strawberries</string>
 		<key>itemPrice</key>
-		<real>2.33</real>
+		<real>1.87</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -114,7 +138,7 @@
 		<key>itemName</key>
 		<string>Potatoes, white</string>
 		<key>itemPrice</key>
-		<real>0.67</real>
+		<real>0.7</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -126,7 +150,7 @@
 		<key>itemName</key>
 		<string>Lettuce, iceberg</string>
 		<key>itemPrice</key>
-		<real>0.9</real>
+		<real>1.11</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -138,7 +162,7 @@
 		<key>itemName</key>
 		<string>Lettuce, romaine</string>
 		<key>itemPrice</key>
-		<real>1.57</real>
+		<real>1.76</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -150,7 +174,7 @@
 		<key>itemName</key>
 		<string>Tomatoes, field grown</string>
 		<key>itemPrice</key>
-		<real>1.62</real>
+		<real>1.63</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -162,7 +186,7 @@
 		<key>itemName</key>
 		<string>Broccoli</string>
 		<key>itemPrice</key>
-		<real>1.74</real>
+		<real>1.81</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -174,7 +198,7 @@
 		<key>itemName</key>
 		<string>Peppers, sweet</string>
 		<key>itemPrice</key>
-		<real>2.4</real>
+		<real>2.72</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -186,7 +210,7 @@
 		<key>itemName</key>
 		<string>Cheese, American</string>
 		<key>itemPrice</key>
-		<real>4.53</real>
+		<real>4.43</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -198,7 +222,7 @@
 		<key>itemName</key>
 		<string>Cheese, cheddar</string>
 		<key>itemPrice</key>
-		<real>5.73</real>
+		<real>5.56</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -210,7 +234,7 @@
 		<key>itemName</key>
 		<string>Ground beef</string>
 		<key>itemPrice</key>
-		<real>3.81</real>
+		<real>3.88</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -222,7 +246,7 @@
 		<key>itemName</key>
 		<string>Ground beef, lean</string>
 		<key>itemPrice</key>
-		<real>5.42</real>
+		<real>5.41</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -234,7 +258,7 @@
 		<key>itemName</key>
 		<string>Steak, sirloin, USDA choice</string>
 		<key>itemPrice</key>
-		<real>7.36</real>
+		<real>7.87</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -246,7 +270,7 @@
 		<key>itemName</key>
 		<string>Beef for stew, boneless</string>
 		<key>itemPrice</key>
-		<real>5.22</real>
+		<real>5.16</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -258,7 +282,7 @@
 		<key>itemName</key>
 		<string>Bacon, sliced</string>
 		<key>itemPrice</key>
-		<real>5.69</real>
+		<real>6.01</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -270,7 +294,7 @@
 		<key>itemName</key>
 		<string>Pork chops</string>
 		<key>itemPrice</key>
-		<real>4.04</real>
+		<real>4</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -282,7 +306,7 @@
 		<key>itemName</key>
 		<string>Ham, boneless</string>
 		<key>itemPrice</key>
-		<real>4.13</real>
+		<real>4.37</real>
 		<key>itemToUnit</key>
 		<string>lb</string>
 		<key>itemFromUnit</key>
@@ -294,7 +318,7 @@
 		<key>itemName</key>
 		<string>Chicken, fresh, whole</string>
 		<key>itemPrice</key>
-		<real>1.53</real>
+		<real>1.5</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -306,7 +330,7 @@
 		<key>itemName</key>
 		<string>Chicken breast, boneless</string>
 		<key>itemPrice</key>
-		<real>3.39</real>
+		<real>3.44</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -318,7 +342,7 @@
 		<key>itemName</key>
 		<string>Turkey, frozen, whole</string>
 		<key>itemPrice</key>
-		<real>1.61</real>
+		<real>1.64</real>
 		<key>itemFromUnit</key>
 		<string>kg</string>
 		<key>itemToUnit</key>
@@ -354,7 +378,7 @@
 		<key>itemName</key>
 		<string>Gasoline, regular unleaded</string>
 		<key>itemPrice</key>
-		<real>3.66</real>
+		<real>3.63</real>
 		<key>itemFromUnit</key>
 		<string>ℓ</string>
 		<key>itemToUnit</key>
@@ -366,7 +390,7 @@
 		<key>itemName</key>
 		<string>Gasoline, midgrade unleaded</string>
 		<key>itemPrice</key>
-		<real>3.83</real>
+		<real>3.82</real>
 		<key>itemFromUnit</key>
 		<string>ℓ</string>
 		<key>itemToUnit</key>
@@ -378,7 +402,7 @@
 		<key>itemName</key>
 		<string>Gasoline, premium unleaded</string>
 		<key>itemPrice</key>
-		<real>3.99</real>
+		<real>3.98</real>
 		<key>itemFromUnit</key>
 		<string>ℓ</string>
 		<key>itemToUnit</key>
@@ -390,7 +414,7 @@
 		<key>itemName</key>
 		<string>Diesel, automotive</string>
 		<key>itemPrice</key>
-		<real>3.96</real>
+		<real>3.9</real>
 		<key>itemFromUnit</key>
 		<string>ℓ</string>
 		<key>itemToUnit</key>

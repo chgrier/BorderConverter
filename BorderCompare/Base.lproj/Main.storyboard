@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13D65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p1b-Nf-uNR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="p1b-Nf-uNR">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller - Border Compare-->
+        <!--Border Compare-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
                 <viewController storyboardIdentifier="MainViewController" title="Border Compare" id="vXZ-lx-hvc" customClass="MainViewController" sceneMemberID="viewController">
@@ -16,8 +17,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Item or Units" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UfZ-3c-EE7">
-                                <rect key="frame" x="60" y="237" width="240" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MXN" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Vjx-eY-oSC">
+                                <rect key="frame" x="75" y="787" width="67" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="USD" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="FSu-Sy-Yzb">
+                                <rect key="frame" x="20" y="787" width="67" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView alpha="0.14999999999999969" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szp-iC-DGb">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" red="0.25098040699958801" green="0.50196081399917603" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-We-pYA">
+                                <rect key="frame" x="6" y="69" width="308" height="148"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Ig-sT-xhl">
+                                <rect key="frame" x="6" y="219" width="308" height="152"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ofu-lF-mw6">
+                                <rect key="frame" x="6" y="374" width="308" height="188"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcG-lg-b9U">
+                                <rect key="frame" x="117" y="82" width="105" height="55"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <connections>
+                                    <segue destination="Umx-b0-N6r" kind="push" identifier="SelectCurrency" id="gcM-NM-cW3"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wag-Je-mjn">
+                                <rect key="frame" x="117" y="152" width="111" height="59"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <connections>
+                                    <segue destination="vUY-z2-Wv5" kind="push" identifier="PickBaseCurrency" id="X2x-3h-69R"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Select Item or Units" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="UfZ-3c-EE7">
+                                <rect key="frame" x="64" y="237" width="240" height="30"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -25,9 +66,9 @@
                                     <action selector="selectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="RDk-Kl-8EE"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="0.00" textAlignment="right" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="QUH-nh-1a6">
-                                <rect key="frame" x="14" y="150" width="93" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="0.00" textAlignment="right" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="QUH-nh-1a6">
+                                <rect key="frame" x="20" y="83" width="93" height="44"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="numbersAndPunctuation" enablesReturnKeyAutomatically="YES"/>
                                 <connections>
                                     <action selector="dismissUIPickerView:" destination="vXZ-lx-hvc" eventType="editingDidBegin" id="XUL-0f-z1t"/>
@@ -35,67 +76,57 @@
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="aqT-OI-r32"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Exchange Rate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqg-bw-Xal">
-                                <rect key="frame" x="20" y="406" width="146" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Exchange Rate:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pqg-bw-Xal">
+                                <rect key="frame" x="20" y="383" width="146" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="select" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTd-70-h6O">
-                                <rect key="frame" x="60" y="87" width="97" height="23"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="MXN" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="aTd-70-h6O">
+                                <rect key="frame" x="164" y="86" width="97" height="23"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptB-WE-kSx">
-                                <rect key="frame" x="225" y="84" width="73" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="USD" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ptB-WE-kSx">
+                                <rect key="frame" x="164" y="161" width="73" height="30"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="0.00" textAlignment="right" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="7KY-uA-z5v">
-                                <rect key="frame" x="14" y="186" width="93" height="36"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="CBU-FN-5a0"/>
-                                    <constraint firstAttribute="width" constant="93" id="gjd-lO-f1w"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gep-9b-fAE">
-                                <rect key="frame" x="207" y="154" width="82" height="27"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="per unit" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gep-9b-fAE">
+                                <rect key="frame" x="226" y="84" width="82" height="27"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="vXZ-lx-hvc" id="uIz-3W-zlo"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCt-Hc-hvJ">
-                                <rect key="frame" x="207" y="190" width="82" height="27"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="per unit" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DCt-Hc-hvJ">
+                                <rect key="frame" x="226" y="163" width="82" height="27"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tj-rq-BhB">
-                                <rect key="frame" x="19" y="439" width="35" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="YtK-ct-wL7"/>
-                                </constraints>
-                                <state key="normal" image="Basic-Update-icon">
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" reversesTitleShadowWhenHighlighted="YES" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7tj-rq-BhB">
+                                <rect key="frame" x="24" y="430" width="35" height="35"/>
+                                <rect key="contentStretch" x="1.3877787807814457e-17" y="0.0" width="1" height="1"/>
+                                <state key="normal" image="updateIcon">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="highlighted" image="updateIcon_Rotated"/>
                                 <connections>
                                     <action selector="updateExchangeRateButton:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="dDK-oN-bbX"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a currency above" placeholder="0000.00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="zDq-GI-BQP">
-                                <rect key="frame" x="60" y="439" width="159" height="17"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Select a currency above" placeholder="0000.00" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="zDq-GI-BQP">
+                                <rect key="frame" x="60" y="430" width="159" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is8-tf-wBb">
-                                <rect key="frame" x="60" y="501" width="216" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="is8-tf-wBb">
+                                <rect key="frame" x="110" y="387" width="216" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="9"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ttP-eS-dbA">
-                                <rect key="frame" x="14" y="492" width="284" height="60"/>
+                            <slider opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ttP-eS-dbA">
+                                <rect key="frame" x="18" y="496" width="284" height="31"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="minimumTrackTintColor" red="0.8078432083" green="0.92941182850000004" blue="0.71372550729999995" alpha="1" colorSpace="deviceRGB"/>
                                 <color key="maximumTrackTintColor" red="0.015686274510000001" green="0.66274509800000003" blue="0.54151459850000006" alpha="1" colorSpace="calibratedRGB"/>
@@ -105,13 +136,14 @@
                                 </connections>
                             </slider>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Avg. Price in USA:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ign-gg-okY">
-                                <rect key="frame" x="20" y="303" width="161" height="24"/>
+                                <rect key="frame" x="20" y="303" width="280" height="24"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Your price: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-FH-YVF">
-                                <rect key="frame" x="20" y="275" width="105" height="26"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your price: " lineBreakMode="tailTruncation" baselineAdjustment="none" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hoT-FH-YVF">
+                                <rect key="frame" x="20" y="276" width="280" height="26"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HPD-Pw-D4x">
@@ -119,40 +151,40 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$000.00" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Zcj-5G-n64">
-                                <rect key="frame" x="128" y="273" width="108" height="29"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="13" translatesAutoresizingMaskIntoConstraints="NO" id="Zcj-5G-n64">
+                                <rect key="frame" x="128" y="274" width="108" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source: U.S. Bureau of Labor Statistics,  May 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udK-wF-nKR">
-                                <rect key="frame" x="20" y="330" width="348" height="14"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Source: U.S. Bureau of Labor Statistics,  July 2014" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udK-wF-nKR">
+                                <rect key="frame" x="20" y="331" width="348" height="14"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PIN-32-BX9">
-                                <rect key="frame" x="18" y="352" width="348" height="14"/>
+                                <rect key="frame" x="11" y="457" width="348" height="14"/>
                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="6"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBo-gf-E8E">
-                                <rect key="frame" x="14" y="75" width="46" height="46"/>
+                                <rect key="frame" x="117" y="74" width="48" height="48"/>
                                 <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
                                 <size key="titleShadowOffset" width="7" height="4"/>
-                                <state key="normal" image="Shopping-Banknotes-icon"/>
+                                <state key="normal" image="MXN_50_BW"/>
                                 <connections>
                                     <segue destination="Umx-b0-N6r" kind="push" identifier="PickCurrency" id="ggd-E4-OFk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d2B-ug-Yvi">
-                                <rect key="frame" x="183" y="80" width="36" height="36"/>
+                                <rect key="frame" x="123" y="158" width="36" height="36"/>
                                 <size key="titleShadowOffset" width="7" height="4"/>
-                                <state key="normal" image="Shopping-Banknotes-icon"/>
+                                <state key="normal" image="USD_BW"/>
                                 <connections>
-                                    <segue destination="vUY-z2-Wv5" kind="push" identifier="SelectCurrency" id="9PL-21-KKm"/>
+                                    <segue destination="vUY-z2-Wv5" kind="push" identifier="SelectBaseCurrency" id="9PL-21-KKm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GHJ-Lf-JiR">
-                                <rect key="frame" x="55" y="237" width="254" height="43"/>
+                                <rect key="frame" x="67" y="231" width="254" height="43"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -161,26 +193,20 @@
                                     <action selector="selectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="sPv-k4-aGp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to select currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-0P-Vhd">
-                                <rect key="frame" x="20" y="113" width="137" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to select currency" lineBreakMode="wordWrap" numberOfLines="2" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" preferredMaxLayoutWidth="137" translatesAutoresizingMaskIntoConstraints="NO" id="R7l-0P-Vhd">
+                                <rect key="frame" x="121" y="111" width="137" height="21"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Base currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sd-fw-vWW">
-                                <rect key="frame" x="186" y="113" width="124" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfa-5g-7FC">
-                                <rect key="frame" x="120" y="395" width="124" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap to select currency" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6sd-fw-vWW">
+                                <rect key="frame" x="121" y="191" width="124" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="per unit" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CP8-tt-G5P">
-                                <rect key="frame" x="244" y="277" width="63" height="22"/>
+                                <rect key="frame" x="244" y="278" width="63" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -189,12 +215,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-UM-b83">
-                                <rect key="frame" x="14" y="229" width="43" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="dNp-GF-YWV"/>
-                                    <constraint firstAttribute="width" constant="43" id="hAT-Sj-cIO"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gcT-UM-b83">
+                                <rect key="frame" x="20" y="231" width="42" height="39"/>
                                 <state key="normal" title="Select" image="basket"/>
                                 <state key="selected" image="basket_highlighted_offset"/>
                                 <state key="highlighted" image="basket_highlighted_offset"/>
@@ -202,21 +224,8 @@
                                     <action selector="selectItem:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Im9-eA-imP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="currency" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="Vjx-eY-oSC">
-                                <rect key="frame" x="115" y="145" width="90" height="45"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="currency" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="FSu-Sy-Yzb">
-                                <rect key="frame" x="115" y="186" width="90" height="36"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="to see rates" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="N9b-Sy-Ug6">
-                                <rect key="frame" x="60" y="468" width="159" height="17"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="159" id="drC-uq-mkQ"/>
-                                </constraints>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="to see rates" textAlignment="center" adjustsFontSizeToFit="NO" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="N9b-Sy-Ug6">
+                                <rect key="frame" x="60" y="448" width="159" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -255,53 +264,25 @@
                                 </subviews>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Arrows-Right-icon" translatesAutoresizingMaskIntoConstraints="NO" id="Tx4-gQ-LhF">
-                                <rect key="frame" x="131" y="82" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="0.00" textAlignment="right" minimumFontSize="7" translatesAutoresizingMaskIntoConstraints="NO" id="7KY-uA-z5v">
+                                <rect key="frame" x="20" y="160" width="93" height="44"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g7Z-Lo-kwg">
+                                <rect key="frame" x="6" y="145" width="308" height="1"/>
+                                <color key="backgroundColor" red="0.59607845540000004" green="0.75686281919999998" blue="0.72156864399999998" alpha="1" colorSpace="deviceRGB"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tcG-lg-b9U">
-                                <rect key="frame" x="55" y="76" width="102" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <connections>
-                                    <segue destination="Umx-b0-N6r" kind="push" identifier="PickBaseCurrency" id="gcM-NM-cW3"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7tj-rq-BhB" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="19" id="03u-O3-XAo"/>
-                            <constraint firstItem="FSu-Sy-Yzb" firstAttribute="leading" secondItem="7KY-uA-z5v" secondAttribute="trailing" constant="8" symbolic="YES" id="0X2-4Z-HKM"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="leading" secondItem="QUH-nh-1a6" secondAttribute="leading" id="1Dx-gS-4qh"/>
-                            <constraint firstItem="gcT-UM-b83" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="229" id="1Qx-Pc-BNO"/>
-                            <constraint firstItem="ttP-eS-dbA" firstAttribute="top" secondItem="7tj-rq-BhB" secondAttribute="bottom" constant="18" id="5QO-yD-yAx"/>
-                            <constraint firstItem="Vjx-eY-oSC" firstAttribute="leading" secondItem="7KY-uA-z5v" secondAttribute="trailing" constant="8" symbolic="YES" id="7kR-b1-DPW"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="baseline" secondItem="FSu-Sy-Yzb" secondAttribute="baseline" id="8lT-Sv-Mh6"/>
-                            <constraint firstItem="N9b-Sy-Ug6" firstAttribute="leading" secondItem="7tj-rq-BhB" secondAttribute="trailing" constant="6" id="9QO-mS-ic4"/>
-                            <constraint firstItem="fwY-ot-cJi" firstAttribute="top" secondItem="ttP-eS-dbA" secondAttribute="bottom" constant="17" id="Afa-LO-z1b"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="top" secondItem="QUH-nh-1a6" secondAttribute="bottom" id="C9y-xu-aQt"/>
-                            <constraint firstItem="zDq-GI-BQP" firstAttribute="top" secondItem="Pqg-bw-Xal" secondAttribute="bottom" constant="7" id="EYI-sZ-SHL"/>
-                            <constraint firstItem="gcT-UM-b83" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="14" id="Im7-xy-d7c"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="baseline" secondItem="DCt-Hc-hvJ" secondAttribute="baseline" id="Jvg-lM-WbX"/>
-                            <constraint firstItem="ttP-eS-dbA" firstAttribute="top" secondItem="N9b-Sy-Ug6" secondAttribute="bottom" constant="7" id="KY2-Rf-Ef5"/>
-                            <constraint firstItem="zDq-GI-BQP" firstAttribute="trailing" secondItem="N9b-Sy-Ug6" secondAttribute="trailing" id="MRt-jK-oBp"/>
-                            <constraint firstItem="gcT-UM-b83" firstAttribute="top" secondItem="7KY-uA-z5v" secondAttribute="bottom" constant="7" id="NsB-o1-nkv"/>
-                            <constraint firstAttribute="trailing" secondItem="ttP-eS-dbA" secondAttribute="trailing" constant="24" id="QHU-GA-3JG"/>
-                            <constraint firstItem="UfZ-3c-EE7" firstAttribute="leading" secondItem="gcT-UM-b83" secondAttribute="trailing" constant="3" id="Qih-jJ-W6s"/>
-                            <constraint firstItem="zDq-GI-BQP" firstAttribute="leading" secondItem="N9b-Sy-Ug6" secondAttribute="leading" id="T4I-1k-Mm6"/>
-                            <constraint firstAttribute="bottom" secondItem="7tj-rq-BhB" secondAttribute="bottom" constant="94" id="Tc5-a1-TZ3"/>
-                            <constraint firstItem="N9b-Sy-Ug6" firstAttribute="leading" secondItem="is8-tf-wBb" secondAttribute="leading" id="Wwq-fF-HWb"/>
-                            <constraint firstItem="zDq-GI-BQP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="60" id="YSL-8k-KkB"/>
-                            <constraint firstItem="hoT-FH-YVF" firstAttribute="top" secondItem="gcT-UM-b83" secondAttribute="bottom" constant="7" id="bgb-cx-UKm"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="trailing" secondItem="QUH-nh-1a6" secondAttribute="trailing" id="cqa-zl-5bt"/>
-                            <constraint firstItem="ttP-eS-dbA" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="16" id="krI-lu-pq8"/>
-                            <constraint firstItem="gcT-UM-b83" firstAttribute="leading" secondItem="QUH-nh-1a6" secondAttribute="leading" id="v7Q-HD-8bY"/>
-                            <constraint firstItem="N9b-Sy-Ug6" firstAttribute="top" secondItem="zDq-GI-BQP" secondAttribute="bottom" constant="12" id="w1l-Ye-eeG"/>
-                            <constraint firstItem="7KY-uA-z5v" firstAttribute="bottom" secondItem="FSu-Sy-Yzb" secondAttribute="bottom" id="xKk-SJ-pkj"/>
+                            <constraint firstItem="fwY-ot-cJi" firstAttribute="top" secondItem="ttP-eS-dbA" secondAttribute="bottom" constant="46" id="Va3-s7-TKp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Border Converter" id="Htd-QP-QR1"/>
+                    <navigationItem key="navigationItem" title="BORDER CONVERTER" id="Htd-QP-QR1"/>
                     <connections>
                         <outlet property="avgPriceLabel" destination="HPD-Pw-D4x" id="JHw-B5-axw"/>
+                        <outlet property="avgPriceUSA" destination="ign-gg-okY" id="yhJ-bt-mqv"/>
                         <outlet property="avgPriceUnit" destination="37E-75-7Gv" id="D3b-Hl-deX"/>
                         <outlet property="exchangeRateField" destination="zDq-GI-BQP" id="IkH-f3-jDE"/>
                         <outlet property="exchangeRateInverseField" destination="N9b-Sy-Ug6" id="LXh-hd-Ohs"/>
@@ -321,6 +302,7 @@
                         <outlet property="sliderBar" destination="ttP-eS-dbA" id="D89-Bs-qOH"/>
                         <outlet property="toCurrencyCodeField" destination="ptB-WE-kSx" id="xak-xT-jMl"/>
                         <outlet property="toCurrencyCodeFieldTwo" destination="FSu-Sy-Yzb" id="LDg-Mr-OEZ"/>
+                        <outlet property="toCurrencyFullNameField" destination="6sd-fw-vWW" id="vJZ-GM-ib5"/>
                         <outlet property="toCurrencyImageButton" destination="d2B-ug-Yvi" id="2hj-8a-hc7"/>
                         <outlet property="toUnitField" destination="DCt-Hc-hvJ" id="3yT-lC-bZO"/>
                         <outlet property="yourPriceLabel" destination="hoT-FH-YVF" id="UNS-L8-act"/>
@@ -330,7 +312,7 @@
             </objects>
             <point key="canvasLocation" x="1349" y="133"/>
         </scene>
-        <!--Currency Picker View Controller - Select a Currency-->
+        <!--Select a Currency-->
         <scene sceneID="LVd-2U-aCx">
             <objects>
                 <tableViewController id="Umx-b0-N6r" customClass="CurrencyPickerViewController" sceneMemberID="viewController">
@@ -401,7 +383,7 @@
             </objects>
             <point key="canvasLocation" x="1782" y="133"/>
         </scene>
-        <!--Navigation Controller - Border Compare-->
+        <!--Border Compare-->
         <scene sceneID="3rF-7E-fT7">
             <objects>
                 <navigationController title="Border Compare" automaticallyAdjustsScrollViewInsets="NO" id="p1b-Nf-uNR" sceneMemberID="viewController">
@@ -419,7 +401,7 @@
             </objects>
             <point key="canvasLocation" x="922" y="133"/>
         </scene>
-        <!--Base Currency Table View Controller - Select a Base Currency-->
+        <!--Select a Base Currency-->
         <scene sceneID="ZHS-QI-3bt">
             <objects>
                 <tableViewController title="Select a Base Currency" id="vUY-z2-Wv5" customClass="BaseCurrencyTableViewController" sceneMemberID="viewController">
@@ -466,7 +448,7 @@
                             <outlet property="delegate" destination="vUY-z2-Wv5" id="PBm-DC-Sw8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Select a Base Currency" id="wgb-dV-xHQ">
+                    <navigationItem key="navigationItem" title="Select a Currency" id="wgb-dV-xHQ">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="fvd-K5-nfq">
                             <connections>
                                 <action selector="cancel:" destination="vUY-z2-Wv5" id="cNz-ww-H7X"/>
@@ -492,11 +474,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Arrows-Right-icon" width="48" height="48"/>
-        <image name="Basic-Update-icon" width="48" height="48"/>
-        <image name="Shopping-Banknotes-icon" width="48" height="48"/>
+        <image name="MXN_50_BW" width="48" height="48"/>
+        <image name="USD_BW" width="48" height="48"/>
         <image name="basket" width="420" height="420"/>
         <image name="basket_highlighted_offset" width="43" height="43"/>
+        <image name="updateIcon" width="44" height="44"/>
+        <image name="updateIcon_Rotated" width="44" height="44"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -504,6 +487,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="9PL-21-KKm"/>
         <segue reference="gcM-NM-cW3"/>
     </inferredMetricsTieBreakers>
 </document>

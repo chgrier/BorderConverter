@@ -10,9 +10,6 @@
 
 @implementation Currency
 
-
-
-
 -(id)initWithCoder:(NSCoder *)aDecoder{
     if ((self = [super init])){
         self.fromFullName = [aDecoder decodeObjectForKey:@"Name"];
@@ -34,9 +31,6 @@
         NSString *oldFromCode = self.fromCodeName;
         self.fromCodeName = self.toCodeName;
         self.toCodeName = oldFromCode;
-        
-        
-    
     
         }
 

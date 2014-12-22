@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383278192A6B1600A7DC57 /* CurrencyDict.plist */; };
 		BE383303192ACFFA00A7DC57 /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = BE383302192ACFFA00A7DC57 /* Item.m */; };
-		BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE383304192D2F6800A7DC57 /* ItemListPrices.plist */; };
 		BE3930E118BBDCA10072C4C7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E018BBDCA10072C4C7 /* Foundation.framework */; };
 		BE3930E318BBDCA10072C4C7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */; };
 		BE3930E518BBDCA10072C4C7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE3930E418BBDCA10072C4C7 /* UIKit.framework */; };
@@ -26,16 +25,12 @@
 		BE39310C18BBDCA10072C4C7 /* BorderCompareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BE39310B18BBDCA10072C4C7 /* BorderCompareTests.m */; };
 		BE3F48DC194E4E3900F7F672 /* BaseCurrencyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3F48DB194E4E3900F7F672 /* BaseCurrencyTableViewController.m */; };
 		BE7D13351947CADA009ECAA3 /* ItemDict.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE7D13341947CADA009ECAA3 /* ItemDict.plist */; };
-		BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975918F756DB00DF4C25 /* ItemList.plist */; };
-		BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */; };
-		BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */; };
-		BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */; };
-		BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE94418318F5E702008873A2 /* CurrencyCodes.plist */; };
 		BEB9BDFB194EB0D50068A441 /* BaseCurrency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEB9BDFA194EB0D50068A441 /* BaseCurrency.m */; };
 		BEC1752F191AF5A700459AD9 /* CurrencyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */; };
 		BEC17538191B45D800459AD9 /* Currency.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC17537191B45D800459AD9 /* Currency.m */; };
 		BEEF66E91936800C0086C145 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = BEEF66E81936800C0086C145 /* Reachability.m */; };
 		BEEF66EB1936F11A0086C145 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEF66EA1936F11A0086C145 /* SystemConfiguration.framework */; };
+		BEF4722219564C1D00F2D9BA /* about_BorderConverter.html in Resources */ = {isa = PBXBuildFile; fileRef = BEF4722119564C1D00F2D9BA /* about_BorderConverter.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +47,6 @@
 		BE383278192A6B1600A7DC57 /* CurrencyDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrencyDict.plist; sourceTree = "<group>"; };
 		BE383301192ACFFA00A7DC57 /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Item.h; sourceTree = "<group>"; };
 		BE383302192ACFFA00A7DC57 /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Item.m; sourceTree = "<group>"; };
-		BE383304192D2F6800A7DC57 /* ItemListPrices.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemListPrices.plist; sourceTree = "<group>"; };
 		BE3930DD18BBDCA10072C4C7 /* BorderCompare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BorderCompare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE3930E018BBDCA10072C4C7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BE3930E218BBDCA10072C4C7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -75,19 +69,12 @@
 		BE3F48DA194E4E3900F7F672 /* BaseCurrencyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCurrencyTableViewController.h; sourceTree = "<group>"; };
 		BE3F48DB194E4E3900F7F672 /* BaseCurrencyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCurrencyTableViewController.m; sourceTree = "<group>"; };
 		BE7D13341947CADA009ECAA3 /* ItemDict.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemDict.plist; sourceTree = "<group>"; };
-		BE86975918F756DB00DF4C25 /* ItemList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ItemList.plist; sourceTree = "<group>"; };
-		BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListFuel.plist; sourceTree = "<group>"; };
-		BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListMeat.plist; sourceTree = "<group>"; };
-		BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PriceListDairy.plist; sourceTree = "<group>"; };
-		BE94418318F5E702008873A2 /* CurrencyCodes.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CurrencyCodes.plist; sourceTree = "<group>"; };
 		BEB9BDF9194EB0D50068A441 /* BaseCurrency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCurrency.h; sourceTree = "<group>"; };
 		BEB9BDFA194EB0D50068A441 /* BaseCurrency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCurrency.m; sourceTree = "<group>"; };
 		BEC1752D191AF5A700459AD9 /* CurrencyPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrencyPickerViewController.h; sourceTree = "<group>"; };
 		BEC1752E191AF5A700459AD9 /* CurrencyPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrencyPickerViewController.m; sourceTree = "<group>"; };
-		BEC17530191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		BEC17531191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC17532191AF7AA00459AD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		BEC17533191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Main.strings; sourceTree = "<group>"; };
 		BEC17534191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC17535191AF7B800459AD9 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BEC17536191B45D800459AD9 /* Currency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Currency.h; sourceTree = "<group>"; };
@@ -95,6 +82,7 @@
 		BEEF66E71936800C0086C145 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		BEEF66E81936800C0086C145 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		BEEF66EA1936F11A0086C145 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		BEF4722119564C1D00F2D9BA /* about_BorderConverter.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about_BorderConverter.html; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,14 +170,9 @@
 		BE3930E718BBDCA10072C4C7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				BE94418318F5E702008873A2 /* CurrencyCodes.plist */,
+				BEF4722119564C1D00F2D9BA /* about_BorderConverter.html */,
 				BE383278192A6B1600A7DC57 /* CurrencyDict.plist */,
 				BE7D13341947CADA009ECAA3 /* ItemDict.plist */,
-				BE86975918F756DB00DF4C25 /* ItemList.plist */,
-				BE383304192D2F6800A7DC57 /* ItemListPrices.plist */,
-				BE86975B18F75A6000DF4C25 /* PriceListFuel.plist */,
-				BE86975D18F75AEC00DF4C25 /* PriceListMeat.plist */,
-				BE86975F18F75CAB00DF4C25 /* PriceListDairy.plist */,
 				BE3930E818BBDCA10072C4C7 /* BorderCompare-Info.plist */,
 				BE3930E918BBDCA10072C4C7 /* InfoPlist.strings */,
 				BE3930EC18BBDCA10072C4C7 /* main.m */,
@@ -263,6 +246,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = com.charlesgrier;
 				TargetAttributes = {
+					BE3930DC18BBDCA10072C4C7 = {
+						DevelopmentTeam = L2866N5XVV;
+					};
 					BE3930FD18BBDCA10072C4C7 = {
 						TestTargetID = BE3930DC18BBDCA10072C4C7;
 					};
@@ -294,16 +280,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE86975C18F75A6000DF4C25 /* PriceListFuel.plist in Resources */,
-				BE383305192D2F6800A7DC57 /* ItemListPrices.plist in Resources */,
 				BE3930F918BBDCA10072C4C7 /* Images.xcassets in Resources */,
 				BE7D13351947CADA009ECAA3 /* ItemDict.plist in Resources */,
-				BE86975A18F756DB00DF4C25 /* ItemList.plist in Resources */,
+				BEF4722219564C1D00F2D9BA /* about_BorderConverter.html in Resources */,
 				BE3930EB18BBDCA10072C4C7 /* InfoPlist.strings in Resources */,
-				BE94418418F5E702008873A2 /* CurrencyCodes.plist in Resources */,
-				BE86975E18F75AEC00DF4C25 /* PriceListMeat.plist in Resources */,
 				BE383279192A6B1600A7DC57 /* CurrencyDict.plist in Resources */,
-				BE86976018F75CAB00DF4C25 /* PriceListDairy.plist in Resources */,
 				BE3930F418BBDCA10072C4C7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,8 +349,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				BE3930F318BBDCA10072C4C7 /* Base */,
-				BEC17530191AF7AA00459AD9 /* es */,
-				BEC17533191AF7B800459AD9 /* fr */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -403,7 +382,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Charles Grier (L2866N5XVV)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -441,7 +420,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Charles Grier (L2866N5XVV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Charles Grier (L2866N5XVV)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -462,10 +442,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Charles Grier (L2866N5XVV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Charles Grier (L2866N5XVV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BorderCompare/BorderCompare-Prefix.pch";
 				INFOPLIST_FILE = "BorderCompare/BorderCompare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -476,10 +459,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Charles Grier (L2866N5XVV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BorderCompare/BorderCompare-Prefix.pch";
 				INFOPLIST_FILE = "BorderCompare/BorderCompare-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
