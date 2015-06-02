@@ -5,11 +5,11 @@ An iOS app that provides price per unit conversion from one currency and one uni
 
 Available in the <a href="https://itunes.apple.com/us/app/border-converter/id893235832?mt=8">App Store</a>. 
 
+Classes and Frameworks: 
 - NSURLConnection to load asynchronously real-time exchange rate data.
 - Reachability to monitor network state for loading of exchange rate data from property list if offline
-
-
-
+- Property Lists to store country data and offline exchange rates
+- UIPickerViewController and UITableViewController
 
 Screen shots:
 
