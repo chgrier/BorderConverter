@@ -7,7 +7,7 @@ Available in the <a href="https://itunes.apple.com/us/app/border-converter/id893
 
 - NSURLConnection to load asynchronously real-time exchange rate data.
 - Reachability to monitor network state for loading of exchange rate data from property list if offline
-- 
+
 
 
 
