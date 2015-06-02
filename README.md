@@ -9,8 +9,8 @@ Available in the <a href="https://itunes.apple.com/us/app/border-converter/id893
 
 
 Screen shots
-------------- | -------------
-<img src="http://www.charlesgrier.com/screen_shots/IMG_3264.png" width="200" height="355">  | Content Cell
+
+<img src="http://www.charlesgrier.com/screen_shots/IMG_3264.png" width="200" height="355">  | <img src="http://www.charlesgrier.com/screen_shots/IMG_3265.png" width="200" height="355">
 
 
 
