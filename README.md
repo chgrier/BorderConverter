@@ -8,4 +8,5 @@ My first published app in the <a href="https://itunes.apple.com/us/app/border-co
 Classes:
 - 
 
-[Screen shots] (http://www.charlesgrier.com/screen_shots/IMG_3264.png)
+<h2>Screen shots</h2>
+<img src="http://www.charlesgrier.com/screen_shots/IMG_3264.png" alt="Border Converter" style="width:304px;height:228px;">
