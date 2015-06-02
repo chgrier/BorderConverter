@@ -4,12 +4,12 @@ Border Converter
 ##### Description:
 An iOS app that provides price per unit conversion from one currency and one unit of measurement into another currency in a different unit of measurement.
 
+Available in the <a href="https://itunes.apple.com/us/app/border-converter/id893235832?mt=8">App Store</a>.
+
 ##### Features: 
 * Automatically downloads real-time exchange rates. User may easily adjust rate using a slider. 
 * Sets the units for an item to metric or US units for mass or volume. 
 * Compares prices to the average price in the United States.
-
-Available in the <a href="https://itunes.apple.com/us/app/border-converter/id893235832?mt=8">App Store</a>. 
 
 ##### Classes used: 
 - NSURLConnection to load asynchronously real-time exchange rate data.
