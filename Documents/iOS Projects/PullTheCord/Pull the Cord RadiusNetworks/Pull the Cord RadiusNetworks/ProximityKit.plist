@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+	Download this file to 'ProximityKit.plist' in your project folder, then drag it into Xcode to configure the library.
+-->
+<dict>
+	<key>PKKitName</key>
+	<string>Pull the Cord San Diego</string>
+	<key>PKUserIdentifier</key>
+	<string>5303</string>
+	<key>PKUserEmail</key>
+	<string>chgrier@mac.com</string>
+	<key>PKGlobalUserIdentifier</key>
+	<string>7323</string>
+	<key>PKAPIToken</key>
+	<string>6e8985e53d208608e38eee590a4fffa21eebd328e6eb9c4fc0a07ab2c4552bdb</string>
+	<key>PKKitURL</key>
+	<string>http://proximitykit.radiusnetworks.com/api/kits/4843</string>
+	<key>PKMapURL</key>
+	<string>http://proximitykit.radiusnetworks.com/api/maps/1329</string>
+	<key>PKMapName</key>
+	<string>San Diego Transit Stops</string>
+</dict>
+</plist>

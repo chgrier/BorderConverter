@@ -1,0 +1,433 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BED668891B93E74800D221D0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED668881B93E74800D221D0 /* main.m */; };
+		BED6688C1B93E74800D221D0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED6688B1B93E74800D221D0 /* AppDelegate.m */; };
+		BED6688F1B93E74800D221D0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED6688E1B93E74800D221D0 /* ViewController.m */; };
+		BED668921B93E74800D221D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BED668901B93E74800D221D0 /* Main.storyboard */; };
+		BED668941B93E74800D221D0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BED668931B93E74800D221D0 /* Images.xcassets */; };
+		BED668971B93E74800D221D0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BED668951B93E74800D221D0 /* LaunchScreen.xib */; };
+		BED668A31B93E74900D221D0 /* Station_FinderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BED668A21B93E74900D221D0 /* Station_FinderTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BED6689D1B93E74900D221D0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BED6687B1B93E74800D221D0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BED668821B93E74800D221D0;
+			remoteInfo = "Station Finder";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BED668831B93E74800D221D0 /* Station Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Station Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BED668871B93E74800D221D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BED668881B93E74800D221D0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BED6688A1B93E74800D221D0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		BED6688B1B93E74800D221D0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		BED6688D1B93E74800D221D0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		BED6688E1B93E74800D221D0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		BED668911B93E74800D221D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BED668931B93E74800D221D0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		BED668961B93E74800D221D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		BED6689C1B93E74900D221D0 /* Station FinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Station FinderTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BED668A11B93E74900D221D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BED668A21B93E74900D221D0 /* Station_FinderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Station_FinderTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BED668801B93E74800D221D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BED668991B93E74900D221D0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BED6687A1B93E74800D221D0 = {
+			isa = PBXGroup;
+			children = (
+				BED668851B93E74800D221D0 /* Station Finder */,
+				BED6689F1B93E74900D221D0 /* Station FinderTests */,
+				BED668841B93E74800D221D0 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BED668841B93E74800D221D0 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BED668831B93E74800D221D0 /* Station Finder.app */,
+				BED6689C1B93E74900D221D0 /* Station FinderTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BED668851B93E74800D221D0 /* Station Finder */ = {
+			isa = PBXGroup;
+			children = (
+				BED6688A1B93E74800D221D0 /* AppDelegate.h */,
+				BED6688B1B93E74800D221D0 /* AppDelegate.m */,
+				BED6688D1B93E74800D221D0 /* ViewController.h */,
+				BED6688E1B93E74800D221D0 /* ViewController.m */,
+				BED668901B93E74800D221D0 /* Main.storyboard */,
+				BED668931B93E74800D221D0 /* Images.xcassets */,
+				BED668951B93E74800D221D0 /* LaunchScreen.xib */,
+				BED668861B93E74800D221D0 /* Supporting Files */,
+			);
+			path = "Station Finder";
+			sourceTree = "<group>";
+		};
+		BED668861B93E74800D221D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BED668871B93E74800D221D0 /* Info.plist */,
+				BED668881B93E74800D221D0 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BED6689F1B93E74900D221D0 /* Station FinderTests */ = {
+			isa = PBXGroup;
+			children = (
+				BED668A21B93E74900D221D0 /* Station_FinderTests.m */,
+				BED668A01B93E74900D221D0 /* Supporting Files */,
+			);
+			path = "Station FinderTests";
+			sourceTree = "<group>";
+		};
+		BED668A01B93E74900D221D0 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BED668A11B93E74900D221D0 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BED668821B93E74800D221D0 /* Station Finder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BED668A61B93E74900D221D0 /* Build configuration list for PBXNativeTarget "Station Finder" */;
+			buildPhases = (
+				BED6687F1B93E74800D221D0 /* Sources */,
+				BED668801B93E74800D221D0 /* Frameworks */,
+				BED668811B93E74800D221D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Station Finder";
+			productName = "Station Finder";
+			productReference = BED668831B93E74800D221D0 /* Station Finder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BED6689B1B93E74900D221D0 /* Station FinderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BED668A91B93E74900D221D0 /* Build configuration list for PBXNativeTarget "Station FinderTests" */;
+			buildPhases = (
+				BED668981B93E74900D221D0 /* Sources */,
+				BED668991B93E74900D221D0 /* Frameworks */,
+				BED6689A1B93E74900D221D0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BED6689E1B93E74900D221D0 /* PBXTargetDependency */,
+			);
+			name = "Station FinderTests";
+			productName = "Station FinderTests";
+			productReference = BED6689C1B93E74900D221D0 /* Station FinderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BED6687B1B93E74800D221D0 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Grier Mobile Development";
+				TargetAttributes = {
+					BED668821B93E74800D221D0 = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					BED6689B1B93E74900D221D0 = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = BED668821B93E74800D221D0;
+					};
+				};
+			};
+			buildConfigurationList = BED6687E1B93E74800D221D0 /* Build configuration list for PBXProject "Station Finder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BED6687A1B93E74800D221D0;
+			productRefGroup = BED668841B93E74800D221D0 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BED668821B93E74800D221D0 /* Station Finder */,
+				BED6689B1B93E74900D221D0 /* Station FinderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BED668811B93E74800D221D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BED668921B93E74800D221D0 /* Main.storyboard in Resources */,
+				BED668971B93E74800D221D0 /* LaunchScreen.xib in Resources */,
+				BED668941B93E74800D221D0 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BED6689A1B93E74900D221D0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BED6687F1B93E74800D221D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BED6688F1B93E74800D221D0 /* ViewController.m in Sources */,
+				BED6688C1B93E74800D221D0 /* AppDelegate.m in Sources */,
+				BED668891B93E74800D221D0 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BED668981B93E74900D221D0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BED668A31B93E74900D221D0 /* Station_FinderTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BED6689E1B93E74900D221D0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BED668821B93E74800D221D0 /* Station Finder */;
+			targetProxy = BED6689D1B93E74900D221D0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BED668901B93E74800D221D0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BED668911B93E74800D221D0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BED668951B93E74800D221D0 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BED668961B93E74800D221D0 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BED668A41B93E74900D221D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BED668A51B93E74900D221D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BED668A71B93E74900D221D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Station Finder/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		BED668A81B93E74900D221D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Station Finder/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		BED668AA1B93E74900D221D0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Station FinderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Finder.app/Station Finder";
+			};
+			name = Debug;
+		};
+		BED668AB1B93E74900D221D0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Station FinderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Station Finder.app/Station Finder";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BED6687E1B93E74800D221D0 /* Build configuration list for PBXProject "Station Finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BED668A41B93E74900D221D0 /* Debug */,
+				BED668A51B93E74900D221D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BED668A61B93E74900D221D0 /* Build configuration list for PBXNativeTarget "Station Finder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BED668A71B93E74900D221D0 /* Debug */,
+				BED668A81B93E74900D221D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BED668A91B93E74900D221D0 /* Build configuration list for PBXNativeTarget "Station FinderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BED668AA1B93E74900D221D0 /* Debug */,
+				BED668AB1B93E74900D221D0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BED6687B1B93E74800D221D0 /* Project object */;
+}
